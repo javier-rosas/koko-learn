@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import CodeEditorWindow from "../components/CodeEditorWindow"
 import { classnames } from "../utils/general"
 import { languageOptions } from "../constants/languageOptions"
@@ -8,41 +8,19 @@ import "react-toastify/dist/ReactToastify.css"
 
 import { defineTheme } from "../lib/defineTheme"
 import useKeyPress from "../hooks/useKeyPress"
-import OutputWindow from "../components/OutputWindow"
 import CustomInput from "../components/CustomInput"
 import ThemeDropdown from "../components/ThemeDropdown"
 import LanguagesDropdown from "../components/LanguagesDropdown"
 
-const javascriptDefault = `/**
-* Problem: Binary Search: Search a sorted array for a target value.
-*/
-import React from 'react'
+import {
+  LiveProvider,
+  LiveEditor,
+  LiveError,
+  LivePreview
+} from 'react-live'
+import { AnyARecord } from "dns"
 
-// Time: O(log n)
-const binarySearch = (arr, target) => {
- return binarySearchHelper(arr, target, 0, arr.length - 1)
-}
-
-const binarySearchHelper = (arr, target, start, end) => {
- if (start > end) {
-   return false
- }
- let mid = Math.floor((start + end) / 2)
- if (arr[mid] === target) {
-   return mid
- }
- if (arr[mid] < target) {
-   return binarySearchHelper(arr, target, mid + 1, end)
- }
- if (arr[mid] > target) {
-   return binarySearchHelper(arr, target, start, mid - 1)
- }
-}
-
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-const target = 5
-console.log(binarySearch(arr, target))
-`
+const javascriptDefault = ""
 
 const Landing = () => {
   const [code, setCode] = useState(javascriptDefault)
@@ -60,6 +38,21 @@ const Landing = () => {
     setLanguage(sl)
   }
 
+  useEffect(() => {
+    (function () {
+      var logger = document.getElementById('log');
+      console.log = function (message) {
+        if (!logger) return
+          if (typeof message == 'object') {
+              logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />';
+          } else {
+              logger.innerHTML += message + '<br />';
+          }
+      }
+    })();
+  }, [])
+
+  
   useEffect(() => {
     if (enterPress && ctrlPress) {
       console.log("enterPress", enterPress)
@@ -81,20 +74,20 @@ const Landing = () => {
   }
 
   const handleCompile = () => {
-    setProcessing(true);
-    
+    setProcessing(true)
+    eval(code)
   }
 
   function handleThemeChange(th: any) {
     const theme = th;
     console.log("theme...", theme);
-
     if (["light", "vs-dark"].includes(theme.value)) {
       setTheme(theme);
     } else {
       defineTheme(theme.value).then((_) => setTheme(theme));
     }
   }
+
   useEffect(() => {
     defineTheme("oceanic-next").then((_) =>
       setTheme({ value: "oceanic-next", label: "Oceanic Next" })
@@ -125,6 +118,7 @@ const Landing = () => {
     })
   }
 
+  
   return (
     <>
       <ToastContainer
@@ -156,9 +150,11 @@ const Landing = () => {
             theme={theme.value}
           />
         </div>
-
         <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
-          <OutputWindow outputDetails={outputDetails} />
+          <h1 className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 mb-2">
+            Output
+          </h1>
+          <div id="log" className="w-full h-56 bg-[#1e293b] rounded-md text-white font-normal text-sm overflow-y-auto p-3"/>
           <div className="flex flex-col items-end">
             <CustomInput
               customInput={customInput}
@@ -170,13 +166,18 @@ const Landing = () => {
               className={classnames(
                 "mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0",
                 !code ? "opacity-50" : ""
-              )}
-            >
+              )}>
               {processing ? "Processing..." : "Compile and Execute"}
             </button>
           </div>
         </div>
       </div>
+      {/* <LiveProvider code={code} /> */}
+      {/* <LiveProvider code={code}>
+        <LiveEditor />
+        <LiveError />
+        <LivePreview />
+      </LiveProvider> */}
     </>
   )
 }
