@@ -11,14 +11,16 @@
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
     "@next/font": "13.1.0",
+    "@reduxjs/toolkit": "^1.9.1",
     "@types/react-dom": "18.0.9",
+    "@types/react-redux": "^7.1.24",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.0",
     "monaco-themes": "^0.4.3",
     "next": "13.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-live": "^3.1.1",
+    "react-redux": "^8.0.5",
     "react-select": "^5.7.0",
     "react-toastify": "^9.1.1"
   },
