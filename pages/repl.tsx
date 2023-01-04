@@ -11,6 +11,7 @@ import useKeyPress from "../hooks/useKeyPress"
 import ThemeDropdown from "../components/ThemeDropdown"
 import LanguagesDropdown from "../components/LanguagesDropdown"
 import Question from "../components/Question"
+import Output from "../components/Output"
 
 /**
  * TODO:
@@ -88,9 +89,14 @@ const Landing = () => {
       // setTimeout(() => {setProcessing(false)}, 1000)
 
       setProcessing(true)
-      eval(code)
-      showSuccessToast("Code ran succesfully!")
-      setTimeout(() => {setProcessing(false)}, 1000);
+      try {
+        eval(code)
+        showSuccessToast("Code ran succesfully!")
+        setTimeout(() => {setProcessing(false)}, 1000);
+      } catch(e) {
+        showErrorToast("Error", 1000)
+      }
+      
   }
 
   // handle a change in the theme
@@ -137,16 +143,12 @@ const Landing = () => {
               language={language.value}
               theme={theme.value}
             />
-          <div id="log" className="bg-black mt-1 rounded-md text-white font-normal text-sm overflow-y-scroll p-3 max-h-24"/>
-            <button
-              onClick={handleCompile}
-              disabled={!code}
-              className={classnames(
-                "mt-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0",
-                !code ? "opacity-50" : ""
-              )}>
-              {processing ? "Processing..." : "Compile and Execute"}
-            </button>
+          <Output 
+            handleCompile={handleCompile}
+            code={code}
+            classnames={classnames}
+            processing={processing}
+          />
         </div>
       </div>
       
