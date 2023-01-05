@@ -25,16 +25,11 @@ function Navbar(props: any) {
     )
   }, [])
 
-  // select language handler
-  const onSelectChange = (sl: any) => {
-    setLanguage(sl)
-  }
-  
   return (
     <div className="flex flex-col">
       <div className="flex flex-row">
         <div className="px-2 py-2">
-          <LanguagesDropdown onSelectChange={onSelectChange} />
+          <LanguagesDropdown />
         </div>
         <div className="px-2 py-2">
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />

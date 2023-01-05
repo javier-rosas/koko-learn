@@ -29,10 +29,10 @@ function Question( { question } : any) {
           </pre>
         )
       })} 
-      <div className='m-2'>
+      <pre className='m-2'>
         <p className='font-bold text-base'>Constraints:</p>
-        <p className='mt-1'> {constraint} </p>
-      </div>
+        <p className='mt-1'> {constraint.trim()} </p>
+      </pre>
       {/* <p className='m-2'> {code_snippets[0].code} </p> */}
     </div>
   )

@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Editor from "@monaco-editor/react"
 
-const CodeEditorWindow = ({ onChange, language, code, theme }: any) => {
+const CodeEditorWindow = ({ onChange, language, code, theme, question }: any) => {
   
   const [value, setValue] = useState(code || "")
 
@@ -9,6 +9,11 @@ const CodeEditorWindow = ({ onChange, language, code, theme }: any) => {
     setValue(value)
     onChange("code", value)
   }
+
+  useEffect(() => {
+    if (!question) return
+    setValue(question.code_snippets[1].code)
+  }, [question])
 
   return (
     <div className="overlay rounded-md overflow-hidden shadow-4xl">
@@ -18,7 +23,7 @@ const CodeEditorWindow = ({ onChange, language, code, theme }: any) => {
         language={language || "javascript"}
         value={value}
         theme={theme}
-        defaultValue="// some comment"
+        defaultValue=""
         onChange={handleEditorChange}
         options={{
           automaticLayout:true,

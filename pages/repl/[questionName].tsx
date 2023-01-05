@@ -44,7 +44,7 @@ const Repl = (props: any) => {
     })()
   }, [])
 
-  // change code editor according to the language & theme
+  // change the code editor text
   const onChange = (action: any, data: any) => {
     switch (action) {
       case "code": {
@@ -77,13 +77,12 @@ const Repl = (props: any) => {
     }
   }, [shiftPress, enterPress, handleCompile])
   
+
   return (
     <>
       <Navbar 
         theme={theme} 
-        setTheme={setTheme} 
-        language={language}
-        setLanguage={setLanguage}
+        setTheme={setTheme}
       />
       <div className="flex flex-row justify-between">
         <Question question={question} />
@@ -93,6 +92,7 @@ const Repl = (props: any) => {
             onChange={onChange}
             language={language.value}
             theme={theme.value}
+            question={question}
           />
           <Output 
             handleCompile={handleCompile}
