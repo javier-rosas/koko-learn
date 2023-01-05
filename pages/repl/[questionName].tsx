@@ -6,7 +6,6 @@ import Output from "../../components/Output"
 import QuestionModel from "../../models/QuestionModel"
 import Navbar from "../../components/Navbar"
 import { classnames } from "../../utils/general"
-import { languageOptions } from "../../constants/languageOptions"
 import { showSuccessToast } from "../../utils/general"
 import { showErrorToast } from "../../utils/general"
 import { ToastContainer } from "react-toastify"
@@ -21,8 +20,8 @@ const Repl = (props: any) => {
   const [theme, setTheme] = useState<any>("cobalt")
   const [code, setCode] = useState("")
   const [processing, setProcessing] = useState<boolean | null>(null)
-  const [language, setLanguage] = useState(languageOptions[0])
   const { question } = props
+  
 
   // enterPress and contrlPress hooks
   const enterPress = useKeyPress("Enter")
@@ -90,7 +89,6 @@ const Repl = (props: any) => {
           <CodeEditorWindow
             code={code}
             onChange={onChange}
-            language={language.value}
             theme={theme.value}
             question={question}
           />
@@ -125,7 +123,7 @@ export async function getStaticPaths() {
     await connectMongo()
     const questions = await QuestionModel.find()
     const paths = questions.map((question: QuestionType) => (
-      { params: { questionName: question.name} }
+      { params: { questionName: question.camelCaseName} }
     ))
     return {
       paths,
@@ -141,7 +139,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const questionName = params?.questionName?.toString()
   try {
     await connectMongo()
-    const question = await QuestionModel.findOne({name: questionName})
+    const question = await QuestionModel.findOne({camelCaseName: questionName})
     return {
       props: {
         question: JSON.parse(JSON.stringify(question))
@@ -151,3 +149,5 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     console.log(e)
   }
 }
+
+

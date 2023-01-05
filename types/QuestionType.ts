@@ -14,5 +14,6 @@ export type QuestionType = {
     lang: string,
     langSlug: string,
     code: string
-  }]
+  }],
+  camelCaseName: string,
 }

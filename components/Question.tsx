@@ -33,7 +33,6 @@ function Question( { question } : any) {
         <p className='font-bold text-base'>Constraints:</p>
         <p className='mt-1'> {constraint.trim()} </p>
       </pre>
-      {/* <p className='m-2'> {code_snippets[0].code} </p> */}
     </div>
   )
 }

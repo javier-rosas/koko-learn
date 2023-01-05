@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import Editor from "@monaco-editor/react"
 
-const CodeEditorWindow = ({ onChange, language, code, theme, question }: any) => {
+const CodeEditorWindow = ({ onChange, code, theme, question }: any) => {
   
   const [value, setValue] = useState(code || "")
-
+  const lang = useSelector((state: any) => state.language.language)
+  
   const handleEditorChange = (value: any) => {
     setValue(value)
     onChange("code", value)
@@ -12,15 +14,17 @@ const CodeEditorWindow = ({ onChange, language, code, theme, question }: any) =>
 
   useEffect(() => {
     if (!question) return
-    setValue(question.code_snippets[1].code)
-  }, [question])
+    if (lang.value === "python") setValue(question.code_snippets[0].code)
+    else if (lang.value === "javascript") setValue(question.code_snippets[1].code)
+  }, [question, lang])
+
 
   return (
     <div className="overlay rounded-md overflow-hidden shadow-4xl">
       <Editor
         height="65vh"
         width="100vh"
-        language={language || "javascript"}
+        language={lang.value}
         value={value}
         theme={theme}
         defaultValue=""
