@@ -20,7 +20,7 @@ const CodeEditorWindow = ({ onChange, code, theme, question }: any) => {
 
 
   return (
-    <div className="overlay rounded-md overflow-hidden shadow-4xl">
+    <div className="overlay rounded-md overflow-hidden shadow-4xl mr-2">
       <Editor
         height="65vh"
         width="100vh"
