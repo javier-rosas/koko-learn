@@ -30,3 +30,22 @@ export const showErrorToast = (msg: string, timer: number) => {
     progress: undefined,
   })
 }
+
+/**
+ * Converts any string to kebab-case
+ * @param {string | undefined} str question name
+ * @returns {string} formatted in kebab-case
+ */
+const toKebabCase = (str: string | undefined): string => {
+  if (!str) return ""
+  return ( 
+    str
+      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)!
+      .map(x => x.toLowerCase()).join('-')
+  )
+}
+
+const preprocessExample = (example: string) : string[] => {
+  const output = example.split(' Output')
+  return output
+}

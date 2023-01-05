@@ -1,12 +1,12 @@
 import React from "react";
 import { classnames } from "../utils/general";
 
-const CustomInput = ({ customInput, setCustomInput }) => {
+const CustomInput = ({ customInput, setCustomInput }: any) => {
   return (
     <>
       {" "}
       <textarea
-        rows="5"
+        rows={5}
         value={customInput}
         onChange={(e) => setCustomInput(e.target.value)}
         placeholder={`Custom input`}

@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import Editor from "@monaco-editor/react"
 
-const CodeEditorWindow = ({ onChange, language, code, theme }) => {
+const CodeEditorWindow = ({ onChange, language, code, theme }: any) => {
+  
   const [value, setValue] = useState(code || "")
 
-  const handleEditorChange = (value) => {
+  const handleEditorChange = (value: any) => {
     setValue(value)
     onChange("code", value)
   }
@@ -21,7 +22,7 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
         onChange={handleEditorChange}
         options={{
           automaticLayout:true,
-          fontSize:"13rem",
+          fontSize: 13,
       }}
       />
     </div>

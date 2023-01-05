@@ -5,42 +5,38 @@ import Custom404 from '../pages/404'
 
 function Question( { question } : any) {
 
+  let name, description, examples, constraint, code_snippets
+
   try {
-    const { name, description,  examples, constraint, code_snippets } = JSON.parse(question)
+    ({ name, description,  examples, constraint, code_snippets } = question)
   } catch(e) {
     return (
-      <div className='flex justify-center items-center w-[100%]'>
+      <div className='flex justify-center items-center w-[100%] font-mono'>
         <h1> Question not found. </h1>
       </div>
     )
   }
 
-  const { name, description,  examples, constraint, code_snippets } = JSON.parse(question)
-  
- 
-  
   return (
-    <>
-    <div className='flex flex-col p-4'>
+    <div className='flex flex-col p-4 font-mono'>
       <h1 className='text-3xl font-bg m-2'> {name}  </h1>
       <p className='m-2'> {description.description_text} </p>
       {examples.map((example: any, i: number) => {
         return (
-        <>
-        <div className='flex flex-col'>
-          <div className='m-2 p-2 bg-gray-300 rounded-md'>
-          <p> <strong> Example {i + 1} </strong></p>
-            {example.example_text}
+          <div key={i} className='flex flex-col'>
+            <div className='m-2 p-2 bg-gray-300 rounded-md'>
+            <p> <strong> Example {i + 1} </strong></p>
+              {example.example_text}
+            </div>
           </div>
-        </div>
-        </>
         )
       })} 
-      <p><strong>Constraints:</strong></p>
-      <p> {constraint} </p>
-      <p> {code_snippets[0].code} </p>
+      <div className='m-2'>
+        <p><strong>Constraints:</strong></p>
+        <p> {constraint} </p>
+      </div>
+      {/* <p className='m-2'> {code_snippets[0].code} </p> */}
     </div>
-    </>
   )
 }
 
