@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { QuestionType } from "../types/QuestionType"
+import Custom404 from '../pages/404'
 
 
 function Question( { question } : any) {
@@ -8,7 +9,7 @@ function Question( { question } : any) {
   try {
     JSON.parse(question)
   } catch(e) {
-    return <h1> Cannot Load Page </h1>
+    return <Custom404/>
   }
 
   const { name, description,  examples, constraint, code_snippets } = JSON.parse(question)
