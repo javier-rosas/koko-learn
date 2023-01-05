@@ -1,15 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
-import { QuestionType } from "../types/QuestionType"
 import Custom404 from '../pages/404'
 
 
 function Question( { question } : any) {
-  
+
   try {
-    JSON.parse(question)
+    const { name, description,  examples, constraint, code_snippets } = JSON.parse(question)
   } catch(e) {
-    return <Custom404/>
+    return (
+      <div className='flex justify-center items-center w-[100%]'>
+        <h1> Question not found. </h1>
+      </div>
+    )
   }
 
   const { name, description,  examples, constraint, code_snippets } = JSON.parse(question)
