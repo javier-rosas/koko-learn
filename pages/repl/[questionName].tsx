@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react"
-import CodeEditorWindow from "../components/CodeEditorWindow"
-import { classnames } from "../utils/general"
-import { languageOptions } from "../constants/languageOptions"
-import { showSuccessToast } from "../utils/general"
-import { showErrorToast } from "../utils/general"
+import React, { useEffect, useState, useCallback } from "react"
+import CodeEditorWindow from "../../components/CodeEditorWindow"
+import { classnames } from "../../utils/general"
+import { languageOptions } from "../../constants/languageOptions"
+import { showSuccessToast } from "../../utils/general"
+import { showErrorToast } from "../../utils/general"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { defineTheme } from "../lib/defineTheme"
-import useKeyPress from "../hooks/useKeyPress"
-import ThemeDropdown from "../components/ThemeDropdown"
-import LanguagesDropdown from "../components/LanguagesDropdown"
-import Question from "../components/Question"
-import Output from "../components/Output"
+import { defineTheme } from "../../lib/defineTheme"
+import useKeyPress from "../../hooks/useKeyPress"
+import ThemeDropdown from "../../components/ThemeDropdown"
+import LanguagesDropdown from "../../components/LanguagesDropdown"
+import Question from "../../components/Question"
+import Output from "../../components/Output"
+import { QuestionType } from "../../types/QuestionType"
+import { GetStaticPropsContext } from 'next'
+import {connectMongo} from '../../utils/mongooseConnect'
+import QuestionModel from "../../models/QuestionModel"
 
+ 
 /**
  * TODO:
  *  1) Add File Explorer 
@@ -21,12 +26,15 @@ import Output from "../components/Output"
  *  2) Add error messages to output box
  * @returns JSX component
  */
-const Landing = () => {
+
+const Repl = (props: any) => {
   // state vars
   const [code, setCode] = useState("")
   const [processing, setProcessing] = useState<boolean | null>(null)
   const [theme, setTheme] = useState<any>("cobalt")
   const [language, setLanguage] = useState(languageOptions[0])
+  const { question } = props
+
 
   // enterPress and contrlPress hooks
   const enterPress = useKeyPress("Enter")
@@ -53,13 +61,6 @@ const Landing = () => {
     })()
   }, [])
 
-  // if shift & enter are pressed, run the code
-  useEffect(() => {
-    if (enterPress && shiftPress) {
-      handleCompile()
-    }
-  }, [shiftPress, enterPress])
-
   // change code editor according to the language & theme
   const onChange = (action: any, data: any) => {
     switch (action) {
@@ -74,30 +75,33 @@ const Landing = () => {
     }
   }
 
-  // compile and run code
-  const handleCompile = () => {
-    
-      /**
-       * Run if you want skypack.dev modules: 'https://cdn.skypack.dev/package-name'
-       */
-      // setProcessing(true)
-      // const script = document.createElement('script')
-      // script.type = "module"
-      // script.innerHTML = code
-      // document.body.appendChild(script)
-      // showSuccessToast("Code ran succesfully!")
-      // setTimeout(() => {setProcessing(false)}, 1000)
+  const handleCompile = useCallback( async () => {
+  //     /**
+  //      * Run if you want skypack.dev modules: 'https://cdn.skypack.dev/package-name'
+  //      */
+  //     // setProcessing(true)
+  //     // const script = document.createElement('script')
+  //     // script.type = "module"
+  //     // script.innerHTML = code
+  //     // document.body.appendChild(script)
+  //     // showSuccessToast("Code ran succesfully!")
+  //     // setTimeout(() => {setProcessing(false)}, 1000)
+    setProcessing(true)
+    try {
+      eval(code)
+      showSuccessToast("Code ran succesfully!")
+      setTimeout(() => {setProcessing(false)}, 1000);
+    } catch(e) {
+      showErrorToast("Error", 1000)
+    }
+  }, [code])
 
-      setProcessing(true)
-      try {
-        eval(code)
-        showSuccessToast("Code ran succesfully!")
-        setTimeout(() => {setProcessing(false)}, 1000);
-      } catch(e) {
-        showErrorToast("Error", 1000)
-      }
-      
-  }
+  // if shift & enter are pressed, run the code
+  useEffect(() => {
+    if (enterPress && shiftPress) {
+      handleCompile()
+    }
+  }, [shiftPress, enterPress, handleCompile])
 
   // handle a change in the theme
   function handleThemeChange(th: any) {
@@ -135,7 +139,9 @@ const Landing = () => {
         </div>
       </div>
       <div className="flex flex-row justify-between">
-        <Question />
+        <Question 
+          question={question}
+        />
         <div className="flex flex-col px-2 py-4">
             <CodeEditorWindow
               code={code}
@@ -164,9 +170,73 @@ const Landing = () => {
         pauseOnHover
       />
     </>
-    
-    
   )
 }
 
-export default Landing
+export default Repl
+
+/**
+ * Converts any string to kebab-case
+ * @param {string | undefined} str question name
+ * @returns {string} formatted in kebab-case
+ */
+const toKebabCase = (str: string | undefined): string => {
+  if (!str) return ""
+  return ( 
+    str
+      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)!
+      .map(x => x.toLowerCase()).join('-')
+  )
+}
+
+
+export async function getStaticPaths() {
+
+  try {
+    await connectMongo()
+    const questions = await QuestionModel.find()
+    const paths = questions.map((question: QuestionType) => {
+      return {
+        params: { questionName: question.name}
+      }
+    })
+    return {
+      paths,
+      fallback: 'blocking'
+    }
+  } catch (e) {
+    await connectMongo()
+    const questions = await QuestionModel.find()
+    const paths = questions.map((question: QuestionType) => {
+      return {
+        params: { questionName: question.name}
+      }
+    })
+    return {
+      paths,
+      fallback: 'blocking'
+    }
+  }
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const { params } = context 
+  const questionName = params?.questionName?.toString()
+  try {
+    await connectMongo()
+    const question = await QuestionModel.findOne({name: questionName})
+    return {
+      props: {
+        question: JSON.stringify(question)
+      }
+    }
+  } catch(e) {
+    await connectMongo()
+    const question = await QuestionModel.findOne({name: questionName})
+    return {
+      props: {
+        question: JSON.stringify(question)
+      }
+    }
+  }
+}
