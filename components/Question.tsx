@@ -18,22 +18,20 @@ function Question( { question } : any) {
   }
 
   return (
-    <div className='flex flex-col p-4 font-mono'>
+    <div className='flex flex-col p-4 font-mono text-sm'>
       <h1 className='text-3xl font-bg m-2'> {name}  </h1>
       <p className='m-2'> {description.description_text} </p>
       {examples.map((example: any, i: number) => {
         return (
-          <div key={i} className='flex flex-col'>
-            <div className='m-2 p-2 bg-gray-300 rounded-md'>
-            <p> <strong> Example {i + 1} </strong></p>
-              {example.example_text}
-            </div>
-          </div>
+          <pre key={i} className='m-2 p-2 bg-gray-300 rounded-md'>
+          <p className='font-bold text-base'>Example {i + 1}</p>
+            {example.example_text}
+          </pre>
         )
       })} 
       <div className='m-2'>
-        <p><strong>Constraints:</strong></p>
-        <p> {constraint} </p>
+        <p className='font-bold text-base'>Constraints:</p>
+        <p className='mt-1'> {constraint} </p>
       </div>
       {/* <p className='m-2'> {code_snippets[0].code} </p> */}
     </div>
