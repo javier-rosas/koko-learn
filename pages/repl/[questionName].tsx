@@ -83,7 +83,7 @@ const Repl = (props: any) => {
 
   return (
     <>
-      <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js" />
+      <Script strategy="beforeInteractive" src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js" />
       <Navbar 
         theme={theme} 
         setTheme={setTheme}

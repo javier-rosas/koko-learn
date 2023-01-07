@@ -25,13 +25,13 @@ function Question( { question } : any  ) {
         return (
           <pre key={i} className='m-2 p-2 bg-gray-300 rounded-md'>
           <p className='font-bold text-base'>Example {i + 1}</p>
-            {example.example_text}
+            {example?.example_text?.trim()}
           </pre>
         )
       })} 
       <pre className='m-2'>
         <p className='font-bold text-base'>Constraints:</p>
-        <p className='mt-1'> {constraint.trim()} </p>
+        <p className='mt-1'> {constraint?.trim()} </p>
       </pre>
     </div>
   )
