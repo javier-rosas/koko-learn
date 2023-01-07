@@ -25,7 +25,7 @@ function Question( { question } : any  ) {
         return (
           <pre key={i} className='m-2 p-2 bg-gray-300 rounded-md'>
           <p className='font-bold text-base'>Example {i + 1}</p>
-            {example.example_text.trim()}
+            {example.example_text}
           </pre>
         )
       })} 
