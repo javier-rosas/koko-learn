@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react"
+import Script from 'next/script'
 import CodeEditorWindow from "../../components/CodeEditorWindow"
 import useKeyPress from "../../hooks/useKeyPress"
 import Question from "../../components/Question"
@@ -12,17 +13,20 @@ import { ToastContainer } from "react-toastify"
 import { QuestionType } from "../../types/QuestionType"
 import { GetStaticPropsContext } from 'next'
 import { connectMongo } from '../../utils/mongooseConnect'
+import { useSelector } from "react-redux"
+import { runCode } from "../../utils/general"
 import "react-toastify/dist/ReactToastify.css"
 
  
 const Repl = (props: any) => {
+  
   // state vars
   const [theme, setTheme] = useState<any>("cobalt")
   const [code, setCode] = useState("")
   const [processing, setProcessing] = useState<boolean | null>(null)
   const { question } = props
+  const language = useSelector((state: any) => state.language.language)
   
-
   // enterPress and contrlPress hooks
   const enterPress = useKeyPress("Enter")
   const shiftPress = useKeyPress("Shift")
@@ -33,12 +37,12 @@ const Repl = (props: any) => {
       var logger = document.getElementById('log')
       console.log = function (message) {
         if (!logger) return
-          if (typeof message == 'object') {
-              logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />'
-          } else {
-              logger.innerHTML += message + '<br />'
-          }
-          logger.scrollTop = logger.scrollHeight;
+        if (typeof message == 'object') {
+            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />'
+        } else {
+            logger.innerHTML += message + '<br />'
+        }
+        logger.scrollTop = logger.scrollHeight;
       }
     })()
   }, [])
@@ -61,7 +65,7 @@ const Repl = (props: any) => {
   const handleCompile = useCallback( async () => {
     setProcessing(true)
     try {
-      eval(code)
+      runCode(language, code)
       showSuccessToast("Code ran succesfully!")
       setTimeout(() => {setProcessing(false)}, 1000);
     } catch(e) {
@@ -79,6 +83,7 @@ const Repl = (props: any) => {
 
   return (
     <>
+      <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js" />
       <Navbar 
         theme={theme} 
         setTheme={setTheme}

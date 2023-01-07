@@ -1,3 +1,4 @@
+import { LanguageType } from "../types/LanguageType"
 import { toast } from "react-toastify"
 
 // join list of arguments by white space
@@ -31,21 +32,18 @@ export const showErrorToast = (msg: string, timer: number) => {
   })
 }
 
-/**
- * Converts any string to kebab-case
- * @param {string | undefined} str question name
- * @returns {string} formatted in kebab-case
- */
-const toKebabCase = (str: string | undefined): string => {
-  if (!str) return ""
-  return ( 
-    str
-      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)!
-      .map(x => x.toLowerCase()).join('-')
-  )
+export const preprocessPythonCode = (code: string) => {
+  code = "\n" + code
+  const firstLine = "  async function main(){\n let pyodide = await loadPyodide()\n  pyodide.runPython(`"
+  const actualCode = `
+  ${code}
+  `
+  const lastLine = "`);\n}\n  main();"
+  const preprocessedCode = `${firstLine}${actualCode}${lastLine}`
+  eval(preprocessedCode)
 }
 
-const preprocessExample = (example: string) : string[] => {
-  const output = example.split(' Output')
-  return output
+export const runCode = (language: LanguageType, code: string) => {
+  if (language.value === "python") preprocessPythonCode(code)
+  else if (language.value === "javascript") eval(code)
 }

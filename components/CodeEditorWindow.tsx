@@ -18,7 +18,7 @@ const CodeEditorWindow = ({ onChange, code, theme, question }: any) => {
     else if (lang.value === "javascript") setValue(question.code_snippets[1].code)
   }, [question, lang])
 
-
+  // console.log("value", value)
   return (
     <div className="overlay rounded-md overflow-hidden shadow-4xl mr-2">
       <Editor
@@ -32,7 +32,10 @@ const CodeEditorWindow = ({ onChange, code, theme, question }: any) => {
         options={{
           automaticLayout:true,
           fontSize: 13,
-      }}
+          autoIndent: "keep",
+          formatOnType: true
+       }}
+      
       />
     </div>
   )

@@ -2,7 +2,6 @@
  * @file implements languageSlice
  */
 import { createSlice } from '@reduxjs/toolkit'
-import { LanguageStateType } from '../types/LanguageStateType'
 
 // initial state
 const initialState = {

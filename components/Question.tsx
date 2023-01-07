@@ -1,14 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 import Custom404 from '../pages/404'
+import { QuestionType } from '../types/QuestionType'
 
+function Question( { question } : any  ) {
 
-function Question( { question } : any) {
-
-  let name, description, examples, constraint, code_snippets
+  let name, description, examples, constraint
 
   try {
-    ({ name, description,  examples, constraint, code_snippets } = question)
+    ({ name, description,  examples, constraint } = question)
   } catch(e) {
     return (
       <div className='flex justify-center items-center w-[100%] font-mono'>
@@ -25,7 +25,7 @@ function Question( { question } : any) {
         return (
           <pre key={i} className='m-2 p-2 bg-gray-300 rounded-md'>
           <p className='font-bold text-base'>Example {i + 1}</p>
-            {example.example_text}
+            {example.example_text.trim()}
           </pre>
         )
       })} 

@@ -1,8 +1,11 @@
 import React from 'react'
 
 function ReplHome() {
+
   return (
-    <div>ReplHome</div>
+    <div>
+      <h1> Hello from ReplHome </h1>
+    </div>
   )
 }
 

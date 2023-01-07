@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/CodeEditorWindow.js", "components/CodeEditorWindow.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/CodeEditorWindow.js", "components/CodeEditorWindow.js", "pages/repl/index.jsx"],
   "exclude": ["node_modules"]
 }
