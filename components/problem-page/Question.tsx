@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import Custom404 from '../pages/404'
-import { QuestionType } from '../types/QuestionType'
+import Custom404 from '../../pages/404'
+import { QuestionType } from '../../types/QuestionType'
 
 function Question( { question } : any  ) {
 

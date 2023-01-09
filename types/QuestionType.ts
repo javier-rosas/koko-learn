@@ -15,5 +15,5 @@ export type QuestionType = {
     langSlug: string,
     code: string
   }],
-  camelCaseName: string,
+  kebabCaseName: string,
 }

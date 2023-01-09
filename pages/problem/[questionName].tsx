@@ -128,7 +128,7 @@ export async function getStaticPaths() {
     await connectMongo()
     const questions = await QuestionModel.find()
     const paths = questions.map((question: QuestionType) => (
-      { params: { questionName: question.camelCaseName} }
+      { params: { questionName: question.kebabCaseName} }
     ))
     return {
       paths,
@@ -144,7 +144,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const questionName = params?.questionName?.toString()
   try {
     await connectMongo()
-    const question = await QuestionModel.findOne({camelCaseName: questionName})
+    const question = await QuestionModel.findOne({kebabCaseName: questionName})
     return {
       props: {
         question: JSON.parse(JSON.stringify(question))

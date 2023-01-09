@@ -7,7 +7,7 @@ import { QuestionType } from '../types/QuestionType'
 const questionSchema: Schema<QuestionType> = new Schema({
   _id: {type: String, required: true},
   name: {type: String, required: true},
-  camelCaseName: {type: String, required: true},
+  kebabCaseName: {type: String, required: true},
   description: {
     description_text: {type: String, required: true},
     description_img_source: {type: Schema.Types.Mixed, required: true},

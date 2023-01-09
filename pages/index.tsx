@@ -9,7 +9,7 @@ export default function Home() {
     <div className="flex flex-col font-mono">
       <Navbar />
       <div className="grid grid-cols-4 gap-4 m-4 h-screen">
-        { sectionList.map( section => <Section section={section} /> ) }
+        { sectionList.map( (section, i) => <Section key={i.toString()} section={section} /> ) }
       </div>
     </div>
   )
