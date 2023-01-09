@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import LanguagesDropdown from './LanguagesDropdown'
 import ThemeDropdown from './ThemeDropdown'
-import { defineTheme } from "../lib/defineTheme"
+import { defineTheme } from "../../lib/defineTheme"
 
 
 function Navbar(props: any) {

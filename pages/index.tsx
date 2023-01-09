@@ -1,7 +1,16 @@
+import Section from "../components/home-page/Section"
+import Navbar from "../components/home-page/Navbar"
+import { sections } from '../constants/sections'
+
+const sectionList = Object.keys(sections)
+
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world from Home Page!
-    </h1>
+    <div className="flex flex-col font-mono">
+      <Navbar />
+      <div className="grid grid-cols-4 gap-4 m-4 h-screen">
+        { sectionList.map( section => <Section section={section} /> ) }
+      </div>
+    </div>
   )
 }

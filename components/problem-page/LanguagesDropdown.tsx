@@ -1,9 +1,9 @@
 import React from "react";
 import Select from "react-select";
-import { customStyles } from "../constants/customStyles";
-import { languageOptions } from "../constants/languageOptions";
+import { customStyles } from "../../constants/customStyles";
+import { languageOptions } from "../../constants/languageOptions";
 import { useDispatch } from "react-redux"
-import { setLanguage } from "../redux/languageSlice";
+import { setLanguage } from "../../redux/languageSlice";
 
 
 const LanguagesDropdown = () => {
