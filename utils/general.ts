@@ -32,6 +32,14 @@ export const showErrorToast = (msg: string, timer: number) => {
   })
 }
 
+// kebab case converter
+export const kebabCase = (str: string) => 
+  str
+    .replace(/([a-z])([A-Z])/g, "$1-$2")
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase()
+
+// preprocess python code
 export const preprocessPythonCode = (code: string) => {
   code = "\n" + code
   const firstLine = "  async function main(){\n let pyodide = await loadPyodide()\n  pyodide.runPython(`"
@@ -43,6 +51,7 @@ export const preprocessPythonCode = (code: string) => {
   eval(preprocessedCode)
 }
 
+// run code 
 export const runCode = (language: LanguageType, code: string) => {
   if (language.value === "python") preprocessPythonCode(code)
   else if (language.value === "javascript") eval(code)

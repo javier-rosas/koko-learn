@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import LanguagesDropdown from './LanguagesDropdown'
 import ThemeDropdown from './ThemeDropdown'
+import Link from 'next/link'
 import { defineTheme } from "../../lib/defineTheme"
 
 
@@ -34,11 +35,11 @@ function Navbar(props: any) {
         <div className="px-2 py-2">
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
         </div>
-        <div className="ml-auto mr-4 self-end text-center h-10 m-2 px-2 py-2 border-2 border-black z-10 rounded-md 
+        <Link href="/" className="ml-auto mr-4 self-end text-center h-10 m-2 px-2 py-2 border-2 border-black z-10 rounded-md 
                         shadow-[5px_5px_0px_0px_rgba(0,0,0)] hover:shadow transition 
                         duration-200 bg-white flex-shrink-0">
           Search Problems
-        </div>
+        </Link>
       </div>
     </div>
   )

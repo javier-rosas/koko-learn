@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function Navbar() {
   return (
-    <div className='flex flex-row h-40 place-content-between items-center border-b-4'>
+    <div className='flex flex-row h-40 place-content-between items-center border-b-4 font-mono'>
       <Link href="/">
         <Image className="ml-16" alt="logo" src="/logo_transparent.png"  width={200} height={250}/>
       </Link>
