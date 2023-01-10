@@ -8,7 +8,7 @@ function Navbar() {
       <Link href="/">
         <Image className="" alt="logo" src="/logo_transparent.png"  width={200} height={250}/>
       </Link>
-      <h1 className='text-center'> Practice for coding interviews for free! </h1>
+      <h1 className='sm:mr-16 text-center'> Practice for coding interviews for free! </h1>
       <button
       className='mr-2 text-center h-10 px-2 py-2 border-2 
                 border-black rounded-md 

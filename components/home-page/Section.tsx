@@ -19,7 +19,7 @@ function Section({section} : SectionName) {
                 rounded-md flex justify-center 
                 items-center bg-gray-300 
                 font-bold text-lg hover:bg-yellow-500 
-                ring-2 ring-blue-700"> 
+                ring-2 ring-blue-700">
        <div className='flex justify-center text-center'>
         { section.name } 
        </div>
