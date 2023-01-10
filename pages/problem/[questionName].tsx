@@ -69,6 +69,7 @@ const Repl = (props: any) => {
       showSuccessToast("Code ran succesfully!")
       setTimeout(() => {setProcessing(false)}, 1000);
     } catch(e) {
+      console.log("Error running code", e)
       showErrorToast("Error", 1000)
     }
   }, [code])
