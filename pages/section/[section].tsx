@@ -14,14 +14,8 @@ function SectionPage(props: any) {
           { problems && problems.map((problem: string, i: number) => (
             <Link key={i} href={`/problem/${problem}`}>
               <div className='flex flex-row'> 
-                <div className='w-fit bg-yellow-600 mt-2 mb-2 pr-10 p-4 justify-center items-center border-y-2 border-l-2'>
-                  <h1 className='' key={i.toString()}> {i + 1}. {problem} </h1>
-                </div>
-                <div className='w-0 h-0 mt-2 mb-2
-                      border-t-[2rem] border-t-transparent
-                      border-l-[2rem] border-l-yellow-600
-                      border-b-[2rem] border-b-transparent'>
-
+                <div className='w-fit mt-2 mb-2 pr-10 p-4 justify-center items-center border-2'>
+                  <h1 key={i.toString()}> {i + 1}. {problem} </h1>
                 </div>
               </div>
             </Link>

@@ -15,13 +15,16 @@ function Section({section} : SectionName) {
   return (
     <Link 
       href={`section/${section.kebabCaseName}`}
-      className="sm:w-72 border-solid border-4 border-black 
+      className="border-solid border-4 border-black 
                 rounded-md flex justify-center 
                 items-center bg-gray-300 
                 font-bold text-lg hover:bg-yellow-500 
                 ring-2 ring-blue-700"> 
-      { section.name } 
+       <div className='flex justify-center text-center'>
+        { section.name } 
+       </div>
     </Link>
+    
   )
 }
 
