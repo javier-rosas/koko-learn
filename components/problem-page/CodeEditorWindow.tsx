@@ -14,11 +14,10 @@ const CodeEditorWindow = ({ onChange, code, theme, question }: any) => {
 
   useEffect(() => {
     if (!question) return
-    if (lang.value === "python") setValue(question.code_snippets[0].code)
-    else if (lang.value === "javascript") setValue(question.code_snippets[1].code)
+    if (lang.value === "python") setValue(question.code_snippets[0]?.code)
+    else if (lang.value === "javascript") setValue(question.code_snippets[1]?.code)
   }, [question, lang])
 
-  // console.log("value", value)
   return (
     <div className="overlay rounded-md overflow-hidden shadow-4xl mr-2">
       <Editor

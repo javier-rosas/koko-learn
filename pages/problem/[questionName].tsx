@@ -17,7 +17,7 @@ import { useSelector } from "react-redux"
 import { runCode } from "../../utils/general"
 import "react-toastify/dist/ReactToastify.css"
 
- 
+
 const Repl = (props: any) => {
   
   // state vars
