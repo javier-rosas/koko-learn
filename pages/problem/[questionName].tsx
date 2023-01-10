@@ -89,7 +89,7 @@ const Repl = (props: any) => {
         theme={theme} 
         setTheme={setTheme}
       />
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-col sm:flex sm:flex-row sm:justify-between">
         <Question question={question} />
         <div className="flex flex-col px-2 py-4">
           <CodeEditorWindow
