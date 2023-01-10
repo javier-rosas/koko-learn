@@ -35,7 +35,7 @@ function Navbar(props: any) {
         <div className="px-2 py-2">
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
         </div>
-        <Link href="/" className="sm:ml-auto self-start sm:mr-4 sm:self-end text-center h-10 m-2 px-2 py-2 
+        <Link href="/" className="sm:ml-auto sm:mr-4 sm:self-end self-start text-center h-10 m-2 px-2 py-2 
                                   border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] 
                                   hover:shadow transition duration-200 bg-white flex-shrink-0">
           Search Problems
