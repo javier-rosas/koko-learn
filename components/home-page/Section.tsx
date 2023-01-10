@@ -15,7 +15,7 @@ function Section({section} : SectionName) {
   return (
     <Link 
       href={`section/${section.kebabCaseName}`}
-      className="border-solid border-4 border-black 
+      className="sm:w-72 border-solid border-4 border-black 
                 rounded-md flex justify-center 
                 items-center bg-gray-300 
                 font-bold text-lg hover:bg-yellow-500 

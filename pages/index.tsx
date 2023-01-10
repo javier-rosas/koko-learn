@@ -6,8 +6,10 @@ export default function Home() {
   return (
     <div className="flex flex-col font-mono">
       <Navbar />
-      <div className="flex flex-col m-4 space-y-4 h-screen">
-        { sections.map( (section, i) => <Section key={i} section={section} /> ) }
+      <div className="flex flex-row justify-center">
+        <div className="flex flex-col m-4 space-y-4 h-screen">
+          { sections.map( (section, i) => <Section key={i} section={section} /> ) }
+        </div>
       </div>
     </div>
   )
