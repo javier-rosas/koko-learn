@@ -48,7 +48,7 @@ const Repl = (props: any) => {
   }, [])
 
   // change the code editor text
-  const onChange = (action: string, data: string) => {
+  const onChange = (action: string, data: any) => {
     switch (action) {
       case "code": {
         if (enterPress && shiftPress) return

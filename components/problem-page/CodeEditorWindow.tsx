@@ -10,7 +10,7 @@ type CodeSnippet = {
 }
 
 type CodeEditorProps = {
-  onChange: (type: string, value: string) => void,
+  onChange: (type: string, value: string | undefined) => void,
   code: string,
   theme: string,
   question: {
@@ -20,10 +20,10 @@ type CodeEditorProps = {
 
 const CodeEditorWindow = ({ onChange, code, theme, question }: CodeEditorProps) => {
   
-  const [value, setValue] = useState<string>(code || "")
+  const [value, setValue] = useState<string | undefined>(code || "")
   const lang = useSelector((state: any) => state.language.language)
   
-  const handleEditorChange = (value: string) => {
+  const handleEditorChange = (value: string | undefined) => {
     setValue(value)
     onChange("code", value)
   }
