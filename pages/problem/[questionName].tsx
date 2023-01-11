@@ -19,12 +19,12 @@ import "react-toastify/dist/ReactToastify.css"
 
 
 const Repl = (props: any) => {
-  
+
+  const { question } = props
   // state vars
   const [theme, setTheme] = useState<any>("cobalt")
-  const [code, setCode] = useState("")
+  const [code, setCode] = useState<string>("")
   const [processing, setProcessing] = useState<boolean | null>(null)
-  const { question } = props
   const language = useSelector((state: any) => state.language.language)
   
   // enterPress and contrlPress hooks
@@ -48,7 +48,7 @@ const Repl = (props: any) => {
   }, [])
 
   // change the code editor text
-  const onChange = (action: any, data: any) => {
+  const onChange = (action: string, data: string) => {
     switch (action) {
       case "code": {
         if (enterPress && shiftPress) return

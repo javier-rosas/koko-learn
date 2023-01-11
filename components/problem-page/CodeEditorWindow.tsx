@@ -2,12 +2,28 @@ import React, { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import Editor from "@monaco-editor/react"
 
-const CodeEditorWindow = ({ onChange, code, theme, question }: any) => {
+
+type CodeSnippet = {
+  lang:  string
+  langSlug: string
+  code: string
+}
+
+type CodeEditorProps = {
+  onChange: (type: string, value: string) => void,
+  code: string,
+  theme: string,
+  question: {
+    code_snippets: CodeSnippet[]
+  }
+}
+
+const CodeEditorWindow = ({ onChange, code, theme, question }: CodeEditorProps) => {
   
-  const [value, setValue] = useState(code || "")
+  const [value, setValue] = useState<string>(code || "")
   const lang = useSelector((state: any) => state.language.language)
   
-  const handleEditorChange = (value: any) => {
+  const handleEditorChange = (value: string) => {
     setValue(value)
     onChange("code", value)
   }

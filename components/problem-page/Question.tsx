@@ -49,9 +49,9 @@ function Question( { question } : any  ) {
           </pre>
         )
       })} 
-      <pre className='m-2'>
+      <pre className='m-2 p-2 bg-gray-300 rounded-md overflow-auto'>
         <p className='font-bold text-base'>Constraints:</p>
-        <p className='mt-1'> {constraint?.trim()} </p>
+          {constraint?.trim()}
       </pre>
     </div>
   )
