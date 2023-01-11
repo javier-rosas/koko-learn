@@ -24,7 +24,7 @@ function Navbar(props: any) {
     defineTheme("oceanic-next").then((_) =>
       setTheme({ value: "oceanic-next", label: "Oceanic Next" })
     )
-  }, [])
+  }, [setTheme])
 
   return (
     <div className="flex flex-col">

@@ -72,7 +72,7 @@ const Repl = (props: any) => {
       console.log("Error running code", e)
       showErrorToast("Error", 1000)
     }
-  }, [code])
+  }, [code, language])
 
   // if shift & enter are pressed, run the code
   useEffect(() => {

@@ -35,8 +35,9 @@ const CodeEditorWindow = ({ onChange, code, theme, question }: CodeEditorProps) 
   }, [question, lang])
 
   return (
-    <div className="overlay rounded-md overflow-hidden shadow-4xl mr-2">
+    <div className="overlay rounded-md overflow-auto shadow-4xl mr-2">
       <Editor
+        className=""
         height="65vh"
         width="100vh"
         language={lang.value}
