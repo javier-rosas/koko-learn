@@ -13,7 +13,7 @@ function SectionPage(props: any) {
         <div>
           { problems && problems.map((problem: string, i: number) => (
             <Link key={i} href={`/problem/${problem}`}>
-              <div className='w-fit mt-2 mb-2 pr-10 p-4 justify-center items-center border-2 hover:bg-yellow-500 w-full'>
+              <div className='mt-2 mb-2 pr-10 p-4 justify-center items-center border-2 hover:bg-yellow-500 w-full'>
                 <h1 key={i.toString()}> {i + 1}. {problem} </h1>
               </div>
             </Link>
