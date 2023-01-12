@@ -10,14 +10,15 @@ function Navbar() {
         <Image className="" alt="logo" src="/logo_transparent.png"  width={200} height={250}/>
       </Link>
       <h1 className='sm:mr-16 text-center'> Practice coding interview questions for free! </h1>
-      <button
+      <Link
+        href="https://www.linkedin.com/in/javier-rosas-ruiz/"
         className='mr-2 ml-2 text-center h-10 px-2 py-2 border-2 
                   border-black rounded-md 
                   shadow-[5px_5px_0px_0px_rgba(0,0,0)] 
                   hover:shadow transition duration-200 
                   bg-white flex-shrink-0'> 
-        Log In 
-      </button>
+        Created By Javier Rosas 
+      </Link>
     </div>
   )
 }
