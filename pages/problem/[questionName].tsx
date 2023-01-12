@@ -43,7 +43,7 @@ const Repl = (props: any) => {
             logger.innerHTML += message + '<br />'
         }
         logger.scrollTop = logger.scrollHeight;
-      }
+      } 
     })()
   }, [])
 

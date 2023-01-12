@@ -41,18 +41,38 @@ export const kebabCase = (str: string) =>
 
 // preprocess python code
 export const preprocessPythonCode = (code: string) => {
-  code = "\n" + code
-  const firstLine = "  async function main(){\n let pyodide = await loadPyodide()\n  pyodide.runPython(`"
+  code = "\n" + code                                                  
+  const firstLine = "async function main(){\n  let pyodide = await loadPyodide()\n"
+  const secondLine = "  try { \n "
+  const thirdLine = " pyodide.runPython(`"
   const actualCode = `
   ${code}
   `
-  const lastLine = "`);\n}\n  main();"
-  const preprocessedCode = `${firstLine}${actualCode}${lastLine}`
+  const fourthLine = "`);\n"
+  const fifth = " } catch(e) { \n console.log(new Error(e).message) \n}"
+  const lastLine = "\n}\nmain();"
+  const preprocessedCode = `${firstLine}${secondLine}${thirdLine}${actualCode}${fourthLine}${fifth}${lastLine}`
   eval(preprocessedCode)
 }
+
+// preprocess python code
+export const preprocessJavascriptCode = (code: string) => {
+  code = "\n" + code                                                  
+  const firstLine = "async function main(){\n"
+  const secondLine = "  try { \n "
+  const actualCode = `
+  ${code}
+  `
+  const thirdLine = " } catch(e) { \n console.log(new Error(e).message); \n}"
+  const fourthLine = "\n}\nmain();"
+  const preprocessedCode = `${firstLine}${secondLine}${actualCode}${thirdLine}${fourthLine}`
+  eval(preprocessedCode)
+}
+
+
 
 // run code 
 export const runCode = (language: LanguageType, code: string) => {
   if (language.value === "python") preprocessPythonCode(code)
-  else if (language.value === "javascript") eval(code)
+  else if (language.value === "javascript") preprocessJavascriptCode(code)
 }
