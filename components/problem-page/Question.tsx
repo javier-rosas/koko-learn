@@ -2,6 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import Custom404 from '../../pages/404'
 import { QuestionType } from '../../types/QuestionType'
+import { ResizableBox } from 'react-resizable';
+
 
 function Question( { question } : any  ) {
 
@@ -18,7 +20,7 @@ function Question( { question } : any  ) {
   }
 
   return (
-    <div className='flex flex-col p-4 font-mono text-sm max-w-3xl'>
+    <div className='flex flex-col p-4 font-mono text-sm max-w-xl'>
       <h1 className='text-3xl font-bg m-2'> {name}  </h1>
       <p className='m-2'> {description.description_text} </p>
       { description.description_img_source && 
