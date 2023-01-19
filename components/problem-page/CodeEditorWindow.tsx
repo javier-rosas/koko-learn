@@ -39,7 +39,7 @@ const CodeEditorWindow = ({ onChange, code, theme, question }: CodeEditorProps) 
       <Editor
         className=""
         height="65vh"
-        width="100vh"
+        width="110vh"
         language={lang.value}
         value={value}
         theme={theme}

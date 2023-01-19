@@ -2509,8 +2509,203 @@ for (let i = 0; i < params.length; i++) {
         console.log(`\u274c Test Failed. Input: ${params[i].s}, expected: ${params[i].ret}, but got ${result}`)
     }
 }"
-63b595018ad4593d6b7b01e1,min-stack,,
-63b595028ad4593d6b7b01e2,evaluate-reverse-polish-notation,,
+63b595018ad4593d6b7b01e1,min-stack,"params = [
+    {""method"": ""push"", ""val"": -2, ""ret"": None},
+    {""method"": ""push"", ""val"": 0, ""ret"": None},
+    {""method"": ""push"", ""val"": -3, ""ret"": None},
+    {""method"": ""push"", ""val"": 5, ""ret"": None},
+    {""method"": ""push"", ""val"": 3, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -3},
+    {""method"": ""pop"", ""val"": None, ""ret"": 3},
+    {""method"": ""top"", ""val"": None, ""ret"": 5},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -3},
+    {""method"": ""push"", ""val"": -10, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -10},
+    {""method"": ""pop"", ""val"": None, ""ret"": -10},
+    {""method"": ""pop"", ""val"": None, ""ret"": 5},
+    {""method"": ""pop"", ""val"": None, ""ret"": -3},
+    {""method"": ""pop"", ""val"": None, ""ret"": 0},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -2},
+    {""method"": ""push"", ""val"": 1, ""ret"": None},
+    {""method"": ""push"", ""val"": 2, ""ret"": None},
+    {""method"": ""push"", ""val"": 3, ""ret"": None},
+    {""method"": ""push"", ""val"": 2, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -2},
+    {""method"": ""pop"", ""val"": None, ""ret"": 2},
+    {""method"": ""top"", ""val"": None, ""ret"": 3},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -2},
+    {""method"": ""push"", ""val"": -100, ""ret"": None},
+    {""method"": ""push"", ""val"": 100, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -100},
+    {""method"": ""pop"", ""val"": None, ""ret"": 100},
+    {""method"": ""push"", ""val"": 0, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -100},
+    {""method"": ""push"", ""val"": -200, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -200},
+    {""method"": ""top"", ""val"": None, ""ret"": -200},
+    {""method"": ""pop"", ""val"": None, ""ret"": -200},
+    {""method"": ""push"", ""val"": 2**31-1, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -100},
+    {""method"": ""push"", ""val"": -(2**31), ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -(2**31)},
+    {""method"": ""push"", ""val"": -100, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -(2**31)}
+]
+
+obj = MinStack()
+
+for test in params:
+    
+    if test[""method""] == ""push"":
+        obj.push(test[""val""])
+        result = obj.stack[-1]
+        if result == test[""val""]:
+            print(""\u2705 Test Passed."")
+        else:
+            print(f""\u274c Test Failed. Input: {test['method']}, val={test['val']}, expected: {test['ret']}, but got {result}"")
+    elif test[""method""] == ""pop"":
+        result = obj.pop()
+        if result == test[""ret""]:
+            print(""\u2705 Test Passed."")
+        else:
+            print(f""\u274c Test Failed. Input: {test['method']}, expected: {test['ret']}, but got {result}"")
+    elif test[""method""] == ""top"":
+        result = obj.top()
+        if result == test[""ret""]:
+            print(""\u2705 Test Passed."")
+        else:
+            print(f""\u274c Test Failed. Input: {test['method']}, expected: {test['ret']}, but got {result}"")
+    elif test[""method""] == ""getMin"":
+        result = obj.getMin()
+        if result == test[""ret""]:
+            print(""\u2705 Test Passed."")
+        else:
+            print(f""\u274c Test Failed. Input: {test['method']}, expected: {test['ret']}, but got {result}"")","params = [
+    {""method"": ""push"", ""val"": -2, ""ret"": None},
+    {""method"": ""push"", ""val"": 0, ""ret"": None},
+    {""method"": ""push"", ""val"": -3, ""ret"": None},
+    {""method"": ""push"", ""val"": 5, ""ret"": None},
+    {""method"": ""push"", ""val"": 3, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -3},
+    {""method"": ""pop"", ""val"": None, ""ret"": 3},
+    {""method"": ""top"", ""val"": None, ""ret"": 5},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -3},
+    {""method"": ""push"", ""val"": -10, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -10},
+    {""method"": ""pop"", ""val"": None, ""ret"": -10},
+    {""method"": ""pop"", ""val"": None, ""ret"": 5},
+    {""method"": ""pop"", ""val"": None, ""ret"": -3},
+    {""method"": ""pop"", ""val"": None, ""ret"": 0},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -2},
+    {""method"": ""push"", ""val"": 1, ""ret"": None},
+    {""method"": ""push"", ""val"": 2, ""ret"": None},
+    {""method"": ""push"", ""val"": 3, ""ret"": None},
+    {""method"": ""push"", ""val"": 2, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -2},
+    {""method"": ""pop"", ""val"": None, ""ret"": 2},
+    {""method"": ""top"", ""val"": None, ""ret"": 3},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -2},
+    {""method"": ""push"", ""val"": -100, ""ret"": None},
+    {""method"": ""push"", ""val"": 100, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -100},
+    {""method"": ""pop"", ""val"": None, ""ret"": 100},
+    {""method"": ""push"", ""val"": 0, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -100},
+    {""method"": ""push"", ""val"": -200, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -200},
+    {""method"": ""top"", ""val"": None, ""ret"": -200},
+    {""method"": ""pop"", ""val"": None, ""ret"": -200},
+    {""method"": ""push"", ""val"": 2**31-1, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -100},
+    {""method"": ""push"", ""val"": -(2**31), ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -(2**31)},
+    {""method"": ""push"", ""val"": -100, ""ret"": None},
+    {""method"": ""getMin"", ""val"": None, ""ret"": -(2**31)}
+]
+
+var obj = new MinStack()
+
+for (let test of params) {
+    if (test[""method""] === ""push"") {
+        obj.push(test[""val""]);
+        let result = obj.stack[obj.stack.length - 1];
+        if (result === test[""val""]) {
+            console.log(""\u2705 Test Passed."");
+        } else {
+            console.log(`\u274c Test Failed. Input: ${test[""method""]}, val=${test[""val""]}, expected: ${test[""ret""]}, but got ${result}`);
+        }
+    } else if (test[""method""] === ""pop"") {
+        let result = obj.pop();
+        if (result === test[""ret""]) {
+            console.log(""\u2705 Test Passed."");
+        } else {
+            console.log(`\u274c Test Failed. Input: ${test[""method""]}, expected: ${test[""ret""]}, but got ${result}`);
+        }
+    } else if (test[""method""] === ""top"") {
+        let result = obj.top();
+        if (result === test[""ret""]) {
+            console.log(""\u2705 Test Passed."");
+        } else {
+            console.log(`\u274c Test Failed. Input: ${test[""method""]}, expected: ${test[""ret""]}, but got ${result}`);
+        }
+    } else if (test[""method""] === ""getMin"") {
+        let result = obj.getMin();
+        if (result === test[""ret""]) {
+            console.log(""\u2705 Test Passed."");
+        } else {
+            console.log(`\u274c Test Failed. Input: ${test[""method""]}, expected: ${test[""ret""]}, but got ${result}`);
+        }
+    }
+}"
+63b595028ad4593d6b7b01e2,evaluate-reverse-polish-notation,"
+params = [    
+    {""input"": [""2"",""1"",""+"",""3"",""*""], ""output"": 9},
+    {""input"": [""4"",""13"",""5"",""/"",""+""], ""output"": 6},
+    {""input"": [""10"",""6"",""9"",""3"",""+"",""-11"",""*"",""/"",""*"",""17"",""+"",""5"",""+""], ""output"": 22},
+    {""input"": [""1"",""2"",""3"",""4"",""+"",""+"",""+""], ""output"": 10},
+    {""input"": [""5"",""2"",""3"",""*"",""+""], ""output"": 11},
+    {""input"": [""5"",""2"",""3"",""1"",""-"",""*"",""+""], ""output"": 9},
+    {""input"": [""5"",""2"",""/"",""6"",""*"",""11"",""+""], ""output"": 23},
+    {""input"": [""5"",""-2"",""-"",""6"",""*"",""35"",""+""], ""output"": 77},
+    {""input"": [""5"",""2"",""-1"",""/"",""-232"",""+""], ""output"": -234},
+    {""input"": [""5"",""2"",""3"",""+"",""-7"", ""*""], ""output"": -35},
+    {""input"": [""1"",""2"",""3"",""4"",""5"",""*"",""*"",""*"",""+"", ""23"",""+""], ""output"": 144}
+    
+]
+
+
+for test in params:
+    input_arr = test[""input""]
+    expected_output = test[""output""]
+    result = obj.evalRPN(input_arr)
+    if result == expected_output:
+        print(""\u2705 Test Passed."")
+    else:
+        print(f""\u274c Test Failed. Input: {input_arr}, expected: {expected_output}, but got {result}"")","params = [    
+    {""input"": [""2"",""1"",""+"",""3"",""*""], ""output"": 9},
+    {""input"": [""4"",""13"",""5"",""/"",""+""], ""output"": 6},
+    {""input"": [""10"",""6"",""9"",""3"",""+"",""-11"",""*"",""/"",""*"",""17"",""+"",""5"",""+""], ""output"": 22},
+    {""input"": [""1"",""2"",""3"",""4"",""+"",""+"",""+""], ""output"": 10},
+    {""input"": [""5"",""2"",""3"",""*"",""+""], ""output"": 11},
+    {""input"": [""5"",""2"",""3"",""1"",""-"",""*"",""+""], ""output"": 9},
+    {""input"": [""5"",""2"",""/"",""6"",""*"",""11"",""+""], ""output"": 23},
+    {""input"": [""5"",""-2"",""-"",""6"",""*"",""35"",""+""], ""output"": 77},
+    {""input"": [""5"",""2"",""-1"",""/"",""-232"",""+""], ""output"": -234},
+    {""input"": [""5"",""2"",""3"",""+"",""-7"", ""*""], ""output"": -35},
+    {""input"": [""1"",""2"",""3"",""4"",""5"",""*"",""*"",""*"",""+"", ""23"",""+""], ""output"": 144}
+    
+]
+
+for (let test of params) {
+    let input_arr = test[""input""];
+    let expected_output = test[""output""];
+    let result = evalRPN(input_arr);
+    if (result === expected_output) {
+        console.log(""\u2705 Test Passed."");
+    } else {
+        console.log(`\u274c Test Failed. Input: ${input_arr}, expected: ${expected_output}, but got ${result}`);
+    }
+}"
 63b595038ad4593d6b7b01e3,generate-parentheses,,
 63b595038ad4593d6b7b01e4,daily-temperatures,,
 63b595048ad4593d6b7b01e5,car-fleet,,

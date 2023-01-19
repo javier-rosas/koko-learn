@@ -15,6 +15,9 @@ import { GetStaticPropsContext } from 'next'
 import { connectMongo } from '../../utils/mongooseConnect'
 import { useSelector } from "react-redux"
 import { runCode } from "../../utils/general"
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import useWindowDimensions from "../../hooks/useWindowDimensions"
+import ResizeHandle from '../../components/problem-page/ResizeHandle'
 import "react-toastify/dist/ReactToastify.css"
 
 
@@ -26,10 +29,15 @@ const Repl = (props: any) => {
   const [code, setCode] = useState<string>("")
   const [processing, setProcessing] = useState<boolean | null>(null)
   const language = useSelector((state: any) => state.language.language)
+  const [mobile, setMobile] = useState<boolean>(false)
+  
   
   // enterPress and contrlPress hooks
   const enterPress = useKeyPress("Enter")
   const shiftPress = useKeyPress("Shift")
+
+  // window height and width
+  const { height, width } = useWindowDimensions();
 
   // display console logs in Output box instead of console
   useEffect(() => {
@@ -81,6 +89,12 @@ const Repl = (props: any) => {
     }
   }, [shiftPress, enterPress, handleCompile])
   
+  useEffect(() => {
+    if (!width) return
+    if (width < 640) {
+      setMobile(true)
+    }
+  }, [width])
 
   return (
     <>
@@ -89,23 +103,51 @@ const Repl = (props: any) => {
         theme={theme} 
         setTheme={setTheme}
       />
-      <div className="flex flex-col sm:flex sm:flex-row sm:justify-between">
-        <Question question={question} />
-        <div className="flex flex-col px-2 py-4">
-          <CodeEditorWindow
-            code={code}
-            onChange={onChange}
-            theme={theme.value}
-            question={question}
-          />
-          <Output 
-            handleCompile={handleCompile}
-            code={code}
-            classnames={classnames}
-            processing={processing}
-          />
-        </div>
-      </div>
+      {
+      mobile ?
+          <div className="flex flex-col sm:flex sm:flex-row sm:justify-between">
+          <Question question={question} />
+          <div className="flex flex-col px-2 py-4">
+            <CodeEditorWindow
+              code={code}
+              onChange={onChange}
+              theme={theme.value}
+              question={question}
+            />
+            <Output 
+              handleCompile={handleCompile}
+              code={code}
+              classnames={classnames}
+              processing={processing}
+            />
+          </div>
+        </div> 
+        :
+        <PanelGroup autoSaveId="example" direction="horizontal">
+          <Panel defaultSize={100} order={1}>
+            <Question question={question} />
+          </Panel>
+          <ResizeHandle />
+          <Panel defaultSize={100} order={2}>
+            <div className="flex flex-col px-2 py-4">
+              <CodeEditorWindow
+                code={code}
+                onChange={onChange}
+                theme={theme.value}
+                question={question}
+              />
+              <Output 
+                handleCompile={handleCompile}
+                code={code}
+                classnames={classnames}
+                processing={processing}
+              />
+            </div>
+          </Panel>
+      </PanelGroup>
+      }    
+      
+    {/* </div> */}
       <ToastContainer
         position="top-right"
         autoClose={2000}

@@ -3,7 +3,7 @@ import React from 'react'
 function Output({ handleCompile, code, classnames, processing }: any) {
   return (
     <div className='mb-10 sm:mb-0'>
-      <div id="log" className="bg-gray-800 mt-1 rounded-md text-white font-normal text-sm overflow-y-scroll p-3 max-h-24"/>
+      <div id="log" className="bg-gray-800 mt-1 rounded-md text-white font-mono text-sm overflow-y-scroll p-3 max-h-24"/>
       <button
         onClick={handleCompile}
         disabled={!code}

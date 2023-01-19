@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Custom404 from '../../pages/404'
 import { QuestionType } from '../../types/QuestionType'
-import { ResizableBox } from 'react-resizable';
+import { PanelResizeHandle } from "react-resizable-panels";
 
 
 function Question( { question } : any  ) {
