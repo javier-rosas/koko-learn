@@ -124,11 +124,11 @@ const Repl = (props: any) => {
         </div> 
         :
         <PanelGroup autoSaveId="example" direction="horizontal">
-          <Panel defaultSize={100} order={1}>
+          <Panel defaultSize={40} order={1}>
             <Question question={question} />
           </Panel>
           <ResizeHandle />
-          <Panel defaultSize={100} order={2}>
+          <Panel defaultSize={60} order={2}>
             <div className="flex flex-col px-2 py-4">
               <CodeEditorWindow
                 code={code}
