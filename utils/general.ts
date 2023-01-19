@@ -42,7 +42,7 @@ export const kebabCase = (str: string) =>
 
 // preprocess python code
 export const preprocessPythonCode = (code: string, pythonTests: string) => {
-  code = "\n" + "\nfrom typing import List \n" + code + "\n" + pythonTests                         
+  code = "\n" + "\nfrom collections import defaultdict, Counter\nfrom typing import List \n" + code + "\n" + pythonTests                         
   const firstLine = "async function main(){\n  let pyodide = await loadPyodide()\n"
   const secondLine = "  try { \n "
   const thirdLine = " pyodide.runPython(`"
