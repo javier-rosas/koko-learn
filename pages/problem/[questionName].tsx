@@ -5,6 +5,7 @@ import useKeyPress from "../../hooks/useKeyPress"
 import Question from "../../components/problem-page/Question"
 import Output from "../../components/problem-page/Output"
 import QuestionModel from "../../models/QuestionModel"
+import TestModel from "../../models/TestModel"
 import Navbar from "../../components/problem-page/Navbar"
 import { classnames } from "../../utils/general"
 import { showSuccessToast } from "../../utils/general"
@@ -15,7 +16,7 @@ import { GetStaticPropsContext } from 'next'
 import { connectMongo } from '../../utils/mongooseConnect'
 import { useSelector } from "react-redux"
 import { runCode } from "../../utils/general"
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import { Panel, PanelGroup } from "react-resizable-panels";
 import useWindowDimensions from "../../hooks/useWindowDimensions"
 import ResizeHandle from '../../components/problem-page/ResizeHandle'
 import "react-toastify/dist/ReactToastify.css"
@@ -23,7 +24,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 const Repl = (props: any) => {
 
-  const { question } = props
+  const { question, tests } = props
   // state vars
   const [theme, setTheme] = useState<any>("cobalt")
   const [code, setCode] = useState<string>("")
@@ -73,7 +74,7 @@ const Repl = (props: any) => {
   const handleCompile = useCallback( async () => {
     setProcessing(true)
     try {
-      runCode(language, code)
+      runCode(language, code, tests)
       showSuccessToast("Code ran succesfully!")
       setTimeout(() => {setProcessing(false)}, 1000);
     } catch(e) {
@@ -146,8 +147,6 @@ const Repl = (props: any) => {
           </Panel>
       </PanelGroup>
       }    
-      
-    {/* </div> */}
       <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -188,9 +187,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   try {
     await connectMongo()
     const question = await QuestionModel.findOne({kebabCaseName: questionName})
+    const tests = await TestModel.findOne({kebabCaseName: questionName})
     return {
       props: {
-        question: JSON.parse(JSON.stringify(question))
+        question: JSON.parse(JSON.stringify(question)),
+        tests: JSON.parse(JSON.stringify(tests)),
       }
     }
   } catch(e) {

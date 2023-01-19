@@ -1,4 +1,5 @@
 import { LanguageType } from "../types/LanguageType"
+import { TestType } from '../types/TestType'
 import { toast } from "react-toastify"
 
 // join list of arguments by white space
@@ -40,8 +41,8 @@ export const kebabCase = (str: string) =>
     .toLowerCase()
 
 // preprocess python code
-export const preprocessPythonCode = (code: string) => {
-  code = "\n" + code                                                  
+export const preprocessPythonCode = (code: string, pythonTests: string) => {
+  code = "\n" + "\nfrom typing import List \n" + code + "\n" + pythonTests                         
   const firstLine = "async function main(){\n  let pyodide = await loadPyodide()\n"
   const secondLine = "  try { \n "
   const thirdLine = " pyodide.runPython(`"
@@ -56,8 +57,8 @@ export const preprocessPythonCode = (code: string) => {
 }
 
 // preprocess python code
-export const preprocessJavascriptCode = (code: string) => {
-  code = "\n" + code                                                  
+export const preprocessJavascriptCode = (code: string, javascriptTests: string) => {
+  code = "\n" + code + "\n" + javascriptTests                           
   const firstLine = "async function main(){\n"
   const secondLine = "  try { \n "
   const actualCode = `
@@ -72,7 +73,7 @@ export const preprocessJavascriptCode = (code: string) => {
 
 
 // run code 
-export const runCode = (language: LanguageType, code: string) => {
-  if (language.value === "python") preprocessPythonCode(code)
-  else if (language.value === "javascript") preprocessJavascriptCode(code)
+export const runCode = (language: LanguageType, code: string, tests: TestType) => {
+  if (language.value === "python") preprocessPythonCode(code, tests.pythonTests)
+  else if (language.value === "javascript") preprocessJavascriptCode(code, tests.javascriptTests)
 }
