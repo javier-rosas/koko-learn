@@ -70,8 +70,6 @@ export const preprocessJavascriptCode = (code: string, javascriptTests: string) 
   eval(preprocessedCode)
 }
 
-
-
 // run code 
 export const runCode = (language: LanguageType, code: string, tests: TestType) => {
   if (language.value === "python") preprocessPythonCode(code, tests.pythonTests)
