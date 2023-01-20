@@ -9,6 +9,8 @@ const testSchema: Schema<TestType> = new Schema({
   kebabCaseName: {type: String, required: true},
   pythonTests: {type: String, required: true},
   javascriptTests: {type: String, required: true},
+  pythonDataStructures: {type: String, required: true},
+  javascriptDataStructures: {type: String, required: true},
 }, { collection: "tests" })
 
 const TestModel = models.Test || model<TestType>('Test', testSchema)

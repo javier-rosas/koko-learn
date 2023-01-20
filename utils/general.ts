@@ -41,8 +41,8 @@ export const kebabCase = (str: string) =>
     .toLowerCase()
 
 // preprocess python code
-export const preprocessPythonCode = (code: string, pythonTests: string) => {
-  code = "\n" + "\nimport math\nfrom collections import defaultdict, Counter\nfrom typing import List, Optional\n" + code + "\n" + pythonTests                         
+export const preprocessPythonCode = (code: string, pythonTests: string, pythonDataStructures: string) => {
+  code = "\n" + "\nimport math\nfrom collections import defaultdict, Counter\nfrom typing import List, Optional\n" + pythonDataStructures + "\n" + code + "\n" + pythonTests                     
   const firstLine = "async function main(){\n  let pyodide = await loadPyodide()\n"
   const secondLine = "  try { \n "
   const thirdLine = " pyodide.runPython(`"
@@ -57,8 +57,8 @@ export const preprocessPythonCode = (code: string, pythonTests: string) => {
 }
 
 // preprocess python code
-export const preprocessJavascriptCode = (code: string, javascriptTests: string) => {
-  code = "\n" + code + "\n" + javascriptTests                           
+export const preprocessJavascriptCode = (code: string, javascriptTests: string, javascriptDataStructures: string) => {
+  code = "\n" + javascriptDataStructures + "\n" + code + "\n" + javascriptTests                           
   const firstLine = "async function main(){\n"
   const secondLine = "  try { \n "
   const actualCode = `
@@ -72,6 +72,6 @@ export const preprocessJavascriptCode = (code: string, javascriptTests: string) 
 
 // run code 
 export const runCode = (language: LanguageType, code: string, tests: TestType) => {
-  if (language.value === "python") preprocessPythonCode(code, tests.pythonTests)
-  else if (language.value === "javascript") preprocessJavascriptCode(code, tests.javascriptTests)
+  if (language.value === "python") preprocessPythonCode(code, tests.pythonTests, tests.pythonDataStructures)
+  else if (language.value === "javascript") preprocessJavascriptCode(code, tests.javascriptTests, tests.javascriptDataStructures)
 }
