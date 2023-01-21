@@ -99,15 +99,37 @@ const Repl = (props: any) => {
 
   return (
     <>
-      <Script strategy="beforeInteractive" src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js" />
-      <Navbar 
-        theme={theme} 
-        setTheme={setTheme}
-      />
-      {
+    <Script strategy="beforeInteractive" src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js" />
+    <Navbar 
+      theme={theme} 
+      setTheme={setTheme}
+    />
+    {
       mobile ?
-          <div className="flex flex-col sm:flex sm:flex-row sm:justify-between">
+      <div className="flex flex-col sm:flex sm:flex-row sm:justify-between">
+        <Question question={question} />
+        <div className="flex flex-col px-2 py-4">
+          <CodeEditorWindow
+            code={code}
+            onChange={onChange}
+            theme={theme.value}
+            question={question}
+          />
+          <Output 
+            handleCompile={handleCompile}
+            code={code}
+            classnames={classnames}
+            processing={processing}
+          />
+        </div>
+      </div> 
+      :
+      <PanelGroup autoSaveId="example" direction="horizontal">
+        <Panel defaultSize={40} order={1}>
           <Question question={question} />
+        </Panel>
+        <ResizeHandle />
+        <Panel defaultSize={60} order={2}>
           <div className="flex flex-col px-2 py-4">
             <CodeEditorWindow
               code={code}
@@ -122,45 +144,22 @@ const Repl = (props: any) => {
               processing={processing}
             />
           </div>
-        </div> 
-        :
-        <PanelGroup autoSaveId="example" direction="horizontal">
-          <Panel defaultSize={40} order={1}>
-            <Question question={question} />
-          </Panel>
-          <ResizeHandle />
-          <Panel defaultSize={60} order={2}>
-            <div className="flex flex-col px-2 py-4">
-              <CodeEditorWindow
-                code={code}
-                onChange={onChange}
-                theme={theme.value}
-                question={question}
-              />
-              <Output 
-                handleCompile={handleCompile}
-                code={code}
-                classnames={classnames}
-                processing={processing}
-              />
-            </div>
-          </Panel>
+        </Panel>
       </PanelGroup>
-      }    
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </>
-  )
-}
+    }    
+    <ToastContainer
+      position="top-right"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+  </>
+)}
 
 export default Repl
 
