@@ -125,28 +125,28 @@ const Repl = (props: any) => {
       </div> 
       :
       <div className="flex flex-row justify-center">
-      <PanelGroup className="max-w-screen-2xl" autoSaveId="example" direction="horizontal">
-        <Panel defaultSize={40} order={1}>
-          <Question question={question} />
-        </Panel>
-        <ResizeHandle />
-        <Panel defaultSize={60} order={2}>
-          <div className="flex flex-col px-2 py-4">
-            <CodeEditorWindow
-              code={code}
-              onChange={onChange}
-              theme={theme.value}
-              question={question}
-            />
-            <Output 
-              handleCompile={handleCompile}
-              code={code}
-              classnames={classnames}
-              processing={processing}
-            />
-          </div>
-        </Panel>
-      </PanelGroup>
+        <PanelGroup className="max-w-screen-2xl" autoSaveId="example" direction="horizontal">
+          <Panel defaultSize={40} order={1}>
+            <Question question={question} />
+          </Panel>
+          <ResizeHandle />
+          <Panel defaultSize={60} order={2}>
+            <div className="flex flex-col px-2 py-4">
+              <CodeEditorWindow
+                code={code}
+                onChange={onChange}
+                theme={theme.value}
+                question={question}
+              />
+              <Output 
+                handleCompile={handleCompile}
+                code={code}
+                classnames={classnames}
+                processing={processing}
+              />              
+            </div>
+          </Panel>
+        </PanelGroup>
       </div>
     }    
     <ToastContainer
