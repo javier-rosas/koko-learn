@@ -1312,7 +1312,198 @@ for (let i = 0; i < params.length; i++) {
   let args = params[i];
   console.log(twoSum(args['numbers'], args['target']) === args['ret'] ? '\u2705 Test Passed.' : `\u274c Test Failed. Input: ${args['numbers']}, ${args['target']}, expected: ${args['ret']}`);
 }",,
-63b594f68ad4593d6b7b01d7,3-sum,,,,
+63b594f68ad4593d6b7b01d7,3-sum,"params = [
+{
+""input"": [-1,0,1,2,-1,-4],
+""output"": [[-1,-1,2],[-1,0,1]]
+},
+{
+""input"": [0,1,1],
+""output"": []
+},
+{
+""input"": [0,0,0],
+""output"": [[0,0,0]]
+},
+{
+""input"": [1,2,3,4,5,6],
+""output"": []
+},
+{
+""input"": [-1,-2,-3,-4,-5,-6],
+""output"": []
+},
+{
+""input"": [1,1,1,1,1,1],
+""output"": []
+},
+{
+""input"": [-1,-1,-1,-1,-1,-1],
+""output"": []
+},
+{
+""input"": [-1,1,-1,1,-1,1],
+""output"": []
+},
+{
+""input"": [-1,0,1,2,3,4,5,6,7,8,9,10],
+""output"": [[-1, 0, 1]]
+},
+{
+""input"": [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0],
+""output"": []
+},
+{
+""input"": [1,-1,0,1,-1,0],
+""output"": [[-1, 0, 1]]
+},
+{
+""input"": [1,1,-2],
+""output"": [[-2,1,1]]
+},
+{
+""input"": [1,2,3,-3,-2,-1],
+""output"": [[-3, 1, 2], [-2, -1, 3]]
+},
+{
+""input"": [1,1,1,-1,-1,-1],
+""output"": []
+},
+{
+""input"": [1,1,1,1,1,-4],
+""output"": []
+},
+{
+""input"": [-1,-1,0,1,1,2],
+""output"": [[-1, -1, 2], [-1, 0, 1]]
+},
+{
+""input"": [-1,-1,-1,0,0,0],
+""output"": [[0, 0, 0]]
+},
+{
+""input"": [1,1,1,1,1,1,-6],
+""output"": []
+},
+{
+""input"": [-1,-1,-1,-1,-1,5],
+""output"": []
+},
+{
+""input"": [-1,1,-1,1,-1,1,0],
+""output"": [[-1, 0, 1]]
+}
+]
+
+obj = Solution()
+for test in params:
+    input_list = test[""input""]
+    expected_output = test[""output""]
+    result = obj.threeSum(input_list)
+    result_list = []
+    for i in result:
+        result_list.append(i)
+    if result_list == expected_output:
+        print(""\u2705 Test Passed."")
+    else:
+        print(f""\u274c Test Failed. Input: {input_list}, expected: {expected_output}, but got {result_list}"")","params = [
+    {
+    ""input"": [-1,0,1,2,-1,-4],
+    ""output"": [[-1,-1,2],[-1,0,1]]
+    },
+    {
+    ""input"": [0,1,1],
+    ""output"": []
+    },
+    {
+    ""input"": [0,0,0],
+    ""output"": [[0,0,0]]
+    },
+    {
+    ""input"": [1,2,3,4,5,6],
+    ""output"": []
+    },
+    {
+    ""input"": [-1,-2,-3,-4,-5,-6],
+    ""output"": []
+    },
+    {
+    ""input"": [1,1,1,1,1,1],
+    ""output"": []
+    },
+    {
+    ""input"": [-1,-1,-1,-1,-1,-1],
+    ""output"": []
+    },
+    {
+    ""input"": [-1,1,-1,1,-1,1],
+    ""output"": []
+    },
+    {
+    ""input"": [-1,0,1,2,3,4,5,6,7,8,9,10],
+    ""output"": [[-1, 0, 1]]
+    },
+    {
+    ""input"": [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0],
+    ""output"": []
+    },
+    {
+    ""input"": [1,-1,0,1,-1,0],
+    ""output"": [[-1, 0, 1]]
+    },
+    {
+    ""input"": [1,1,-2],
+    ""output"": [[-2,1,1]]
+    },
+    {
+    ""input"": [1,2,3,-3,-2,-1],
+    ""output"": [[-3, 1, 2], [-2, -1, 3]]
+    },
+    {
+    ""input"": [1,1,1,-1,-1,-1],
+    ""output"": []
+    },
+    {
+    ""input"": [1,1,1,1,1,-4],
+    ""output"": []
+    },
+    {
+    ""input"": [-1,-1,0,1,1,2],
+    ""output"": [[-1, -1, 2], [-1, 0, 1]]
+    },
+    {
+    ""input"": [-1,-1,-1,0,0,0],
+    ""output"": [[0, 0, 0]]
+    },
+    {
+    ""input"": [1,1,1,1,1,1,-6],
+    ""output"": []
+    },
+    {
+    ""input"": [-1,-1,-1,-1,-1,5],
+    ""output"": []
+    },
+    {
+    ""input"": [-1,1,-1,1,-1,1,0],
+    ""output"": [[-1, 0, 1]]
+    }
+    ]
+
+for (let test of params) {
+    let input_list = test[""input""];
+    let expected_output = test[""output""];
+    let result = threeSum(input_list);
+    let result_list = [];
+    for (let i of result) {
+        result_list.push(i);
+    }
+    if (result_list.sort().toString() === expected_output.sort().toString()) {
+        console.log(""\u2705 Test Passed."");
+    } else {
+        console.log(`\u274c Test Failed. Input: ${input_list}, expected: ${expected_output}, but got ${result_list}`);
+    }
+}
+    ",,
 63b594f78ad4593d6b7b01d8,container-with-most-water,"params = [    
     {   
         ""height"": [1,8,6,2,5,4,8,3,7],
@@ -3857,9 +4048,564 @@ for (const test of params) {
      this.val = (val===undefined ? 0 : val)
      this.next = (next===undefined ? null : next)
 }"
-63b5950f8ad4593d6b7b01f0,reorder-list,,,,
-63b595108ad4593d6b7b01f1,remove-nth-node-from-end-of-list,,,,
-63b595118ad4593d6b7b01f2,copy-list-with-random-pointer,,,,
+63b5950f8ad4593d6b7b01f0,reorder-list,"params = [
+{
+""input"": [1,2,3,4],
+""output"": [1,4,2,3]
+},
+{
+""input"": [1,2,3,4,5],
+""output"": [1,5,2,4,3]
+},
+{
+""input"": [1],
+""output"": [1]
+},
+{
+""input"": [1,2,3,4,5,6],
+""output"": [1,6,2,5,3,4]
+},
+{
+""input"": [1,2,3,4,5,6,7],
+""output"": [1,7,2,6,3,5,4]
+},
+{
+""input"": [1,2,3,4,5,6,7,8],
+""output"": [1,8,2,7,3,6,4,5]
+},
+{
+""input"": [1,2,3,4,5,6,7,8,9],
+""output"": [1,9,2,8,3,7,4,6,5]
+},
+
+{
+""input"": [1,4,3,5,6,7,8,9,9,0,7,4,3,2,1],
+""output"":  [1, 1, 4, 2, 3, 3, 5, 4, 6, 7, 7, 0, 8, 9, 9]
+},
+{
+""input"": [1,244,3,4444,578, 3, 6, 7, 11, 44, 3, 2],
+""output"": [1, 2, 244, 3, 3, 44, 4444, 11, 578, 7, 3, 6]
+},
+{
+""input"": [1000,1000,1000,1000,1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
+""output"": [1000,1000,1000,1000,1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
+},
+{
+""input"": [1,2,3,4,5,6,7,8,9,10,11,12, 13, 14, 15, 16, 17, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1 ,1, 1, 3,3 ,4, 5, 6, 7],
+""output"": [1, 7, 2, 6, 3, 5, 4, 4, 5, 3, 6, 3, 7, 1, 8, 1, 9, 1, 10, 1, 11, 1, 12, 1, 13, 1, 14, 1, 15, 1, 16, 1, 17, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+},
+{
+""input"": [1,2],
+""output"": [1,2],
+},
+{
+""input"": [1,2,3],
+""output"": [1, 3, 2]
+},
+]
+
+def convert_to_linked_list(input_list):
+    dummy = ListNode()
+    cur = dummy
+    for val in input_list:
+        cur.next = ListNode(val)
+        cur = cur.next
+    return dummy.next
+
+def convert_from_linked_list(head):
+    result = []
+    while head:
+        result.append(head.val)
+        head = head.next
+    return result
+
+obj = Solution()
+for test in params:
+    input_list = test[""input""]
+    expected_output = test[""output""]
+    head = convert_to_linked_list(input_list)
+    obj.reorderList(head)
+    result_list = convert_from_linked_list(head)
+    if result_list == expected_output:
+        print(""\u2705 Test Passed."")
+    else:
+        print(f""\u274c Test Failed. Input: {input_list}, expected: {expected_output}, but got {result_list}"")
+","params = [
+    {
+    ""input"": [1,2,3,4],
+    ""output"": [1,4,2,3]
+    },
+    {
+    ""input"": [1,2,3,4,5],
+    ""output"": [1,5,2,4,3]
+    },
+    {
+    ""input"": [1],
+    ""output"": [1]
+    },
+    {
+    ""input"": [1,2,3,4,5,6],
+    ""output"": [1,6,2,5,3,4]
+    },
+    {
+    ""input"": [1,2,3,4,5,6,7],
+    ""output"": [1,7,2,6,3,5,4]
+    },
+    {
+    ""input"": [1,2,3,4,5,6,7,8],
+    ""output"": [1,8,2,7,3,6,4,5]
+    },
+    {
+    ""input"": [1,2,3,4,5,6,7,8,9],
+    ""output"": [1,9,2,8,3,7,4,6,5]
+    },
+    
+    {
+    ""input"": [1,4,3,5,6,7,8,9,9,0,7,4,3,2,1],
+    ""output"":  [1, 1, 4, 2, 3, 3, 5, 4, 6, 7, 7, 0, 8, 9, 9]
+    },
+    {
+    ""input"": [1,244,3,4444,578, 3, 6, 7, 11, 44, 3, 2],
+    ""output"": [1, 2, 244, 3, 3, 44, 4444, 11, 578, 7, 3, 6]
+    },
+    {
+    ""input"": [1000,1000,1000,1000,1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
+    ""output"": [1000,1000,1000,1000,1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
+    },
+    {
+    ""input"": [1,2,3,4,5,6,7,8,9,10,11,12, 13, 14, 15, 16, 17, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1 ,1, 1, 3,3 ,4, 5, 6, 7],
+    ""output"": [1, 7, 2, 6, 3, 5, 4, 4, 5, 3, 6, 3, 7, 1, 8, 1, 9, 1, 10, 1, 11, 1, 12, 1, 13, 1, 14, 1, 15, 1, 16, 1, 17, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    },
+    {
+    ""input"": [1,2],
+    ""output"": [1,2],
+    },
+    {
+    ""input"": [1,2,3],
+    ""output"": [1, 3, 2]
+    },
+]
+
+
+function convert_to_linked_list(input_list) {
+    let dummy = new ListNode();
+    let cur = dummy;
+    for (let val of input_list) {
+        cur.next = new ListNode(val);
+        cur = cur.next;
+    }
+    return dummy.next;
+}
+
+function convert_from_linked_list(head) {
+    let result = [];
+    while (head) {
+        result.push(head.val);
+        head = head.next;
+    }
+    return result;
+}
+
+for (let test of params) {
+    let input_list = test[""input""];
+    let expected_output = test[""output""];
+    let head = convert_to_linked_list(input_list);
+    reorderList(head);
+    let result_list = convert_from_linked_list(head);
+    if (result_list.toString() === expected_output.toString()) {
+        console.log(""\u2705 Test Passed."");
+    } else {
+        console.log(`\u274c Test Failed. Input: ${input_list}, expected: ${expected_output}, but got ${result_list}`);
+    }
+}","class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next","function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val)
+    this.next = (next===undefined ? null : next)
+}"
+63b595108ad4593d6b7b01f1,remove-nth-node-from-end-of-list,"params = [
+{
+""input"": [1, 2, 3, 4, 5],
+""n"": 2,
+""output"": [1, 2, 3, 5]
+},
+{
+""input"": [1, 2, 3, 4, 5],
+""n"": 5,
+""output"": [2, 3, 4, 5]
+},
+{
+""input"": [1, 2, 3, 4, 5],
+""n"": 1,
+""output"": [1, 2, 3, 4]
+},
+{
+""input"": [1],
+""n"": 1,
+""output"": []
+},
+{
+""input"": [1, 2],
+""n"": 1,
+""output"": [1]
+},
+{
+""input"": [1, 2],
+""n"": 2,
+""output"": [2]
+},
+{
+""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+""n"": 3,
+""output"": [1, 2, 3, 4, 5, 6, 7, 9, 10]
+},
+{
+""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+""n"": 8,
+""output"": [1, 2, 4, 5, 6, 7, 8, 9, 10]
+},
+{
+""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+""n"": 10,
+""output"": [2, 3, 4, 5, 6, 7, 8, 9, 10]
+},
+{
+""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+""n"": 4,
+""output"": [1, 2, 3, 4, 5, 6, 8, 9, 10]
+}
+]
+
+
+def convert_to_linked_list(input_list):
+    dummy = ListNode()
+    cur = dummy
+    for val in input_list:
+        cur.next = ListNode(val)
+        cur = cur.next
+    return dummy.next
+
+def convert_from_linked_list(head):
+    result = []
+    while head:
+        result.append(head.val)
+        head = head.next
+    return result
+
+obj = Solution()
+for test in params:
+    input_list = test[""input""]
+    expected_output = test[""output""]
+    head = convert_to_linked_list(input_list)
+    n = test[""n""]
+    head = obj.removeNthFromEnd(head, n)
+    result_list = convert_from_linked_list(head)
+    if result_list == expected_output:
+        print(""\u2705 Test Passed."")
+    else:
+        print(f""\u274c Test Failed. Input: {input_list} n={n}, expected: {expected_output}, but got {result_list}"")","params = [
+    {
+    ""input"": [1, 2, 3, 4, 5],
+    ""n"": 2,
+    ""output"": [1, 2, 3, 5]
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5],
+    ""n"": 5,
+    ""output"": [2, 3, 4, 5]
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5],
+    ""n"": 1,
+    ""output"": [1, 2, 3, 4]
+    },
+    {
+    ""input"": [1],
+    ""n"": 1,
+    ""output"": []
+    },
+    {
+    ""input"": [1, 2],
+    ""n"": 1,
+    ""output"": [1]
+    },
+    {
+    ""input"": [1, 2],
+    ""n"": 2,
+    ""output"": [2]
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    ""n"": 3,
+    ""output"": [1, 2, 3, 4, 5, 6, 7, 9, 10]
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    ""n"": 8,
+    ""output"": [1, 2, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    ""n"": 10,
+    ""output"": [2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    ""n"": 4,
+    ""output"": [1, 2, 3, 4, 5, 6, 8, 9, 10]
+    }
+]
+
+
+ 
+function convert_to_linked_list(input_list) {
+    let dummy = new ListNode();
+    let cur = dummy;
+    for (let val of input_list) {
+        cur.next = new ListNode(val);
+        cur = cur.next;
+    }
+    return dummy.next;
+}
+
+function convert_from_linked_list(head) {
+    let result = [];
+    while (head) {
+        result.push(head.val);
+        head = head.next;
+    }
+    return result;
+}
+
+for (let test of params) {
+    let input_list = test[""input""]
+    let expected_output = test[""output""]
+    let n = test[""n""]
+    let head = convert_to_linked_list(input_list)
+    let result = removeNthFromEnd(head, n)
+    let result_list = convert_from_linked_list(result)
+    if (JSON.stringify(result_list) === JSON.stringify(expected_output)) {
+        console.log(""\u2705 Test Passed."")
+    } else {
+        console.log(`\u274c Test Failed. Input: ${input_list} n=${n}, expected: ${expected_output}, but got ${result_list}`)
+    }
+}
+","class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next","function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val)
+    this.next = (next===undefined ? null : next)
+}"
+63b595118ad4593d6b7b01f2,copy-list-with-random-pointer,"params = [
+{
+    ""input"": [[7,None],[13,0],[11,4],[10,2],[1,0]],
+    ""output"": [[7,None],[13,0],[11,4],[10,2],[1,0]],
+},
+{
+    ""input"": [[1,1],[2,1]],
+    ""output"": [[1,1],[2,1]],
+},
+{
+    ""input"": [[3,None],[3,0],[3,None]],
+    ""output"": [[3,None],[3,0],[3,None]],
+},
+{
+    ""input"": [[1,1],[2,2],[3,3],[4,4],[5,4]],
+    ""output"": [[1,1],[2,2],[3,3],[4,4],[5,4]]
+},
+{
+    ""input"": [[1,1],[2,0],[3,None]],
+    ""output"": [[1,1],[2,0],[3,None]],
+},
+{
+    ""input"": [[1,1],[2,2],[3,3],[4,0]],
+    ""output"": [[1,1],[2,2],[3,3],[4,0]],
+},
+{
+    ""input"": [[1,None],[2,1],[3,2],[4,3]],
+    ""output"": [[1,None],[2,1],[3,2],[4,3]],
+},
+{
+    ""input"": [[1,0],[2,1],[3,2]],
+    ""output"": [[1,0],[2,1],[3,2]],
+},
+{
+    ""input"": [[1,2],[2,1],[2,0]],
+    ""output"":[[1,2],[2,1],[2,0]],
+},
+{
+    ""input"": [[1,2],[2,1],[3,0]],
+    ""output"": [[1,2],[2,1],[3,0]],
+}
+]
+
+
+def convert_to_linked_list(input_list):
+    nodes = []
+    for val, random_index in input_list:
+        node = Node(val)
+        nodes.append(node)
+    for i, (val, random_index) in enumerate(input_list):
+        if i < len(input_list) - 1:
+            nodes[i].next = nodes[i+1]
+        if random_index is not None:
+            nodes[i].random = nodes[random_index]
+    return nodes[0]
+
+
+def convert_from_linked_list(head):
+    result = []
+    head_copy = head
+    while head:
+        index = -1
+        if head.random:
+            temp = head_copy
+            i = 0
+            while temp:
+                if temp == head.random:
+                    index = i
+                temp = temp.next
+                i += 1
+        result.append([head.val, index])
+        head = head.next
+
+    def convert(lst):
+        for i in range(len(lst)):
+            for j in range(len(lst[i])):
+                if lst[i][j] == -1:
+                    lst[i][j] = None
+        return lst
+    return convert(result)
+
+
+
+obj = Solution()
+for test in params:
+    input_list = test[""input""]
+    expected_output = test[""output""]
+    head = convert_to_linked_list(input_list)
+    obj.copyRandomList(head)
+    result_list = convert_from_linked_list(head)
+    if result_list == expected_output:
+        print(""\u2705 Test Passed."")
+    else:
+        print(f""\u274c Test Failed. Input: {input_list}, expected: {expected_output}, but got {result_list}"")
+    
+","params = [
+    {
+        ""input"": [[7,null],[13,0],[11,4],[10,2],[1,0]],
+        ""output"": [[7,null],[13,0],[11,4],[10,2],[1,0]],
+    },
+    {
+        ""input"": [[1,1],[2,1]],
+        ""output"": [[1,1],[2,1]],
+    },
+    {
+        ""input"": [[3,null],[3,0],[3,null]],
+        ""output"": [[3,null],[3,0],[3,null]],
+    },
+    {
+        ""input"": [[1,1],[2,2],[3,3],[4,4],[5,4]],
+        ""output"": [[1,1],[2,2],[3,3],[4,4],[5,4]]
+    },
+    {
+        ""input"": [[1,1],[2,0],[3,null]],
+        ""output"": [[1,1],[2,0],[3,null]],
+    },
+    {
+        ""input"": [[1,1],[2,2],[3,3],[4,0]],
+        ""output"": [[1,1],[2,2],[3,3],[4,0]],
+    },
+    {
+        ""input"": [[1,null],[2,1],[3,2],[4,3]],
+        ""output"": [[1,null],[2,1],[3,2],[4,3]],
+    },
+    {
+        ""input"": [[1,0],[2,1],[3,2]],
+        ""output"": [[1,0],[2,1],[3,2]],
+    },
+    {
+        ""input"": [[1,2],[2,1],[2,0]],
+        ""output"": [[1,2],[2,1],[2,0]],
+    },
+    {
+        ""input"": [[1,2],[2,1],[3,0]],
+        ""output"": [[1,2],[2,1],[3,0]],
+    }
+]
+
+function convert_to_linked_list(input_list) {
+    let nodes = []
+    for (let [val, random_index] of input_list) {
+        let node = new Node(val)
+        nodes.push(node)
+    }
+    for (let [i, [val, random_index]] of input_list.entries()) {
+        if (i < input_list.length - 1) {
+            nodes[i].next = nodes[i+1]
+        }
+        if (random_index !== null) {
+            nodes[i].random = nodes[random_index]
+        }
+    }
+    return nodes[0]
+}
+
+function convert_from_linked_list(head) {
+    let result = []
+    let head_copy = head
+    while (head) {
+        let index = -1
+        if (head.random) {
+            let temp = head_copy
+            let i = 0
+            while (temp) {
+                if (temp === head.random) {
+                    index = i
+                }
+                temp = temp.next
+                i += 1
+            }
+        }
+        result.push([head.val, index])
+        head = head.next
+    }
+
+    function convert(lst) {
+        for (let i = 0; i < lst.length; i++) {
+            for (let j = 0; j < lst[i].length; j++) {
+                if (lst[i][j] === -1) {
+                    lst[i][j] = null
+                }
+            }
+        }
+        return lst
+    }
+    return convert(result)
+}
+
+for (let i = 0; i < params.length; i++) {
+    let input_list = params[i][""input""];
+    let expected_output = params[i][""output""];
+    let head = convert_to_linked_list(input_list);
+    copyRandomList(head);
+    let result_list = convert_from_linked_list(head);
+    if (result_list.toString() === expected_output.toString()) {
+        console.log(""\u2705 Test Passed."");
+    } else {
+        console.log(""\u274c Test Failed. Input: "" + input_list + "", expected: "" + expected_output + "", but got "" + result_list);
+    }
+}","class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random","function Node(val, next, random) {
+    this.val = val;
+    this.next = next;
+    this.random = random;
+};"
 63b595128ad4593d6b7b01f3,add-two-numbers,,,,
 63b595148ad4593d6b7b01f4,linked-list-cycle,,,,
 63b595148ad4593d6b7b01f5,find-the-duplicate-number,,,,
