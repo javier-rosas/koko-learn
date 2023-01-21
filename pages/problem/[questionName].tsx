@@ -163,7 +163,6 @@ const Repl = (props: any) => {
 
 export default Repl
 
-
 export async function getStaticPaths() {
   try {
     await connectMongo()
