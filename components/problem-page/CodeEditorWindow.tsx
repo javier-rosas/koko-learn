@@ -49,7 +49,8 @@ const CodeEditorWindow = ({ onChange, code, theme, question }: CodeEditorProps) 
           automaticLayout:true,
           fontSize: 13,
           autoIndent: "keep",
-          formatOnType: true
+          formatOnType: true,
+          wordWrap: "bounded",
        }}
       
       />

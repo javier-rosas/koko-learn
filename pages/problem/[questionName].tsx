@@ -124,7 +124,8 @@ const Repl = (props: any) => {
         </div>
       </div> 
       :
-      <PanelGroup autoSaveId="example" direction="horizontal">
+      <div className="flex flex-row justify-center">
+      <PanelGroup className="max-w-screen-2xl" autoSaveId="example" direction="horizontal">
         <Panel defaultSize={40} order={1}>
           <Question question={question} />
         </Panel>
@@ -146,6 +147,7 @@ const Repl = (props: any) => {
           </div>
         </Panel>
       </PanelGroup>
+      </div>
     }    
     <ToastContainer
       position="top-right"

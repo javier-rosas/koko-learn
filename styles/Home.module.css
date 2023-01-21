@@ -2,9 +2,9 @@
   flex: 0 0 1.5em;
   position: relative;
   outline: none;
-
-  --background-color: transparent;
+  margin-right: 1rem;
 }
+
 .ResizeHandleOuter[data-resize-handle-active] {
   --background-color: var(--color-solid-resize-bar-handle);
 }
@@ -21,8 +21,8 @@
 }
 
 .Icon {
-  width: 1em;
-  height: 1em;
+  width: 2em;
+  height: 2em;
   position: absolute;
   left: calc(50% - 0.5rem);
   top: calc(50% - 0.5rem);
