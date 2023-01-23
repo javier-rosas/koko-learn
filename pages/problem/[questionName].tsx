@@ -56,6 +56,13 @@ const Repl = (props: any) => {
     })()
   }, [])
 
+  // clear output 
+  const clearConsole = () => {
+    let logger = document.getElementById('log')
+    if (!logger) return
+    logger.innerHTML = ""
+  }
+
   // change the code editor text
   const onChange = (action: string, data: any) => {
     switch (action) {
@@ -74,6 +81,7 @@ const Repl = (props: any) => {
   const handleCompile = useCallback( async () => {
     setProcessing(true)
     try {
+      clearConsole()
       runCode(language, code, tests)
       showSuccessToast("Code ran succesfully!")
       setTimeout(() => {setProcessing(false)}, 1000);
