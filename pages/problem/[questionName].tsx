@@ -24,6 +24,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 const Repl = (props: any) => {
 
+  // getStaticProps
   const { question, tests } = props
   // state vars
   const [theme, setTheme] = useState<any>("cobalt")
@@ -31,7 +32,6 @@ const Repl = (props: any) => {
   const [processing, setProcessing] = useState<boolean | null>(null)
   const language = useSelector((state: any) => state.language.language)
   const [mobile, setMobile] = useState<boolean>(false)
-  
   
   // enterPress and contrlPress hooks
   const enterPress = useKeyPress("Enter")
@@ -90,6 +90,7 @@ const Repl = (props: any) => {
     }
   }, [shiftPress, enterPress, handleCompile])
   
+  // set mobile or desktop size
   useEffect(() => {
     if (!width) return
     if (width < 640) {
