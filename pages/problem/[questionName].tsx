@@ -26,6 +26,7 @@ const Repl = (props: any) => {
 
   // getStaticProps
   const { question, tests } = props
+  
   // state vars
   const [theme, setTheme] = useState<any>("cobalt")
   const [code, setCode] = useState<string>("")
