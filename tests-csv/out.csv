@@ -6499,7 +6499,230 @@ for (let param of params) {
     this.left = (left===undefined ? null : left)
     this.right = (right===undefined ? null : right)
 }"
-63b598468ad4593d6b7b021d,lowest-common-ancestor-of-a-binary-search-tree,,,,
+63b598468ad4593d6b7b021d,lowest-common-ancestor-of-a-binary-search-tree,"params = [
+    {
+    ""input"": ([6,2,8,0,4,7,9,None,None,3,5], 2, 8),
+    ""output"": 6
+    },
+    {
+    ""input"": ([6,2,8,0,4,7,9,None,None,3,5], 2, 4),
+    ""output"": 2
+    },
+    {
+    ""input"": ([2,1], 2, 1),
+    ""output"": 2
+    },
+    {
+    ""input"": ([6,2,8,0,4,7,9,None,None,3,5], 3, 5),
+    ""output"": 4
+    },
+    {
+    ""input"": ([6,2,8,0,4,7,9,None,None,3,5], 6, 8),
+    ""output"": 6
+    },
+    {
+    ""input"": ([6,2,8,0,4,7,9,None,None,3,5], 0, 4),
+    ""output"": 2
+    },
+    {
+    ""input"": ([6,2,8,0,4,7,9,None,None,3,5], 4, 9),
+    ""output"": 6
+    },
+    {
+    ""input"": ([6,2,8,0,4,7,9,None,None,3,5], 0, 9),
+    ""output"": 6
+    },
+    {
+    ""input"": ([15,10,20,8,12,16,25], 8, 12),
+    ""output"": 10
+    },
+    {
+    ""input"": ([10,5,15,3,7,13,18,1,4,6], 4, 6),
+    ""output"": 5
+    },
+    {
+    ""input"": ([25,20,30,18,22,28,35], 18, 35),
+    ""output"": 25
+    },
+    {
+    ""input"": ([5,3,7,1,4,6,9], 1, 9),
+    ""output"": 5
+    },
+    {
+    ""input"": ([50,40,60,30,45,55,70], 30, 70),
+    ""output"": 50
+    },
+    {
+    ""input"": ([100,50,150,25,75,125,175], 25, 175),
+    ""output"": 100
+    },
+    {
+    ""input"": ([200,150,250,125,175,225,275], 125, 275),
+    ""output"": 200
+    },
+    {
+    ""input"": ([300,250,350,200,325,375,400], 325, 400),
+    ""output"": 350
+    },
+    {
+    ""input"": ([500,450,550,400,525,575,600], 400, 600),
+    ""output"": 500
+    },
+    {
+    ""input"": ([1000,900,1100,800,950,1050,1200], 800, 1200),
+    ""output"": 1000
+    }
+]
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+
+obj = Solution()
+
+for param in params:
+    root = create_tree(param[""input""][0])
+    p = TreeNode(param[""input""][1])
+    q = TreeNode(param[""input""][2])
+    expected_output = param[""output""]
+    output = obj.lowestCommonAncestor(root, p, q)
+    if output.val == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. p: {param['input'][1]} q: {param['input'][2]} Expected output: {expected_output}, but got {output.val}"")","let params = [
+    {
+    ""input"": [[6,2,8,0,4,7,9,null,null,3,5], 2, 8],
+    ""output"": 6
+    },
+    {
+    ""input"": [[6,2,8,0,4,7,9,null,null,3,5], 2, 4],
+    ""output"": 2
+    },
+    {
+    ""input"": [[2,1], 2, 1],
+    ""output"": 2
+    },
+    {
+    ""input"": [[6,2,8,0,4,7,9,null,null,3,5], 3, 5],
+    ""output"": 4
+    },
+    {
+    ""input"": [[6,2,8,0,4,7,9,null,null,3,5], 6, 8],
+    ""output"": 6
+    },
+    {
+    ""input"": [[6,2,8,0,4,7,9,null,null,3,5], 0, 4],
+    ""output"": 2
+    },
+    {
+    ""input"": [[6,2,8,0,4,7,9,null,null,3,5], 4, 9],
+    ""output"": 6
+    },
+    {
+    ""input"": [[6,2,8,0,4,7,9,null,null,3,5], 0, 9],
+    ""output"": 6
+    },
+    {
+    ""input"": [[15,10,20,8,12,16,25], 8, 12],
+    ""output"": 10
+    },
+    {
+    ""input"": [[10,5,15,3,7,13,18,1,4,6], 4, 6],
+    ""output"": 5
+    },
+    {
+    ""input"": [[25,20,30,18,22,28,35], 18, 35],
+    ""output"": 25
+    },
+    {
+    ""input"": [[5,3,7,1,4,6,9], 1, 9],
+    ""output"": 5
+    },
+    {
+    ""input"": [[50,40,60,30,45,55,70], 30, 70],
+    ""output"": 50
+    },
+    {
+    ""input"": [[100,50,150,25,75,125,175], 25, 175],
+    ""output"": 100
+    },
+    {
+    ""input"": [[200,150,250,125,175,225,275], 125, 275],
+    ""output"": 200
+    },
+    {
+    ""input"": [[300,250,350,200,325,375,400], 325, 400],
+    ""output"": 350
+    },
+    {
+    ""input"": [[500,450,550,400,525,575,600], 400, 600],
+    ""output"": 500
+    },
+    {
+    ""input"": [[1000,900,1100,800,950,1050,1200], 800, 1200],
+    ""output"": 1000
+    }
+]
+
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+
+for (let i = 0; i < params.length; i++) {
+    let root = create_tree(params[i][""input""][0]);
+    let p = new TreeNode(params[i][""input""][1]);
+    let q = new TreeNode(params[i][""input""][2]);
+    let expected_output = params[i][""output""];
+    let output = lowestCommonAncestor(root, p, q);
+    if (output.val === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. p: ${params[i]['input'][1]} q: ${params[i]['input'][2]} Expected output: ${expected_output}, but got ${output.val}`);
+    }
+}","class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None","function TreeNode(val) {
+    this.val = val;
+    this.left = this.right = null;
+}"
 63b598478ad4593d6b7b021e,binary-tree-level-order-traversal,,,,
 63b598488ad4593d6b7b021f,binary-tree-right-side-view,,,,
 63b5984b8ad4593d6b7b0220,count-good-nodes-in-binary-tree,,,,

@@ -1,13 +1,13 @@
-import { LanguageType } from "../types/LanguageType"
-import { TestType } from '../types/TestType'
-import { toast } from "react-toastify"
+import { LanguageType } from "../types/LanguageType";
+import { TestType } from "../types/TestType";
+import { toast } from "react-toastify";
 
 // join list of arguments by white space
 export const classnames = (...args: any) => {
   return args.join(" ");
-}
+};
 
-// shows a succesful toast 
+// shows a succesful toast
 export const showSuccessToast = (msg: string) => {
   toast.success(msg || `Compiled Successfully!`, {
     position: "top-right",
@@ -17,8 +17,8 @@ export const showSuccessToast = (msg: string) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-  })
-}
+  });
+};
 
 // displays an error toast
 export const showErrorToast = (msg: string, timer: number) => {
@@ -30,48 +30,74 @@ export const showErrorToast = (msg: string, timer: number) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-  })
-}
+  });
+};
 
 // kebab case converter
-export const kebabCase = (str: string) => 
+export const kebabCase = (str: string) =>
   str
     .replace(/([a-z])([A-Z])/g, "$1-$2")
-    .replace(/[\s_]+/g, '-')
-    .toLowerCase()
+    .replace(/[\s_]+/g, "-")
+    .toLowerCase();
 
 // preprocess python code
-export const preprocessPythonCode = (code: string, pythonTests: string, pythonDataStructures: string) => {
-  code = "\n" + "\nimport math\nfrom collections import defaultdict, Counter\nfrom typing import List, Optional\n" + pythonDataStructures + "\n" + code + "\n" + pythonTests                     
-  const firstLine = "async function main(){\n  let pyodide = await loadPyodide()\n"
-  const secondLine = "  try { \n "
-  const thirdLine = " pyodide.runPython(`"
+export const preprocessPythonCode = (
+  code: string,
+  pythonTests: string,
+  pythonDataStructures: string
+) => {
+  code =
+    "\n" +
+    "\nimport math\nfrom collections import defaultdict, Counter\nfrom typing import List, Optional\n" +
+    pythonDataStructures +
+    "\n" +
+    code +
+    "\n" +
+    pythonTests;
+  const firstLine =
+    "async function main(){\n  let pyodide = await loadPyodide()\n";
+  const secondLine = "  try { \n ";
+  const thirdLine = " pyodide.runPython(`";
   const actualCode = `
   ${code}
-  `
-  const fourthLine = "\n`);\n"
-  const fifth = " } catch(e) { \n console.log(new Error(e).message) \n}"
-  const lastLine = "\n}\nmain();"
-  const preprocessedCode = `${firstLine}${secondLine}${thirdLine}${actualCode}${fourthLine}${fifth}${lastLine}`
-  eval(preprocessedCode)
-}
+  `;
+  const fourthLine = "\n`);\n";
+  const fifth = " } catch(e) { \n console.log(new Error(e).message) \n}";
+  const lastLine = "\n}\nmain();";
+  const preprocessedCode = `${firstLine}${secondLine}${thirdLine}${actualCode}${fourthLine}${fifth}${lastLine}`;
+  eval(preprocessedCode);
+};
 
 // preprocess python code
-export const preprocessJavascriptCode = (code: string, javascriptTests: string, javascriptDataStructures: string) => {
-  code = "\n" + javascriptDataStructures + "\n" + code + "\n" + javascriptTests                           
-  const firstLine = "async function main(){\n"
-  const secondLine = "  try { \n "
+export const preprocessJavascriptCode = (
+  code: string,
+  javascriptTests: string,
+  javascriptDataStructures: string
+) => {
+  code = "\n" + javascriptDataStructures + "\n" + code + "\n" + javascriptTests;
+  const firstLine = "async function main(){\n";
+  const secondLine = "  try { \n ";
   const actualCode = `
   ${code}
-  `
-  const thirdLine = " } catch(e) { \n console.log(new Error(e).message); \n}"
-  const fourthLine = "\n}\nmain();"
-  const preprocessedCode = `${firstLine}${secondLine}${actualCode}${thirdLine}${fourthLine}`
-  eval(preprocessedCode)
-}
+  `;
+  const thirdLine = " } catch(e) { \n console.log(new Error(e).message); \n}";
+  const fourthLine = "\n}\nmain();";
+  const preprocessedCode = `${firstLine}${secondLine}${actualCode}${thirdLine}${fourthLine}`;
+  eval(preprocessedCode);
+};
 
-// run code 
-export const runCode = (language: LanguageType, code: string, tests: TestType) => {
-  if (language.value === "python") preprocessPythonCode(code, tests.pythonTests, tests.pythonDataStructures)
-  else if (language.value === "javascript") preprocessJavascriptCode(code, tests.javascriptTests, tests.javascriptDataStructures)
-}
+// run code
+export const runCode = (
+  language: LanguageType,
+  code: string,
+  tests: TestType
+) => {
+  if (language.value === "python")
+    preprocessPythonCode(code, tests.pythonTests, tests.pythonDataStructures);
+  else if (language.value === "javascript")
+    preprocessJavascriptCode(
+      code,
+      tests.javascriptTests,
+      tests.javascriptDataStructures
+    );
+};

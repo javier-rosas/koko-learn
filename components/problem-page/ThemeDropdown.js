@@ -16,7 +16,7 @@ const ThemeDropdown = ({ handleThemeChange, theme }) => {
       styles={customStyles}
       onChange={handleThemeChange}
     />
-  )
-}
+  );
+};
 
 export default ThemeDropdown;

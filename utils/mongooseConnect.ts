@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const options = {
   useNewUrlParser: true,
@@ -10,15 +10,10 @@ const options = {
   family: 4,
 };
 
-export const connectMongo = async () => mongoose.connect(
-  process.env.NEXT_APP_MONGO_URI!, 
-  options,
-  (err) => {
+export const connectMongo = async () =>
+  mongoose.connect(process.env.NEXT_APP_MONGO_URI!, options, (err) => {
     if (err) {
       return console.error(err);
     }
     return console.log("MongoDB connection successful");
-  }
-)
-
-
+  });
