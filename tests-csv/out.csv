@@ -6259,7 +6259,7 @@ for param in params:
     if output == expected_output:
         print(""\u2705 Test passed."")
     else:
-        print(f""\u274C Test failed. p: ${param['p']} q: ${param['q']} Expected output: ${expected_output}, but got ${output}"")","params = [
+        print(f""\u274C Test failed. p: ${param['input'][0]} q: ${param['input'][1]} Expected output: ${expected_output}, but got ${output}"")","params = [
     {
     ""input"": [[1,2,3], [1,2,3]],
     ""output"": true
@@ -6333,7 +6333,7 @@ for (let param of params) {
     if (output === expected_output) {
         console.log(""\u2705 Test passed."");
     } else {
-        console.log(`\u274C Test failed. p: ${param['p']} q: ${param['q']} Expected output: ${expected_output}, but got ${output}`);
+        console.log(`\u274C Test failed. p: ${param[""input""][0]} q: ${param[""input""][1]} Expected output: ${expected_output}, but got ${output}`);
     }
 }","class TreeNode:
     def __init__(self, x):
