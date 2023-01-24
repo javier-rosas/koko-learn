@@ -49,7 +49,7 @@ export const preprocessPythonCode = (code: string, pythonTests: string, pythonDa
   const actualCode = `
   ${code}
   `
-  const fourthLine = "`);\n"
+  const fourthLine = "\n`);\n"
   const fifth = " } catch(e) { \n console.log(new Error(e).message) \n}"
   const lastLine = "\n}\nmain();"
   const preprocessedCode = `${firstLine}${secondLine}${thirdLine}${actualCode}${fourthLine}${fifth}${lastLine}`

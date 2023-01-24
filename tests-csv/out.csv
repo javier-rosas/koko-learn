@@ -6190,43 +6190,43 @@ for (let i = 0; i < params.length; i++) {
 }"
 63b598458ad4593d6b7b021b,same-tree,"params = [
     {
-    ""input"": ([1,2,3], [1,2,3]),
+    ""input"": [[1,2,3], [1,2,3]],
     ""output"": True
     },
     {
-    ""input"": ([1,2], [1,None,2]),
+    ""input"": [[1,2], [1,None,2]],
     ""output"": False
     },
     {
-    ""input"": ([1,2,1], [1,1,2]),
+    ""input"": [[1,2,1], [1,1,2]],
     ""output"": False
     },
     {
-    ""input"": ([], []),
+    ""input"": [[], []],
     ""output"": True
     },
     {
-    ""input"": ([1], [1]),
+    ""input"": [[1], [1]],
     ""output"": True
     },
     {
-    ""input"": ([1,2,3], [1,2,3,4]),
+    ""input"": [[1,2,3], [1,2,3,4]],
     ""output"": False
     },
     {
-    ""input"": ([1,2,3], [1,2]),
+    ""input"": [[1,2,3], [1,2]],
     ""output"": False
     },
     {
-    ""input"": ([1,2,3,4,5], [1,2,3]),
+    ""input"": [[1,2,3,4,5], [1,2,3]],
     ""output"": False
     },
     {
-    ""input"": ([1,2,3,4,5], [1,2,3,4,5]),
+    ""input"": [[1,2,3,4,5], [1,2,3,4,5]],
     ""output"": True
     },
     {
-    ""input"": ([1,2,3,4,5], [5,4,3,2,1]),
+    ""input"": [[1,2,3,4,5], [5,4,3,2,1]],
     ""output"": False
     }
 ]
@@ -6259,7 +6259,7 @@ for param in params:
     if output == expected_output:
         print(""\u2705 Test passed."")
     else:
-        print(f""\u274C Test failed. p: ${param['input'][0]} q: ${param['input'][1]} Expected output: ${expected_output}, but got ${output}"")","params = [
+        print(f""\u274C Test failed. p: {param['input'][0]} q: {param['input'][1]} Expected output: {expected_output}, but got {output}"")","let params = [
     {
     ""input"": [[1,2,3], [1,2,3]],
     ""output"": true
