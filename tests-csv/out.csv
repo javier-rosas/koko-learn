@@ -5685,7 +5685,163 @@ for (let param of params) {
     this.left = (left===undefined ? null : left)
     this.right = (right===undefined ? null : right)
 }"
-63b595198ad4593d6b7b01fa,maximum-depth-of-binary-tree,,,,
+63b595198ad4593d6b7b01fa,maximum-depth-of-binary-tree,"params = [
+    {
+    ""input"": [3, 9, 20, None, None, 15, 7],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, None, 2],
+    ""output"": 2
+    },
+    {
+    ""input"": [],
+    ""output"": 0
+    },
+    {
+    ""input"": [1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, None, 2],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, 2, None],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, None, 2, None, 3],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, 2, None, 3, None, 4],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, None, 2, 3, None, None, 4],
+    ""output"": 4
+    }
+]
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+obj = Solution()
+
+for param in params:
+    input_list = param[""input""]
+    expected_output = param[""output""]
+    root = create_tree(input_list)
+    output = obj.maxDepth(root)
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Input List: {input_list} Expected output: {expected_output}, but got {output}"")","const params = [    
+    {    
+    ""input"": [3, 9, 20, null, null, 15, 7],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, null, 2],
+    ""output"": 2
+    },
+    {
+    ""input"": [],
+    ""output"": 0
+    },
+    {
+    ""input"": [1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, null, 2],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, 2, null],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, null, 2, null, 3],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, 2, null, 3, null, 4],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, null, 2, 3, null, null, 4],
+    ""output"": 4
+    }
+]
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+
+for (let param of params) {
+    let input_list = param[""input""];
+    let expected_output = param[""output""];
+    let root = create_tree(input_list);
+    let output = maxDepth(root);
+    if (output === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. Input List: ${input_list} Expected output: ${expected_output}, but got ${output}`);
+    }
+}","class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right","function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}"
 63b595388ad4593d6b7b01fb,climbing-stairs,,,,
 63b595398ad4593d6b7b01fc,min-cost-climbing-stairs,,,,
 63b5953a8ad4593d6b7b01fd,house-robber,,,,
@@ -5716,10 +5872,633 @@ for (let param of params) {
 63b595518ad4593d6b7b0216,hand-of-straights,,,,
 63b595518ad4593d6b7b0217,merge-triplets-to-form-target-triplet,,,,
 63b595538ad4593d6b7b0218,partition-labels,,,,
-63b598438ad4593d6b7b0219,diameter-of-binary-tree,,,,
-63b598448ad4593d6b7b021a,balanced-binary-tree,,,,
-63b598458ad4593d6b7b021b,same-tree,,,,
-63b598458ad4593d6b7b021c,subtree-of-another-tree,,,,
+63b598438ad4593d6b7b0219,diameter-of-binary-tree,"params = [
+    {
+    ""input"": [1,2,3,4,5],
+    ""output"": 3
+    },
+    {
+    ""input"": [1,2],
+    ""output"": 1
+    },
+    {
+    ""input"": [1],
+    ""output"": 0
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    ""output"": 5
+    },
+    {
+    ""input"": [1, None, 2],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, 2, None],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, None, 2, None, 3],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, 2, None, 3, None, 4],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, None, 2, 3, None, None, 4],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, 2, 3, None, None, None, 4, None, None, None, None, None, None, 5],
+    ""output"": 3
+    }
+]
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+obj = Solution()
+
+for param in params:
+    input_list = param[""input""]
+    expected_output = param[""output""]
+    root = create_tree(input_list)
+    output = obj.diameterOfBinaryTree(root)
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Input List: {input_list} Expected output: {expected_output}, but got {output}"")","let params = [    
+    {    
+    ""input"": [1,2,3,4,5],
+    ""output"": 3
+    },
+    {
+    ""input"": [1,2],
+    ""output"": 1
+    },
+    {
+    ""input"": [1],
+    ""output"": 0
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    ""output"": 5
+    },
+    {
+    ""input"": [1, null, 2],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, 2, null],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, null, 2, null, 3],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, 2, null, 3, null, 4],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, null, 2, 3, null, null, 4],
+    ""output"": 3
+    },
+    {
+    ""input"": [1, 2, 3, null, null, null, 4, null, null, null, null, null, null, 5],
+    ""output"": 3
+    }
+]
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+for (let i = 0; i < params.length; i++) {
+    let param = params[i];
+    let input_list = param[""input""];
+    let expected_output = param[""output""];
+    let root = create_tree(input_list);
+    let output = diameterOfBinaryTree(root);
+    if (output === expected_output) {
+        console.log(""\u2705 Test passed."")
+    } else {
+        console.log(`\u274C Test failed. Input List: ${input_list} Expected output: ${expected_output}, but got ${output}`);
+    }
+}","class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right","function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}"
+63b598448ad4593d6b7b021a,balanced-binary-tree,"params = [
+    {
+    ""input"": [3,9,20,None,None,15,7],
+    ""output"": True
+    },
+    {
+    ""input"": [1,2,2,3,3,None,None,4,4],
+    ""output"": False
+    },
+    {
+    ""input"": [],
+    ""output"": True
+    },
+    {
+    ""input"": [1],
+    ""output"": True
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    ""output"": True
+    },
+    {
+    ""input"": [1, None, 2],
+    ""output"": True
+    },
+    {
+    ""input"": [1, 2, None],
+    ""output"": True
+    },
+    {
+    ""input"": [1, None, 2, None, 3],
+    ""output"": False
+    },
+    {
+    ""input"": [1, 2, None, 3, None, 4],
+    ""output"": False
+    },
+    {
+    ""input"": [1, None, 2, 3, None, None, 4],
+    ""output"": False
+    }
+]
+
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+obj = Solution()
+
+for param in params:
+    input_list = param[""input""]
+    expected_output = param[""output""]
+    root = create_tree(input_list)
+    output = obj.isBalanced(root)
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Input List: {input_list} Expected output: {expected_output}, but got {output}"")","const params = [
+    {
+    ""input"": [3,9,20,null,null,15,7],
+    ""output"": true
+    },
+    {
+    ""input"": [1,2,2,3,3,null,null,4,4],
+    ""output"": false
+    },
+    {
+    ""input"": [],
+    ""output"": true
+    },
+    {
+    ""input"": [1],
+    ""output"": true
+    },
+    {
+    ""input"": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    ""output"": true
+    },
+    {
+    ""input"": [1, null, 2],
+    ""output"": true
+    },
+    {
+    ""input"": [1, 2, null],
+    ""output"": true
+    },
+    {
+    ""input"": [1, null, 2, null, 3],
+    ""output"": false
+    },
+    {
+    ""input"": [1, 2, null, 3, null, 4],
+    ""output"": false
+    },
+    {
+    ""input"": [1, null, 2, 3, null, null, 4],
+    ""output"": false
+    }
+]
+
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+for (let i = 0; i < params.length; i++) {
+    let param = params[i];
+    let input_list = param[""input""];
+    let expected_output = param[""output""];
+    let root = create_tree(input_list);
+    let output = isBalanced(root);
+    if (output === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. Input List: ${input_list}  Expected output: ${expected_output}, but got ${output}`);
+    }
+}","class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right","function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}"
+63b598458ad4593d6b7b021b,same-tree,"params = [
+    {
+    ""input"": ([1,2,3], [1,2,3]),
+    ""output"": True
+    },
+    {
+    ""input"": ([1,2], [1,None,2]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,1], [1,1,2]),
+    ""output"": False
+    },
+    {
+    ""input"": ([], []),
+    ""output"": True
+    },
+    {
+    ""input"": ([1], [1]),
+    ""output"": True
+    },
+    {
+    ""input"": ([1,2,3], [1,2,3,4]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3], [1,2]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5], [1,2,3]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5], [1,2,3,4,5]),
+    ""output"": True
+    },
+    {
+    ""input"": ([1,2,3,4,5], [5,4,3,2,1]),
+    ""output"": False
+    }
+]
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+obj = Solution()
+
+for param in params:
+    p = create_tree(param[""input""][0])
+    q = create_tree(param[""input""][1])
+    expected_output = param[""output""]
+    output = obj.isSameTree(p, q)
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. p: ${param['p']} q: ${param['q']} Expected output: ${expected_output}, but got ${output}"")","params = [
+    {
+    ""input"": [[1,2,3], [1,2,3]],
+    ""output"": true
+    },
+    {
+    ""input"": [[1,2], [1,null,2]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,1], [1,1,2]],
+    ""output"": false
+    },
+    {
+    ""input"": [[], []],
+    ""output"": true
+    },
+    {
+    ""input"": [[1], [1]],
+    ""output"": true
+    },
+    {
+    ""input"": [[1,2,3], [1,2,3,4]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3], [1,2]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5], [1,2,3]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5], [1,2,3,4,5]],
+    ""output"": true
+    },
+    {
+    ""input"": [[1,2,3,4,5], [5,4,3,2,1]],
+    ""output"": false
+    }
+]
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+for (let param of params) {
+    let p = create_tree(param[""input""][0]);
+    let q = create_tree(param[""input""][1]);
+    let expected_output = param[""output""];
+    let output = isSameTree(p, q);
+    if (output === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. p: ${param['p']} q: ${param['q']} Expected output: ${expected_output}, but got ${output}`);
+    }
+}","class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None","function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}"
+63b598458ad4593d6b7b021c,subtree-of-another-tree,"params = [
+    {
+    ""input"": ([3,4,5,1,2], [4,1,2]),
+    ""output"": True
+    },
+    {
+    ""input"": ([3,4,5,1,2,None,None,None,None,0], [4,1,2]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5], [1,2,3]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5], [5,4,3]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1], [2]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5], [4,5]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5], [4,5,6]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5,6,7], [1,2,3]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5,6,7], [5,6,7]),
+    ""output"": False
+    },
+    {
+    ""input"": ([1,2,3,4,5,6,7], [8]),
+    ""output"": False
+    }
+]
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+obj = Solution()
+for param in params:
+    s = create_tree(param[""input""][0])
+    t = create_tree(param[""input""][1])
+    expected_output = param[""output""]
+    output = obj.isSubtree(s, t)
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. subRoot: {param['input'][1]} root: {param['input'][0]} Expected output: {expected_output}, but got {output}"")","const params = [
+    {
+    ""input"": [[3,4,5,1,2], [4,1,2]],
+    ""output"": true
+    },
+    {
+    ""input"": [[3,4,5,1,2,null,null,null,null,0], [4,1,2]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5], [1,2,3]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5], [5,4,3]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1], [2]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5], [4,5]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5], [4,5,6]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7], [1,2,3]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7], [5,6,7]],
+    ""output"": false
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7], [8]],
+    ""output"": false
+    }
+]
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+for (let param of params) {
+    let s = create_tree(param[""input""][0]);
+    let t = create_tree(param[""input""][1]);
+    let expected_output = param[""output""];
+    let output = isSubtree(s, t);
+    if (output === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. subRoot: ${param['input'][1]} root: ${param['input'][0]} Expected output: ${expected_output}, but got ${output}`);
+    }
+}","class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right","function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}"
 63b598468ad4593d6b7b021d,lowest-common-ancestor-of-a-binary-search-tree,,,,
 63b598478ad4593d6b7b021e,binary-tree-level-order-traversal,,,,
 63b598488ad4593d6b7b021f,binary-tree-right-side-view,,,,
