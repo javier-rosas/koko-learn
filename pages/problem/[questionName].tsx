@@ -116,7 +116,7 @@ const Repl = (props: any) => {
     />
     {
       mobile ?
-      <div className="flex flex-col sm:flex sm:flex-row sm:justify-between mb-24">
+      <div className="flex flex-col sm:flex sm:flex-row sm:justify-between mb-32">
         <Question question={question} />
         <div className="flex flex-col px-2 py-4">
           <CodeEditorWindow
