@@ -4,7 +4,7 @@ import React from 'react'
 function Output({ handleCompile, code, classnames, processing }: any) {
   return (
     <div className='mb-10 sm:mb-0'>
-      <div 
+      <div
         id="log" 
         style={{
           maxWidth: "110vh",
