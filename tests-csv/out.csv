@@ -8812,7 +8812,7 @@ for test in params:
     if output == expected_output:
         print(""\u2705 Test passed."")
     else:
-        print(f""\u274C Test failed. Input: {input_data} Ops: {input_args} Expected output: {expected_output}, but got {output}"")","params = [
+        print(f""\u274C Test failed. Input: {input_data} Ops: {input_args} Expected output: {expected_output}, but got {output}"")","let params = [
     {
     ""input"": [""addWord"",""addWord"",""addWord"",""search"",""search"",""search"",""search""],
     ""input_args"": [[""bad""],[""dad""],[""mad""],[""pad""],[""bad""],["".ad""],[""b..""]],
