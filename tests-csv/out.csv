@@ -7879,156 +7879,6 @@ for test in params:
     if identicalTrees(output, create_tree(expected_output)):
         print(""\u2705 Test passed."")
     else:
-        print(f""\u274C Test failed. Input: preorder={preorder}, inorder={inorder} Expected output: {expected_output}, but got {tree_to_list(output)}"")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-params = [
-    {
-        ""input"": [[3,9,20,15,7], [9,3,15,20,7]],
-        ""output"": [3,9,20,None,None,15,7]
-    },
-    {
-        ""input"": [[-1], [-1]],
-        ""output"": [-1]
-    },
-    {
-        ""input"": [[1,2,3], [2,1,3]],
-        ""output"": [1,2,3]
-    },
-    {
-        ""input"": [[1,2], [1,2]],
-        ""output"": [1, None, 2, None, None]
-    },
-    {
-        ""input"": [[1], [1]],
-        ""output"": [1]
-    },
-    {
-        ""input"": [[1,2,3,4,5,6,7], [2,1,4,3,6,5,7]],
-        ""output"": [1, 2, 3, None, None, 4, 5, None, None, 6, 7, None, None, None, None]
-    },
-    {
-        ""input"": [[1,2,3,4,5,6], [5, 6, 4, 3, 2, 1]],
-        ""output"": [1, 2, None, 3, None, 4, None, 5, None, None, 6, None, None]
-    },
-    {
-        ""input"": [[1,2,3,4,5], [2,1,5,4,3]],
-        ""output"": [1, 2, 3, None, None, 4, None, 5, None, None, None]
-    },
-    {
-        ""input"": [[1,2,3,4], [2,1,4,3]],
-        ""output"": [1, 2, 3, None, None, 4, None, None, None]
-    },
-    {
-        ""input"": [[1,2,4,5,7,6,3,8,9,10,11,12,13], [4,2,7,5,6,1,11,10,13,12,9,8,3]],
-        ""output"": [1, 2, 3, 4, 5, 8, None, None, None, 7, 6, 9, None, None, None, None, None, 10, None, 11, 12, None, None, 13, None, None, None]
-    }
-]
-
-def create_tree(lst):
-    if not lst:
-        return None
-    root = TreeNode(lst[0])
-    queue = [root]
-    i = 1
-    while queue and i < len(lst):
-        node = queue.pop(0)
-        if i < len(lst) and lst[i] is not None:
-            node.left = TreeNode(lst[i])
-            queue.append(node.left)
-        i += 1
-        if i < len(lst) and lst[i] is not None:
-            node.right = TreeNode(lst[i])
-            queue.append(node.right)
-        i += 1
-    return root
-
-def tree_to_list(root):
-    if not root:
-        return []
-    result = []
-    queue = [root]
-    while queue:
-        node = queue.pop(0)
-        if node:
-            result.append(node.val)
-            queue.append(node.left)
-            queue.append(node.right)
-        else:
-            result.append(None)
-    return result
-
-def identicalTrees(a, b):
- 
-    # 1. Both empty
-    if a is None and b is None:
-        return True
- 
-    # 2. Both non-empty -> Compare them
-    if a is not None and b is not None:
-        return ((a.val == b.val) and
-                identicalTrees(a.left, b.left)and
-                identicalTrees(a.right, b.right))
- 
-    # 3. one empty, one not -- false
-    return False
-
-obj = Solution()
-
-for test in params:
-    preorder = test['input'][0]
-    inorder = test['input'][1]
-    expected_output = test['output']
-    output = obj.buildTree(preorder, inorder)
-    if identicalTrees(output, create_tree(expected_output)):
-        print(""\u2705 Test passed."")
-    else:
         print(f""\u274C Test failed. Input: preorder={preorder}, inorder={inorder} Expected output: {expected_output}, but got {tree_to_list(output)}"")","let params = [
     {
         ""input"": [[3,9,20,15,7], [9,3,15,20,7]],
@@ -8151,10 +8001,900 @@ for (const test of params) {
     this.left = (left===undefined ? null : left)
     this.right = (right===undefined ? null : right)
 }"
-63b5984e8ad4593d6b7b0224,binary-tree-maximum-path-sum,,,,
-63b5984f8ad4593d6b7b0225,serialize-and-deserialize-binary-tree,,,,
-63b598508ad4593d6b7b0226,implement-trie-prefix-tree,,,,
-63b598518ad4593d6b7b0227,design-add-and-search-words-data-structure,,,,
+63b5984e8ad4593d6b7b0224,binary-tree-maximum-path-sum,"params = [
+    {
+    ""input"": [1,2,3],
+    ""output"": 6
+    },
+    {
+    ""input"": [-10,9,20,None,None,15,7],
+    ""output"": 42
+    },
+    {
+    ""input"": [1, -2, 3],
+    ""output"": 4
+    },
+    {
+    ""input"": [1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1,2,3,-4],
+    ""output"": 6
+    },
+    {
+    ""input"": [2, -1, -2],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, -1, -1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, 2, -1, 4],
+    ""output"": 7
+    },
+    {
+    ""input"": [-1, -2, -3, -4],
+    ""output"": -1
+    },
+    {
+    ""input"": [1,2,3,4,5],
+    ""output"": 11
+    },
+    {
+    ""input"": [-1,0,1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1,2,3,4,5,-6],
+    ""output"": 11
+    },
+    {
+    ""input"": [1, -2, 3, -4, -5],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, 2, -1, 4, -5, -6],
+    ""output"": 7
+    },
+    {
+    ""input"": [1, -1, 2, -3, 4, -5],
+    ""output"": 6
+    },
+    {
+    ""input"": [1, -2, 3, -4, 5],
+    ""output"": 7
+    },
+    {
+    ""input"": [1, -1, -1, 2],
+    ""output"": 2
+    },
+    {
+    ""input"": [-1, -2, -3, 4],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, -1, -1, 2, -2],
+    ""output"": 2
+    }
+]
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+
+obj = Solution()
+
+for test in params:
+    input_data = test['input']
+    expected_output = test['output']
+    output = obj.maxPathSum(create_tree(input_data))
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Input: {input_data} Expected output: {expected_output}, but got {output}"")","let params = [
+    {
+    ""input"": [1,2,3],
+    ""output"": 6
+    },
+    {
+    ""input"": [-10,9,20,null,null,15,7],
+    ""output"": 42
+    },
+    {
+    ""input"": [1, -2, 3],
+    ""output"": 4
+    },
+    {
+    ""input"": [1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1,2,3,-4],
+    ""output"": 6
+    },
+    {
+    ""input"": [2, -1, -2],
+    ""output"": 2
+    },
+    {
+    ""input"": [1, -1, -1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1, 2, -1, 4],
+    ""output"": 7
+    },
+    {
+    ""input"": [-1, -2, -3, -4],
+    ""output"": -1
+    },
+    {
+    ""input"": [1,2,3,4,5],
+    ""output"": 11
+    },
+    {
+    ""input"": [-1,0,1],
+    ""output"": 1
+    },
+    {
+    ""input"": [1,2,3,4,5,-6],
+    ""output"": 11
+    },
+    {
+    ""input"": [1, -2, 3, -4, -5],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, 2, -1, 4, -5, -6],
+    ""output"": 7
+    },
+    {
+    ""input"": [1, -1, 2, -3, 4, -5],
+    ""output"": 6
+    },
+    {
+    ""input"": [1, -2, 3, -4, 5],
+    ""output"": 7
+    },
+    {
+    ""input"": [1, -1, -1, 2],
+    ""output"": 2
+    },
+    {
+    ""input"": [-1, -2, -3, 4],
+    ""output"": 4
+    },
+    {
+    ""input"": [1, -1, -1, 2, -2],
+    ""output"": 2
+    }
+]
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+
+for (let test of params) {
+    let input_data = test['input'];
+    let expected_output = test['output'];
+    let output = maxPathSum(create_tree(input_data));
+    if (output === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. Input: ${input_data} Expected output: ${expected_output}, but got ${output}`);
+    }
+}","class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right","function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}"
+63b5984f8ad4593d6b7b0225,serialize-and-deserialize-binary-tree,"params = [
+    {
+    ""input"": [1,2,3],
+    ""output"": [1,2,3]
+    },
+    {
+    ""input"": [-10,9,20,None,None,15,7],
+    ""output"": [-10,9,20,None,None,15,7]
+    },
+    {
+    ""input"": [1, -2, 3],
+    ""output"": [1, -2, 3]
+    },
+    {
+    ""input"": [1],
+    ""output"": [1]
+    },
+    {
+    ""input"": [1,2,3,-4],
+    ""output"": [1,2,3,-4],
+    },
+    {
+    ""input"": [2, -1, -2],
+    ""output"": [2, -1, -2],
+    },
+    {
+    ""input"": [1, -1, -1],
+    ""output"": [1, -1, -1],
+    },
+    {
+    ""input"": [1, 2, -1, 4],
+    ""output"": [1, 2, -1, 4],
+    },
+    {
+    ""input"": [-1, -2, -3, -4],
+    ""output"":  [-1, -2, -3, -4],
+    },
+    {
+    ""input"": [1,2,3,4,5],
+    ""output"": [1,2,3,4,5],
+    },
+    {
+    ""input"": [-1,0,1],
+    ""output"": [-1,0,1],
+    },
+    {
+    ""input"": [1,2,3,4,5,-6],
+    ""output"": [1,2,3,4,5,-6],
+    },
+    {
+    ""input"": [1, -2, 3, -4, -5],
+    ""output"": [1, -2, 3, -4, -5],
+    },
+    {
+    ""input"": [1, 2, -1, 4, -5, -6],
+    ""output"": [1, 2, -1, 4, -5, -6],
+    },
+    {
+    ""input"": [1, -1, 2, -3, 4, -5],
+    ""output"": [1, -1, 2, -3, 4, -5],
+    },
+    {
+    ""input"": [1, -2, 3, -4, 5],
+    ""output"": [1, -2, 3, -4, 5],
+    },
+    {
+    ""input"": [1, -1, -1, 2],
+    ""output"": [1, -1, -1, 2],
+    },
+    {
+    ""input"": [-1, -2, -3, 4],
+    ""output"": [-1, -2, -3, 4],
+    },
+    {
+    ""input"": [1, -1, -1, 2, -2],
+    ""output"": [1, -1, -1, 2, -2],
+    }
+]
+
+def create_tree(lst):
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(lst):
+        node = queue.pop(0)
+        if i < len(lst) and lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            queue.append(node.left)
+        i += 1
+        if i < len(lst) and lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            queue.append(node.right)
+        i += 1
+    return root
+
+def identicalTrees(a, b):
+ 
+    # 1. Both empty
+    if a is None and b is None:
+        return True
+ 
+    # 2. Both non-empty -> Compare them
+    if a is not None and b is not None:
+        return ((a.val == b.val) and
+                identicalTrees(a.left, b.left)and
+                identicalTrees(a.right, b.right))
+ 
+    # 3. one empty, one not -- false
+    return False
+
+def tree_to_list(root):
+    if not root:
+        return []
+    result = []
+    queue = [root]
+    while queue:
+        node = queue.pop(0)
+        if node:
+            result.append(node.val)
+            queue.append(node.left)
+            queue.append(node.right)
+        else:
+            result.append(None)
+    return result
+
+
+obj = Codec()
+
+for test in params:
+    input_data = test['input']
+    expected_output = test['output']
+    output = obj.deserialize(obj.serialize(create_tree(input_data)))
+    if identicalTrees(output, create_tree(expected_output)):
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Input: {input_data} Expected output: {expected_output}, but got {tree_to_list(output)}"")","let params = [
+    {
+    ""input"": [1,2,3],
+    ""output"": [1,2,3]
+    },
+    {
+    ""input"": [-10,9,20,null,null,15,7],
+    ""output"": [-10,9,20,null,null,15,7]
+    },
+    {
+    ""input"": [1, -2, 3],
+    ""output"": [1, -2, 3]
+    },
+    {
+    ""input"": [1],
+    ""output"": [1]
+    },
+    {
+    ""input"": [1,2,3,-4],
+    ""output"": [1,2,3,-4],
+    },
+    {
+    ""input"": [2, -1, -2],
+    ""output"": [2, -1, -2],
+    },
+    {
+    ""input"": [1, -1, -1],
+    ""output"": [1, -1, -1],
+    },
+    {
+    ""input"": [1, 2, -1, 4],
+    ""output"": [1, 2, -1, 4],
+    },
+    {
+    ""input"": [-1, -2, -3, -4],
+    ""output"":  [-1, -2, -3, -4],
+    },
+    {
+    ""input"": [1,2,3,4,5],
+    ""output"": [1,2,3,4,5],
+    },
+    {
+    ""input"": [-1,0,1],
+    ""output"": [-1,0,1],
+    },
+    {
+    ""input"": [1,2,3,4,5,-6],
+    ""output"": [1,2,3,4,5,-6],
+    },
+    {
+    ""input"": [1, -2, 3, -4, -5],
+    ""output"": [1, -2, 3, -4, -5],
+    },
+    {
+    ""input"": [1, 2, -1, 4, -5, -6],
+    ""output"": [1, 2, -1, 4, -5, -6],
+    },
+    {
+    ""input"": [1, -1, 2, -3, 4, -5],
+    ""output"": [1, -1, 2, -3, 4, -5],
+    },
+    {
+    ""input"": [1, -2, 3, -4, 5],
+    ""output"": [1, -2, 3, -4, 5],
+    },
+    {
+    ""input"": [1, -1, -1, 2],
+    ""output"": [1, -1, -1, 2],
+    },
+    {
+    ""input"": [-1, -2, -3, 4],
+    ""output"": [-1, -2, -3, 4],
+    },
+    {
+    ""input"": [1, -1, -1, 2, -2],
+    ""output"": [1, -1, -1, 2, -2],
+    }
+]
+
+function create_tree(lst) {
+    if (!lst || lst.length === 0) {
+        return null;
+    }
+    let root = new TreeNode(lst[0]);
+    let queue = [root];
+    let i = 1;
+    while (queue.length > 0 && i < lst.length) {
+        let node = queue.shift();
+        if (i < lst.length && lst[i] !== null) {
+            node.left = new TreeNode(lst[i]);
+            queue.push(node.left);
+        }
+        i += 1;
+        if (i < lst.length && lst[i] !== null) {
+            node.right = new TreeNode(lst[i]);
+            queue.push(node.right);
+        }
+        i += 1;
+    }
+    return root;
+}
+
+
+
+function tree_to_list(root) {
+    if (!root) {
+        return [];
+    }
+    let result = [];
+    let queue = [root];
+    while (queue.length > 0) {
+        let node = queue.shift();
+        if (node) {
+            result.push(node.val);
+            queue.push(node.left);
+            queue.push(node.right);
+        } else {
+            result.push(null);
+        }
+    }
+    return result;
+}
+
+function identicalTrees(a, b) {
+ 
+    // 1. Both empty
+    if (a === null && b === null) {
+        return true;
+    }
+ 
+    // 2. Both non-empty -> Compare them
+    if (a !== null && b !== null) {
+        return ((a.val === b.val) &&
+                identicalTrees(a.left, b.left)&&
+                identicalTrees(a.right, b.right));
+    }
+ 
+    // 3. one empty, one not -- false
+    return false;
+}
+
+for (let test of params) {
+    let input_data = test['input']
+    let expected_output = test['output']
+    let output = deserialize(serialize(create_tree(input_data)));
+    if (identicalTrees(output, create_tree(expected_output))) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. Input: ${input_data} Expected output: ${expected_output}, but got ${tree_to_list(output)}`);
+    }
+}","class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None","function TreeNode(val) {
+    this.val = val;
+    this.left = this.right = null;
+}"
+63b598508ad4593d6b7b0226,implement-trie-prefix-tree,"params = [    
+    {        
+        ""input"": [""insert"", ""search"", ""search"", ""startsWith"", ""insert"", ""search""],
+        ""input_args"": [[""apple""], [""apple""], [""app""], [""app""], [""app""], [""app""]],
+        ""output"": [None, True, False, True, None, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""cat""], [""cat""], [""ca""], [""cf""]],
+        ""output"": [None, True, True, False]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""dog""], [""dog""], [""do""], [""d""]],
+        ""output"": [None, True, True, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""hello""], [""hello""], [""hell""], [""hev""]],
+        ""output"": [None, True, True, False]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""world""], [""world""], [""wor""], [""wof""]],
+        ""output"": [None, True, True, False]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""tree""], [""tree""], [""tre""], [""tr""]],
+        ""output"": [None, True, True, True]
+    },
+    {
+        ""input"": [""insert"", ""insert"", ""search"", ""search""],
+        ""input_args"": [[""apple""], [""apple""], [""appl""], [""app""]],
+        ""output"": [None, None, False, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""banana""], [""banana""], [""banan""], [""bana""]],
+        ""output"": [None, True, True, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""cherry""], [""cherry""], [""cherr""], [""cher""]],
+        ""output"": [None, True, True, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""date""], [""date""], [""dat""], [""da""]],
+        ""output"": [None, True, True, True]
+    },
+    {        
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""cat""], [""cat""], [""catt""], [""c""]],
+        ""output"": [None, True, False, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""dog""], [""dog""], [""do""], [""dkuahsdlfkuahsdjfhaks""]],
+        ""output"": [None, True, True, False]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""hello""], [""hello""], [""hello""], [""he""]],
+        ""output"": [None, True, True, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""world""], [""world""], [""wor""], [""wo""]],
+        ""output"": [None, True, True, True]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""tree""], [""tree""], [""tre""], [""tr""]],
+        ""output"": [None, True, True, True]
+    },
+    {
+        ""input"": [""addWord"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""apple""], [""apple""], [""appl""], [""a""]],
+        ""output"": [None, True, True, True]
+    },
+]
+
+obj = Trie()
+for test in params:
+    input_data = test['input']
+    input_args = test['input_args']
+    expected_output = test['output']
+    output = []
+    for i in range(len(input_data)):
+        if input_data[i] == ""insert"":
+            obj.insert(input_args[i][0])
+            output.append(None)
+        elif input_data[i] == ""search"":
+            output.append(obj.search(input_args[i][0]))
+        elif input_data[i] == ""startsWith"":
+            output.append(obj.startsWith(input_args[i][0]))
+        else:
+            output.append(None)
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Input: {input_data}, {input_args} Expected output: {expected_output}, but got {output}"")","let params = [    
+    {        
+        ""input"": [""insert"", ""search"", ""search"", ""startsWith"", ""insert"", ""search""],
+        ""input_args"": [[""apple""], [""apple""], [""app""], [""app""], [""app""], [""app""]],
+        ""output"": [null, true, false, true, null, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""cat""], [""cat""], [""ca""], [""cf""]],
+        ""output"": [null, true, true, false]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""dog""], [""dog""], [""do""], [""d""]],
+        ""output"": [null, true, true, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""hello""], [""hello""], [""hell""], [""hev""]],
+        ""output"": [null, true, true, false]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""world""], [""world""], [""wor""], [""wof""]],
+        ""output"": [null, true, true, false]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""tree""], [""tree""], [""tre""], [""tr""]],
+        ""output"": [null, true, true, true]
+    },
+    {
+        ""input"": [""insert"", ""insert"", ""search"", ""search""],
+        ""input_args"": [[""apple""], [""apple""], [""appl""], [""app""]],
+        ""output"": [null, null, false, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""banana""], [""banana""], [""banan""], [""bana""]],
+        ""output"": [null, true, true, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""cherry""], [""cherry""], [""cherr""], [""cher""]],
+        ""output"": [null, true, true, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""date""], [""date""], [""dat""], [""da""]],
+        ""output"": [null, true, true, true]
+    },
+    {        
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""cat""], [""cat""], [""catt""], [""c""]],
+        ""output"": [null, true, false, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""dog""], [""dog""], [""do""], [""dkuahsdlfkuahsdjfhaks""]],
+        ""output"": [null, true, true, false]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""hello""], [""hello""], [""hello""], [""he""]],
+        ""output"": [null, true, true, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""world""], [""world""], [""wor""], [""wo""]],
+        ""output"": [null, true, true, true]
+    },
+    {
+        ""input"": [""insert"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""tree""], [""tree""], [""tre""], [""tr""]],
+        ""output"": [null, true, true, true]
+    },
+    {
+        ""input"": [""addWord"", ""search"", ""startsWith"", ""startsWith""],
+        ""input_args"": [[""apple""], [""apple""], [""appl""], [""a""]],
+        ""output"": [null, true, true, true]
+    },
+]
+
+let obj = new Trie();
+for (let test of params) {
+    let input_data = test['input'];
+    let input_args = test['input_args'];
+    let expected_output = test['output'];
+    let output = [];
+    for (let i = 0; i < input_data.length; i++) {
+        if (input_data[i] === ""insert"") {
+            obj.insert(input_args[i][0]);
+            output.push(null);
+        } else if (input_data[i] === ""search"") {
+            output.push(obj.search(input_args[i][0]));
+        } else if (input_data[i] === ""startsWith"") {
+            output.push(obj.startsWith(input_args[i][0]));
+        } else {
+            output.push(null);
+        }
+    }
+    if (output.toString() === expected_output.toString()) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. Input: ${input_data}, ${input_args} Expected output: ${expected_output}, but got ${output}`);
+    }
+}",,
+63b598518ad4593d6b7b0227,design-add-and-search-words-data-structure,"params = [
+    {
+    ""input"": [""addWord"",""addWord"",""addWord"",""search"",""search"",""search"",""search""],
+    ""input_args"": [[""bad""],[""dad""],[""mad""],[""pad""],[""bad""],["".ad""],[""b..""]],
+    ""output"": [None, None, None, False, True, True, True]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""addWord"",""search"",""search"",""search"",""search""],
+    ""input_args"": [[""apple""],[""banana""],[""cherry""],[""app""],[""ban""],["".er""],[""c..""]],
+    ""output"": [None, None, None, False, False, False, False]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""dog""],[""cat""],[""do""],[""ca""],[""d.""]],
+    ""output"": [None, None, False, False, False]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""hello""],[""world""],[""he""],[""wo""],[""w.""]],
+    ""output"": [None, None, False, False, False]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""tree""],[""forest""],[""tr""],[""fo""],[""f.""]],
+    ""output"": [None, None, False, False, False]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""hello""],[""world""],[""he""],[""wo""],[""w.""]],
+    ""output"": [None, None, False, False, False]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""water""],[""bottle""],[""wa""],[""bo""],[""b.""]],
+    ""output"": [None, None, False, False, False]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search"",""search""],
+    ""input_args"": [[""word""],[""wo""],[""wor""],[""wor.""],[""w..""],[""wor..""]],
+    ""output"": [None, None, False, True, False, True]
+    },
+    {
+    ""input"": [""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""test""],[""te""],[""tes""],[""te.t""]],
+    ""output"": [None, False, False, True]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""example""],[""ex""],[""exa""],[""exam.""],[""exa.p""]],
+    ""output"": [None, None, False, False, False]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""hello""],[""world""],[""he""],[""wo""],[""w.""]],
+    ""output"": [None, None, False, True, True]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""tree""],[""forest""],[""tr""],[""fo""],[""f.""]],
+    ""output"": [None, None, False, False, False]
+    }
+]
+
+
+obj = WordDictionary()
+for test in params:
+    input_data = test['input']
+    input_args = test['input_args']
+    expected_output = test['output']
+    output = []
+    for i in range(len(input_data)):
+        if input_data[i] == ""addWord"":
+            obj.addWord(input_args[i][0])
+            output.append(None)
+        elif input_data[i] == ""search"":
+            output.append(obj.search(input_args[i][0]))
+    if output == expected_output:
+        print(""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Input: {input_data} Ops: {input_args} Expected output: {expected_output}, but got {output}"")","params = [
+    {
+    ""input"": [""addWord"",""addWord"",""addWord"",""search"",""search"",""search"",""search""],
+    ""input_args"": [[""bad""],[""dad""],[""mad""],[""pad""],[""bad""],["".ad""],[""b..""]],
+    ""output"": [null, null, null, false, true, true, true]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""addWord"",""search"",""search"",""search"",""search""],
+    ""input_args"": [[""apple""],[""banana""],[""cherry""],[""app""],[""ban""],["".er""],[""c..""]],
+    ""output"": [null, null, null, false, false, false, false]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""dog""],[""cat""],[""do""],[""ca""],[""d.""]],
+    ""output"": [null, null, false, false, false]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""hello""],[""world""],[""he""],[""wo""],[""w.""]],
+    ""output"": [null, null, false, false, false]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""tree""],[""forest""],[""tr""],[""fo""],[""f.""]],
+    ""output"": [null, null, false, false, false]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""hello""],[""world""],[""he""],[""wo""],[""w.""]],
+    ""output"": [null, null, false, false, false]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""water""],[""bottle""],[""wa""],[""bo""],[""b.""]],
+    ""output"": [null, null, false, false, false]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search"",""search""],
+    ""input_args"": [[""word""],[""wo""],[""wor""],[""wor.""],[""w..""],[""wor..""]],
+    ""output"": [null, null, false, true, false, true]
+    },
+    {
+    ""input"": [""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""test""],[""te""],[""tes""],[""te.t""]],
+    ""output"": [null, false, false, true]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""example""],[""ex""],[""exa""],[""exam.""],[""exa.p""]],
+    ""output"": [null, null, false, false, false]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""hello""],[""world""],[""he""],[""wo""],[""w.""]],
+    ""output"": [null, null, false, true, true]
+    },
+    {
+    ""input"": [""addWord"",""addWord"",""search"",""search"",""search""],
+    ""input_args"": [[""tree""],[""forest""],[""tr""],[""fo""],[""f.""]],
+    ""output"": [null, null, false, false, false]
+    }
+]
+
+let obj = new WordDictionary();
+for (let test of params) {
+    let input_data = test['input'];
+    let input_args = test['input_args'];
+    let expected_output = test['output'];
+    let output = [];
+    for (let i = 0; i < input_data.length; i++) {
+        if (input_data[i] == ""addWord"") {
+            obj.addWord(input_args[i][0]);
+            output.push(null);
+        } else if (input_data[i] == ""search"") {
+            output.push(obj.search(input_args[i][0]));
+        }
+    }
+    if (output.toString() === expected_output.toString()) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. Input: ${input_data} Ops: ${input_args} Expected output: ${expected_output}, but got ${output}`);
+    }
+}",,
 63b598518ad4593d6b7b0228,word-search-ii,,,,
 63b598528ad4593d6b7b0229,kth-largest-element-in-a-stream,,,,
 63b598538ad4593d6b7b022a,last-stone-weight,,,,
