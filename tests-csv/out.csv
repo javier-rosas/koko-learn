@@ -8895,8 +8895,357 @@ for (let test of params) {
         console.log(`\u274C Test failed. Input: ${input_data} Ops: ${input_args} Expected output: ${expected_output}, but got ${output}`);
     }
 }",,
-63b598518ad4593d6b7b0228,word-search-ii,,,,
-63b598528ad4593d6b7b0229,kth-largest-element-in-a-stream,,,,
+63b598518ad4593d6b7b0228,word-search-ii,"params = [
+    {
+        ""input"": [
+        [[""o"",""a"",""a"",""n""],[""e"",""t"",""a"",""e""],[""i"",""h"",""k"",""r""],[""i"",""f"",""l"",""v""]],
+        [""oath"",""pea"",""eat"",""rain""]
+        ],
+        ""output"": [""eat"",""oath""]
+    },
+    {
+        ""input"": [
+        [[""a"",""b""],[""c"",""d""]],
+        [""abcb""]
+        ],
+        ""output"": []
+    },
+    {
+        ""input"": [
+        [[""a"",""b"",""c"",""d"",""e"",""f"",""g"",""h"",""i"",""j"",""k"",""l""],[""m"",""n"",""o"",""p"",""q"",""r"",""s"",""t"",""u"",""v"",""w"",""x""],[""y"",""z"",""a"",""b"",""c"",""d"",""e"",""f"",""g"",""h"",""i"",""j""],[""k"",""l"",""m"",""n"",""o"",""p"",""q"",""r"",""s"",""t"",""u"",""v""],[""w"",""x"",""y"",""z"",""a"",""b"",""c"",""d"",""e"",""f"",""g"",""h""],[""i"",""j"",""k"",""l"",""m"",""n"",""o"",""p"",""q"",""r"",""s"",""t""],[""u"",""v"",""w"",""x"",""y"",""z"",""a"",""b"",""c"",""d"",""e"",""f""],[""g"",""h"",""i"",""j"",""k"",""l"",""m"",""n"",""o"",""p"",""q"",""r""],[""s"",""t"",""u"",""v"",""w"",""x"",""y"",""z"",""a"",""b"",""c"",""d""],[""e"",""f"",""g"",""h"",""i"",""j"",""k"",""l"",""m"",""n"",""o"",""p""],[""q"",""r"",""s"",""t"",""u"",""v"",""w"",""x"",""y"",""z"",""a"",""b""],[""c"",""d"",""e"",""f"",""g"",""h"",""i"",""j"",""k"",""l"",""m"",""n""]],
+        [""abcdefghijklmnopqrstuvwxyz""]
+        ],
+        ""output"": []
+    },
+    {
+        ""input"": [
+        [[""a"",""a"",""a"",""a""],[""a"",""a"",""a"",""a""],[""a"",""a"",""a"",""a""],[""a"",""a"",""a"",""a""]],
+        [""aaaaaaaaaa""]
+        ],
+        ""output"": [""aaaaaaaaaa""]
+    },
+    {    
+        ""input"": [
+            [[""o"",""a"",""t""],[""h"",""e"",""a""],[""t"",""t"",""n""]],
+            [""oath"",""heat"",""eat"",""tea""]
+        ],
+        ""output"": ['heat', 'tea', 'eat']
+    },
+    {
+        ""input"": [    
+            [[""g"",""o"",""o"",""d""],[""b"",""y"",""e"",""e""],[""g"",""o"",""o"",""d""],[""b"",""y"",""e"",""e""]],
+            [""goodbye"",""byegood"",""good"",""bye""]
+        ],
+        ""output"": ['bye', 'good']
+    },
+    {
+        ""input"": [    
+            [[""c"",""a"",""t"",""s""],[""r"",""u"",""n"",""s""],[""c"",""a"",""t"",""s""],[""r"",""u"",""n"",""s""]],
+            [""catsruns"",""runscats"",""cat"",""runs""]
+        ],
+        ""output"": ['cat', 'runs']
+    },
+    {
+        ""input"": [    
+            [[""h"",""e"",""l"",""l"",""o""],[""w"",""o"",""r"",""l"",""d""]],
+            [""hello"",""world"",""word"",""hell""]
+        ],
+        ""output"": ['hello', 'hell', 'world']
+    },
+    {
+        ""input"": [    
+            [[""h"",""e"",""a"",""t""],[""c"",""o"",""o"",""l""]],
+            [""heat"",""cool"",""coat"",""lot""]
+        ],
+        ""output"": [""heat"",""cool""]
+    },
+    {
+        ""input"": [    
+            [[""p"",""e"",""a"",""c"",""e""],[""w"",""a"",""r"", ""t"", ""o""]],
+            [""peace"",""war"",""wear"",""car""]
+        ],
+        ""output"": ['car', 'peace', 'war']
+    },
+    {
+        ""input"": [    
+            [[""s"",""p"",""r"",""i"",""n"",""g""],[""s"",""u"",""m"",""m"",""e"",""r""]],
+            [""spring"",""summer"",""ring"",""murmur""]
+        ],
+        ""output"": ['summer', 'ring', 'spring']
+    },
+    {
+        ""input"": [    
+            [[""a"",""p"",""p"",""l"",""e""],[""b"",""a"",""n"",""a"",""n"",""a""]],
+            [""apple"",""banana"",""ana"",""plea""]
+        ],
+        ""output"": ['apple', 'ana']
+    },
+    {
+        ""input"": [    
+            [[""f"",""a"",""l"",""l""],[""w"",""i"",""n"",""t"",""e"",""r""]],
+            [""fall"",""winter"",""faint"",""inter""]
+        ],
+        ""output"": ['fall', 'faint']
+    },
+    {
+        ""input"": [    
+            [[""s"",""n"",""o"",""w"",""f"",""l"",""a"",""k"",""e""],[""s"",""a"",""n"",""d"",""b"",""e"",""a"",""c"",""h""]],
+            [""snowflake"",""beachsand"",""flake"",""sand""]
+        ],
+        ""output"": ['flake', 'sand', 'snowflake']
+    }
+]
+
+
+obj = Solution()
+for test in params:
+    input_data = test[""input""]
+    expected_output = test[""output""]
+    got_output = obj.findWords(input_data[0], input_data[1])
+    if set(got_output) == set(expected_output):
+        print(f""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. Board: {input_data[0]}, Words: {input_data[1]} expected output {expected_output} but got {got_output}"")","let params = [
+    {
+        ""input"": [
+        [[""o"",""a"",""a"",""n""],[""e"",""t"",""a"",""e""],[""i"",""h"",""k"",""r""],[""i"",""f"",""l"",""v""]],
+        [""oath"",""pea"",""eat"",""rain""]
+        ],
+        ""output"": [""eat"",""oath""]
+    },
+    {
+        ""input"": [
+        [[""a"",""b""],[""c"",""d""]],
+        [""abcb""]
+        ],
+        ""output"": []
+    },
+    {
+        ""input"": [
+        [[""a"",""b"",""c"",""d"",""e"",""f"",""g"",""h"",""i"",""j"",""k"",""l""],[""m"",""n"",""o"",""p"",""q"",""r"",""s"",""t"",""u"",""v"",""w"",""x""],[""y"",""z"",""a"",""b"",""c"",""d"",""e"",""f"",""g"",""h"",""i"",""j""],[""k"",""l"",""m"",""n"",""o"",""p"",""q"",""r"",""s"",""t"",""u"",""v""],[""w"",""x"",""y"",""z"",""a"",""b"",""c"",""d"",""e"",""f"",""g"",""h""],[""i"",""j"",""k"",""l"",""m"",""n"",""o"",""p"",""q"",""r"",""s"",""t""],[""u"",""v"",""w"",""x"",""y"",""z"",""a"",""b"",""c"",""d"",""e"",""f""],[""g"",""h"",""i"",""j"",""k"",""l"",""m"",""n"",""o"",""p"",""q"",""r""],[""s"",""t"",""u"",""v"",""w"",""x"",""y"",""z"",""a"",""b"",""c"",""d""],[""e"",""f"",""g"",""h"",""i"",""j"",""k"",""l"",""m"",""n"",""o"",""p""],[""q"",""r"",""s"",""t"",""u"",""v"",""w"",""x"",""y"",""z"",""a"",""b""],[""c"",""d"",""e"",""f"",""g"",""h"",""i"",""j"",""k"",""l"",""m"",""n""]],
+        [""abcdefghijklmnopqrstuvwxyz""]
+        ],
+        ""output"": []
+    },
+    {
+        ""input"": [
+        [[""a"",""a"",""a"",""a""],[""a"",""a"",""a"",""a""],[""a"",""a"",""a"",""a""],[""a"",""a"",""a"",""a""]],
+        [""aaaaaaaaaa""]
+        ],
+        ""output"": [""aaaaaaaaaa""]
+    },
+    {    
+        ""input"": [
+            [[""o"",""a"",""t""],[""h"",""e"",""a""],[""t"",""t"",""n""]],
+            [""oath"",""heat"",""eat"",""tea""]
+        ],
+        ""output"": ['heat', 'tea', 'eat']
+    },
+    {
+        ""input"": [    
+            [[""g"",""o"",""o"",""d""],[""b"",""y"",""e"",""e""],[""g"",""o"",""o"",""d""],[""b"",""y"",""e"",""e""]],
+            [""goodbye"",""byegood"",""good"",""bye""]
+        ],
+        ""output"": ['bye', 'good']
+    },
+    {
+        ""input"": [    
+            [[""c"",""a"",""t"",""s""],[""r"",""u"",""n"",""s""],[""c"",""a"",""t"",""s""],[""r"",""u"",""n"",""s""]],
+            [""catsruns"",""runscats"",""cat"",""runs""]
+        ],
+        ""output"": ['cat', 'runs']
+    },
+    {
+        ""input"": [    
+            [[""h"",""e"",""l"",""l"",""o""],[""w"",""o"",""r"",""l"",""d""]],
+            [""hello"",""world"",""word"",""hell""]
+        ],
+        ""output"": ['hello', 'hell', 'world']
+    },
+    {
+        ""input"": [    
+            [[""h"",""e"",""a"",""t""],[""c"",""o"",""o"",""l""]],
+            [""heat"",""cool"",""coat"",""lot""]
+        ],
+        ""output"": [""heat"",""cool""]
+    },
+    {
+        ""input"": [    
+            [[""p"",""e"",""a"",""c"",""e""],[""w"",""a"",""r"", ""t"", ""o""]],
+            [""peace"",""war"",""wear"",""car""]
+        ],
+        ""output"": ['car', 'peace', 'war']
+    },
+    {
+        ""input"": [    
+            [[""s"",""p"",""r"",""i"",""n"",""g""],[""s"",""u"",""m"",""m"",""e"",""r""]],
+            [""spring"",""summer"",""ring"",""murmur""]
+        ],
+        ""output"": ['summer', 'ring', 'spring']
+    },
+    {
+        ""input"": [    
+            [[""a"",""p"",""p"",""l"",""e""],[""b"",""a"",""n"",""a"",""n"",""a""]],
+            [""apple"",""banana"",""ana"",""plea""]
+        ],
+        ""output"": ['apple', 'ana']
+    },
+    {
+        ""input"": [    
+            [[""f"",""a"",""l"",""l""],[""w"",""i"",""n"",""t"",""e"",""r""]],
+            [""fall"",""winter"",""faint"",""inter""]
+        ],
+        ""output"": ['fall', 'faint']
+    },
+    {
+        ""input"": [    
+            [[""s"",""n"",""o"",""w"",""f"",""l"",""a"",""k"",""e""],[""s"",""a"",""n"",""d"",""b"",""e"",""a"",""c"",""h""]],
+            [""snowflake"",""beachsand"",""flake"",""sand""]
+        ],
+        ""output"": ['flake', 'sand', 'snowflake']
+    }
+]
+
+for (const test of params) {
+    let input_data = test[""input""];
+    let expected_output = test[""output""];
+    let got_output = findWords(input_data[0], input_data[1]);
+    if (new Set(got_output).toString() === new Set(expected_output).toString()) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. Board: ${input_data[0]}, Words: ${input_data[1]} expected output ${expected_output} but got ${got_output}`);
+    }
+}",,
+63b598528ad4593d6b7b0229,kth-largest-element-in-a-stream,"params = [    
+    {        
+        ""input"": [3, [4, 5, 8, 2]], 
+        ""add"": [3, 5, 10, 9, 4], 
+        ""output"": [4, 5, 5, 8, 8]
+    },
+    {
+        ""input"": [2, [-1, 0, 1, 2, 3]], 
+        ""add"": [4, 5, -2, -3, -4], 
+        ""output"": [3, 4, 4, 4, 4]
+    },
+    {
+        ""input"": [2, [1, 2, 3, 4, 5]], 
+        ""add"": [-1, -2, -3, -4, -5], 
+        ""output"": [4, 4, 4, 4, 4]
+    },
+    {
+        ""input"": [3, [10, 20, 30, 40, 50]], 
+        ""add"": [60, 70, 80, 90, 100], 
+        ""output"": [40, 50, 60, 70, 80]
+    },
+    {
+        ""input"": [1, [-100, -50, -25, -10, -5]], 
+        ""add"": [0, 1, 2, 3, 4], 
+        ""output"":[0, 1, 2, 3, 4]
+    },
+    {
+        ""input"": [5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], 
+        ""add"": [11, 12, 13, 14, 15], 
+        ""output"": [7, 8, 9, 10, 11]
+    },
+    {
+        ""input"": [1, [1]], 
+        ""add"": [2, 3, 4, 5, 6], 
+        ""output"": [2, 3, 4, 5, 6]
+    },
+    {
+        ""input"": [5, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], 
+        ""add"": [1, 1, 1, 1, 1], 
+        ""output"": [1, 1, 1, 1, 1]
+    },
+    {
+        ""input"": [3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]], 
+        ""add"": [-1, -2, -3, -4, -5], 
+        ""output"": [13, 13, 13, 13, 13]
+    },
+    {
+        ""input"": [4, [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]], 
+        ""add"": [900, 800, 700, 600, 500], 
+        ""output"": [800, 800, 800, 800, 800]
+    }
+]
+
+for test in params:
+    kthLargest = KthLargest(test[""input""][0], test[""input""][1])
+    res = []
+    for val in test[""add""]:
+        got_output = kthLargest.add(val)
+        res.append(got_output)
+    expected_output = test[""output""]
+    if res == expected_output:
+        print(f""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. add value: {val} expected output {expected_output} but got {res}"")","let params = [    
+    {        
+        ""input"": [3, [4, 5, 8, 2]], 
+        ""add"": [3, 5, 10, 9, 4], 
+        ""output"": [4, 5, 5, 8, 8]
+    },
+    {
+        ""input"": [2, [-1, 0, 1, 2, 3]], 
+        ""add"": [4, 5, -2, -3, -4], 
+        ""output"": [3, 4, 4, 4, 4]
+    },
+    {
+        ""input"": [2, [1, 2, 3, 4, 5]], 
+        ""add"": [-1, -2, -3, -4, -5], 
+        ""output"": [4, 4, 4, 4, 4]
+    },
+    {
+        ""input"": [3, [10, 20, 30, 40, 50]], 
+        ""add"": [60, 70, 80, 90, 100], 
+        ""output"": [40, 50, 60, 70, 80]
+    },
+    {
+        ""input"": [1, [-100, -50, -25, -10, -5]], 
+        ""add"": [0, 1, 2, 3, 4], 
+        ""output"":[0, 1, 2, 3, 4]
+    },
+    {
+        ""input"": [5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], 
+        ""add"": [11, 12, 13, 14, 15], 
+        ""output"": [7, 8, 9, 10, 11]
+    },
+    {
+        ""input"": [1, [1]], 
+        ""add"": [2, 3, 4, 5, 6], 
+        ""output"": [2, 3, 4, 5, 6]
+    },
+    {
+        ""input"": [5, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], 
+        ""add"": [1, 1, 1, 1, 1], 
+        ""output"": [1, 1, 1, 1, 1]
+    },
+    {
+        ""input"": [3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]], 
+        ""add"": [-1, -2, -3, -4, -5], 
+        ""output"": [13, 13, 13, 13, 13]
+    },
+    {
+        ""input"": [4, [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]], 
+        ""add"": [900, 800, 700, 600, 500], 
+        ""output"": [800, 800, 800, 800, 800]
+    }
+]
+
+for (let test of params) {
+    let kthLargest = new KthLargest(test[""input""][0], test[""input""][1]);
+    let res = [];
+    for (let val of test[""add""]) {
+        let got_output = kthLargest.add(val);
+        res.push(got_output);
+    }
+    let expected_output = test[""output""];
+    if (JSON.stringify(res) === JSON.stringify(expected_output)) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. add value: ${val} expected output ${expected_output} but got ${res}`);
+    }
+}",,
 63b598538ad4593d6b7b022a,last-stone-weight,,,,
 63b598548ad4593d6b7b022b,k-closest-points-to-origin,,,,
 63b598558ad4593d6b7b022c,kth-largest-element-in-an-array,,,,
