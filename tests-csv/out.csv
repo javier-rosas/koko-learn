@@ -9349,18 +9349,521 @@ for (let i = 0; i < params.length; i++) {
         console.log(`\u274C Test failed. input: ${test['input']} expected output ${expected_output} but got ${got_output}`);
     }
 }",,
-63b598548ad4593d6b7b022b,k-closest-points-to-origin,,,,
-63b598558ad4593d6b7b022c,kth-largest-element-in-an-array,,,,
-63b598558ad4593d6b7b022d,task-scheduler,,,,
-63b598578ad4593d6b7b022e,design-twitter,,,,
+63b598548ad4593d6b7b022b,k-closest-points-to-origin,"params = [
+    {
+    ""input"": [[[1,3],[-2,2]], 1],
+    ""output"": [[-2,2]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4]], 2],
+    ""output"": [[3,3],[-2,4]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4]], 3],
+    ""output"": [[3, 3], [-2, 4], [5, -1]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4]], 1],
+    ""output"": [[3,3]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4],[-5,5],[-10,10]], 2],
+    ""output"": [[3, 3], [-2, 4]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4],[-5,5],[-10,10]], 5],
+    ""output"": [[3, 3], [-2, 4], [5, -1], [-5, 5], [-10, 10]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4],[-5,5],[-10,10]], 4],
+    ""output"": [[3, 3], [-2, 4], [5, -1], [-5, 5]]
+    },
+    {
+    ""input"": [[[5,3],[1,-1],[-1,1],[-1,9]], 2],
+    ""output"": [[1,-1],[-1,1]]
+    },
+    {
+    ""input"": [[[8,7],[0,4],[0,-1],[1,0],[-1,0]], 3],
+    ""output"": [[0,-1],[1,0],[-1,0]]
+    }
+]
+
+obj = Solution()
+for test in params:
+    got_output = obj.kClosest(test[""input""][0], test[""input""][1])
+    expected_output = test[""output""]
+    got_output_set = set([tuple(lst) for lst in got_output])
+    expected_output_set = set([tuple(lst) for lst in expected_output])
+    if got_output_set == expected_output_set:
+        print(f""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. input: {test['input']} expected output {expected_output} but got {got_output}"")","let params = [
+    {
+    ""input"": [[[1,3],[-2,2]], 1],
+    ""output"": [[-2,2]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4]], 2],
+    ""output"": [[3,3],[-2,4]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4]], 3],
+    ""output"": [[3, 3], [-2, 4], [5, -1]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4]], 1],
+    ""output"": [[3,3]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4],[-5,5],[-10,10]], 2],
+    ""output"": [[3, 3], [-2, 4]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4],[-5,5],[-10,10]], 5],
+    ""output"": [[3, 3], [-2, 4], [5, -1], [-5, 5], [-10, 10]]
+    },
+    {
+    ""input"": [[[3,3],[5,-1],[-2,4],[-5,5],[-10,10]], 4],
+    ""output"": [[3, 3], [-2, 4], [5, -1], [-5, 5]]
+    },
+    {
+    ""input"": [[[5,3],[1,-1],[-1,1],[-1,9]], 2],
+    ""output"": [[1,-1],[-1,1]]
+    },
+    {
+    ""input"": [[[8,7],[0,4],[0,-1],[1,0],[-1,0]], 3],
+    ""output"": [[0,-1],[1,0],[-1,0]]
+    }
+]
+
+const eqSet = (xs, ys) =>
+    xs.size === ys.size &&
+    [...xs].every((x) => ys.has(x));
+
+for (let test of params) {
+    let got_output = kClosest(test[""input""][0], test[""input""][1]);
+    let expected_output = test[""output""];
+    let got_output_set = got_output.map(lst => JSON.stringify(lst))
+    let expected_output_set = expected_output.map(lst => JSON.stringify(lst))
+    let one = new Set(got_output_set)
+    let two = new Set(expected_output_set)
+    if (eqSet(one, two)) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. input: ${JSON.stringify(test['input'])} expected output [${JSON.stringify(expected_output)}] but got [${JSON.stringify(got_output)}]`);
+    }
+}",,
+63b598558ad4593d6b7b022c,kth-largest-element-in-an-array,"params = [
+    {
+    ""input"": [[3,2,1,5,6,4], 2],
+    ""output"": 5
+    },
+    {
+    ""input"": [[3,2,3,1,2,4,5,5,6], 4],
+    ""output"": 4
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 9],
+    ""output"": 1
+    },
+    {
+    ""input"": [[1,1,1,1,1,1,1], 1],
+    ""output"": 1
+    },
+    {
+    ""input"": [[-1,-2,-3,-4,-5,-6,-7,-8,-9], 3],
+    ""output"": -3
+    },
+    {
+    ""input"": [[-1,-1,-1,-1,-1,-1,-1], 1],
+    ""output"": -1
+    },
+    {
+    ""input"": [[-1,1,0], 2],
+    ""output"": 0
+    },
+    {
+    ""input"": [[1], 1],
+    ""output"": 1
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 5],
+    ""output"": 5
+    },
+    {
+    ""input"": [[-5, -2, -1, 0, 1, 2, 3, 4, 5], 3],
+    ""output"": 3
+    },
+    {
+    ""input"": [[-5, -2, -1, 0, 1, 2, 3, 4, 5], 1],
+    ""output"": 5
+    },
+    {
+    ""input"": [[-5, -2, -1, 0, 1, 2, 3, 4, 5], 9],
+    ""output"": -5
+    },
+    {
+    ""input"": [[5,5,5,5,5], 3],
+    ""output"": 5
+    },
+    {
+    ""input"": [[-5,-5,-5,-5,-5], 3],
+    ""output"": -5
+    },
+    {
+    ""input"": [[-5,5,-5,5,-5,5], 3],
+    ""output"": 5
+    },
+    {
+    ""input"": [[1,1,1,1,1,1,1,1,1], 5],
+    ""output"": 1
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 4],
+    ""output"": 6
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 2],
+    ""output"": 8
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 1],
+    ""output"": 9
+    }
+]
+
+obj = Solution()
+for test in params:
+    got_output = obj.findKthLargest(test[""input""][0], test[""input""][1])
+    expected_output = test[""output""]
+    if got_output == expected_output:
+        print(f""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. input: {test['input']} expected output {expected_output} but got {got_output}"")","let params = [
+    {
+    ""input"": [[3,2,1,5,6,4], 2],
+    ""output"": 5
+    },
+    {
+    ""input"": [[3,2,3,1,2,4,5,5,6], 4],
+    ""output"": 4
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 9],
+    ""output"": 1
+    },
+    {
+    ""input"": [[1,1,1,1,1,1,1], 1],
+    ""output"": 1
+    },
+    {
+    ""input"": [[-1,-2,-3,-4,-5,-6,-7,-8,-9], 3],
+    ""output"": -3
+    },
+    {
+    ""input"": [[-1,-1,-1,-1,-1,-1,-1], 1],
+    ""output"": -1
+    },
+    {
+    ""input"": [[-1,1,0], 2],
+    ""output"": 0
+    },
+    {
+    ""input"": [[1], 1],
+    ""output"": 1
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 5],
+    ""output"": 5
+    },
+    {
+    ""input"": [[-5, -2, -1, 0, 1, 2, 3, 4, 5], 3],
+    ""output"": 3
+    },
+    {
+    ""input"": [[-5, -2, -1, 0, 1, 2, 3, 4, 5], 1],
+    ""output"": 5
+    },
+    {
+    ""input"": [[-5, -2, -1, 0, 1, 2, 3, 4, 5], 9],
+    ""output"": -5
+    },
+    {
+    ""input"": [[5,5,5,5,5], 3],
+    ""output"": 5
+    },
+    {
+    ""input"": [[-5,-5,-5,-5,-5], 3],
+    ""output"": -5
+    },
+    {
+    ""input"": [[-5,5,-5,5,-5,5], 3],
+    ""output"": 5
+    },
+    {
+    ""input"": [[1,1,1,1,1,1,1,1,1], 5],
+    ""output"": 1
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 4],
+    ""output"": 6
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 2],
+    ""output"": 8
+    },
+    {
+    ""input"": [[1,2,3,4,5,6,7,8,9], 1],
+    ""output"": 9
+    }
+]
+
+for (let i = 0; i < params.length; i++) {
+    let test = params[i];
+    let got_output = findKthLargest(test[""input""][0], test[""input""][1]);
+    let expected_output = test[""output""];
+    if (got_output === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. input: ${test['input']} expected output ${expected_output} but got ${got_output}`);
+    }
+}",,
+63b598558ad4593d6b7b022d,task-scheduler,"params = [    
+    {        
+        ""input"": [[""A"",""A"",""A"",""B"",""B"",""B""], 2],
+        ""output"": 8
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""B"",""B"",""B""], 0],
+        ""output"": 6
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""B"",""C"",""D"",""E"",""F"",""G""], 2],
+        ""output"": 16
+    },
+    {
+        ""input"": [[""A"",""B"",""C"",""D"",""E"",""F"",""G"",""H"",""I"",""J"",""K"",""L""], 3],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""B"",""C"",""D"",""E"",""F"",""G"",""H"",""I"",""J"",""K"",""L""], 2],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 0],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 1],
+        ""output"": 23
+    },
+    {
+        ""input"": [[""A"",""B"",""A"",""B"",""A"",""B"",""A"",""B"",""A"",""B"",""A"",""B""], 1],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 4],
+        ""output"": 56
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 100],
+        ""output"": 1112
+    },
+    {        
+        ""input"": [[""A"",""A"",""B"",""B"",""C"",""C"",""D"",""D"",""E"",""E""], 3],
+        ""output"": 10
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""B"",""B"",""B"",""B"",""B""], 2],
+        ""output"": 14
+    },
+    {
+        ""input"": [[""A"",""B"",""C"",""D"",""E"",""F"",""G"",""H"",""I"",""J"",""K"",""L""], 4],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""B"",""B"",""B"",""C"",""C"",""C""], 1],
+        ""output"": 9
+    },
+    {
+        ""input"": [[""A"",""B"",""A"",""B"",""C"",""C"",""D"",""D""], 0],
+        ""output"": 8
+    }
+]
+
+obj = Solution()
+for test in params:
+    got_output = obj.leastInterval(test[""input""][0], test[""input""][1])
+    expected_output = test[""output""]
+    if got_output == expected_output:
+        print(f""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. input: {test['input']} expected output {expected_output} but got {got_output}"")","let params = [    
+    {        
+        ""input"": [[""A"",""A"",""A"",""B"",""B"",""B""], 2],
+        ""output"": 8
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""B"",""B"",""B""], 0],
+        ""output"": 6
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""B"",""C"",""D"",""E"",""F"",""G""], 2],
+        ""output"": 16
+    },
+    {
+        ""input"": [[""A"",""B"",""C"",""D"",""E"",""F"",""G"",""H"",""I"",""J"",""K"",""L""], 3],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""B"",""C"",""D"",""E"",""F"",""G"",""H"",""I"",""J"",""K"",""L""], 2],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 0],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 1],
+        ""output"": 23
+    },
+    {
+        ""input"": [[""A"",""B"",""A"",""B"",""A"",""B"",""A"",""B"",""A"",""B"",""A"",""B""], 1],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 4],
+        ""output"": 56
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A"",""A""], 100],
+        ""output"": 1112
+    },
+    {        
+        ""input"": [[""A"",""A"",""B"",""B"",""C"",""C"",""D"",""D"",""E"",""E""], 3],
+        ""output"": 10
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""A"",""A"",""B"",""B"",""B"",""B"",""B""], 2],
+        ""output"": 14
+    },
+    {
+        ""input"": [[""A"",""B"",""C"",""D"",""E"",""F"",""G"",""H"",""I"",""J"",""K"",""L""], 4],
+        ""output"": 12
+    },
+    {
+        ""input"": [[""A"",""A"",""A"",""B"",""B"",""B"",""C"",""C"",""C""], 1],
+        ""output"": 9
+    },
+    {
+        ""input"": [[""A"",""B"",""A"",""B"",""C"",""C"",""D"",""D""], 0],
+        ""output"": 8
+    }
+]
+
+for (let test of params) {
+    let got_output = leastInterval(test[""input""][0], test[""input""][1]);
+    let expected_output = test[""output""];
+    if (got_output === expected_output) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. input: ${test['input']} expected output ${expected_output} but got ${got_output}`);
+    }
+}",,
+63b598578ad4593d6b7b022e,design-twitter,"params = [
+    {""input"": [""postTweet"", 1, 5], ""output"": None},
+    {""input"": [""getNewsFeed"", 1], ""output"": [5]},
+    {""input"": [""follow"", 1, 2], ""output"": None},
+    {""input"": [""postTweet"", 2, 6], ""output"": None},
+    {""input"": [""getNewsFeed"", 1], ""output"": [6, 5]},
+    {""input"": [""unfollow"", 1, 2], ""output"": None},
+    {""input"": [""getNewsFeed"", 1], ""output"": [5]},
+    {""input"": [""postTweet"", 3, 8], ""output"": None},
+    {""input"": [""getNewsFeed"", 2], ""output"": [6]},
+    {""input"": [""follow"", 2, 3], ""output"": None},
+    {""input"": [""postTweet"", 4, 10], ""output"": None},
+    {""input"": [""getNewsFeed"", 3], ""output"": [8]},
+    {""input"": [""unfollow"", 2, 3], ""output"": None},
+    {""input"": [""getNewsFeed"", 2], ""output"": [6]},
+    {""input"": [""postTweet"", 5, 12], ""output"": None},
+    {""input"": [""getNewsFeed"", 4], ""output"": [10]},
+    {""input"": [""follow"", 4, 5], ""output"": None},
+    {""input"": [""postTweet"", 6, 14], ""output"": None},
+    {""input"": [""getNewsFeed"", 5], ""output"": [12]},
+    {""input"": [""unfollow"", 4, 5], ""output"": None},
+    {""input"": [""getNewsFeed"", 4], ""output"": [10]},
+    {""input"": [""postTweet"", 7, 16], ""output"": None},
+    {""input"": [""getNewsFeed"", 6], ""output"": [14]},
+]
+
+twitter = Twitter()
+for test in params:
+    expected_output = test['output']
+    got_output = None
+    if test['input'][0] == ""postTweet"":
+        got_output = twitter.postTweet(test['input'][1], test['input'][2])
+    elif test['input'][0] == ""getNewsFeed"":
+        got_output = twitter.getNewsFeed(test['input'][1])
+    elif test['input'][0] == ""follow"":
+        got_output = twitter.follow(test['input'][1], test['input'][2])
+    elif test['input'][0] == ""unfollow"":
+        got_output = twitter.unfollow(test['input'][1], test['input'][2])
+    if got_output == expected_output:
+        print(f""\u2705 Test passed."")
+    else:
+        print(f""\u274C Test failed. input: {test['input']} expected output {expected_output} but got {got_output}"")","let params = [
+    {""input"": [""postTweet"", 1, 5], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 1], ""output"": [5]},
+    {""input"": [""follow"", 1, 2], ""output"": undefined},
+    {""input"": [""postTweet"", 2, 6], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 1], ""output"": [6, 5]},
+    {""input"": [""unfollow"", 1, 2], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 1], ""output"": [5]},
+    {""input"": [""postTweet"", 3, 8], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 2], ""output"": [6]},
+    {""input"": [""follow"", 2, 3], ""output"": undefined},
+    {""input"": [""postTweet"", 4, 10], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 3], ""output"": [8]},
+    {""input"": [""unfollow"", 2, 3], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 2], ""output"": [6]},
+    {""input"": [""postTweet"", 5, 12], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 4], ""output"": [10]},
+    {""input"": [""follow"", 4, 5], ""output"": undefined},
+    {""input"": [""postTweet"", 6, 14], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 5], ""output"": [12]},
+    {""input"": [""unfollow"", 4, 5], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 4], ""output"": [10]},
+    {""input"": [""postTweet"", 7, 16], ""output"": undefined},
+    {""input"": [""getNewsFeed"", 6], ""output"": [14]},
+]
+
+let twitter = new Twitter();
+for (let test of params) {
+    let expected_output = test['output'];
+    let got_output = null;
+    if (test['input'][0] === ""postTweet"") {
+        got_output = twitter.postTweet(test['input'][1], test['input'][2]);
+    } else if (test['input'][0] === ""getNewsFeed"") {
+        got_output = twitter.getNewsFeed(test['input'][1]);
+    } else if (test['input'][0] === ""follow"") {
+        got_output = twitter.follow(test['input'][1], test['input'][2]);
+    } else if (test['input'][0] === ""unfollow"") {
+        got_output = twitter.unfollow(test['input'][1], test['input'][2]);
+    }
+    if (JSON.stringify(got_output) === JSON.stringify(expected_output)) {
+        console.log(""\u2705 Test passed."");
+    } else {
+        console.log(`\u274C Test failed. input: ${JSON.stringify(test['input'])} expected output ${JSON.stringify(expected_output)} but got ${JSON.stringify(got_output)}`);
+    }
+}",,
 63b598598ad4593d6b7b022f,find-median-from-data-stream,,,,
-63b5985a8ad4593d6b7b0230,subsets-,,,,
-63b5985b8ad4593d6b7b0231,combination-sum-,,,,
-63b5985c8ad4593d6b7b0232,permutations-,,,,
-63b5985c8ad4593d6b7b0233,subsets-ii-,,,,
-63b5985d8ad4593d6b7b0234,combination-sum-ii-,,,,
+63b5985a8ad4593d6b7b0230,subsets,,,,
+63b5985b8ad4593d6b7b0231,combination-sum,,,,
+63b5985c8ad4593d6b7b0232,permutations,,,,
+63b5985c8ad4593d6b7b0233,subsets-ii,,,,
+63b5985d8ad4593d6b7b0234,combination-sum-ii,,,,
 63b5985e8ad4593d6b7b0235,word-search-,,,,
-63b5985f8ad4593d6b7b0236,palindrome-partitioning-,,,,
+63b5985f8ad4593d6b7b0236,palindrome-partitioning,,,,
 63b598608ad4593d6b7b0237,letter-combinations-of-a-phone-number,,,,
 63b598618ad4593d6b7b0238,n-queens,,,,
 63b59a8f8ad4593d6b7b0239,number-of-islands,,,,
