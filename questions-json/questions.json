@@ -3409,7 +3409,7 @@
   "_id": {
     "$oid": "63b598598ad4593d6b7b022f"
   },
-  "name": "Find Median From Data Stream,",
+  "name": "Find Median From Data Stream",
   "description": {
     "description_text": "The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.\n\nFor example, for arr = [2,3,4], the median is 3.\nFor example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.\n\nImplement the MedianFinder class:\n\nMedianFinder() initializes the MedianFinder object.\nvoid addNum(int num) adds the integer num from the data stream to the data structure.\ndouble findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.\n\n \n",
     "description_img_source": null
@@ -3438,7 +3438,7 @@
   "_id": {
     "$oid": "63b5985a8ad4593d6b7b0230"
   },
-  "name": "Subsets,",
+  "name": "Subsets",
   "description": {
     "description_text": "Given an integer array nums of unique elements, return all possible subsets (the power set).\nThe solution set must not contain duplicate subsets. Return the solution in any order.\n \n",
     "description_img_source": null
@@ -3471,7 +3471,7 @@
   "_id": {
     "$oid": "63b5985b8ad4593d6b7b0231"
   },
-  "name": "Combination Sum,",
+  "name": "Combination Sum",
   "description": {
     "description_text": "Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.\nThe same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.\nThe test cases are generated such that the number of unique combinations that sum up to target is less than 150 combinations for the given input.\n \n",
     "description_img_source": null
@@ -3508,7 +3508,7 @@
   "_id": {
     "$oid": "63b5985c8ad4593d6b7b0232"
   },
-  "name": "Permutations,",
+  "name": "Permutations",
   "description": {
     "description_text": "Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.\n \n",
     "description_img_source": null
@@ -3545,7 +3545,7 @@
   "_id": {
     "$oid": "63b5985c8ad4593d6b7b0233"
   },
-  "name": "Subsets Ii,",
+  "name": "Subsets II",
   "description": {
     "description_text": "Given an integer array nums that may contain duplicates, return all possible subsets (the power set).\nThe solution set must not contain duplicate subsets. Return the solution in any order.\n \n",
     "description_img_source": null
@@ -3578,7 +3578,7 @@
   "_id": {
     "$oid": "63b5985d8ad4593d6b7b0234"
   },
-  "name": "Combination Sum Ii,",
+  "name": "Combination Sum II",
   "description": {
     "description_text": "Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.\nEach number in candidates may only be used once in the combination.\nNote: The solution set must not contain duplicate combinations.\n \n",
     "description_img_source": null
@@ -3611,7 +3611,7 @@
   "_id": {
     "$oid": "63b5985e8ad4593d6b7b0235"
   },
-  "name": "Word Search,",
+  "name": "Word Search",
   "description": {
     "description_text": "Given an m x n grid of characters board and a string word, return true if word exists in the grid.\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.\n \n",
     "description_img_source": null
@@ -3648,7 +3648,7 @@
   "_id": {
     "$oid": "63b5985f8ad4593d6b7b0236"
   },
-  "name": "Palindrome Partitioning,",
+  "name": "Palindrome Partitioning",
   "description": {
     "description_text": "Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.\n \n",
     "description_img_source": null
@@ -3681,7 +3681,7 @@
   "_id": {
     "$oid": "63b598608ad4593d6b7b0237"
   },
-  "name": "Letter Combinations Of A Phone Number,",
+  "name": "Letter Combinations Of A Phone Number",
   "description": {
     "description_text": "Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.\nA mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.\n\n \n",
     "description_img_source": "https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png"
