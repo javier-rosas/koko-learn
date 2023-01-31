@@ -48,7 +48,7 @@ export const preprocessPythonCode = (
 ) => {
   code =
     "\n" +
-    "\nimport math\nfrom collections import defaultdict, Counter\nfrom typing import List, Optional\n" +
+    "\nimport math \nfrom collections import defaultdict, Counter\nfrom typing import List, Optional\n" +
     pythonDataStructures +
     "\n" +
     code +
