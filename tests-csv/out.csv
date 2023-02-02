@@ -12633,7 +12633,7 @@ for (let i = 0; i < params.length; i++) {
         console.log(`\u2705 Test ${i} succeeded`);
     }
 }",,
-63b59a9e8ad4593d6b7b0247,min-cost-to-connect-all-points,,,,
+63b59a9e8ad4593d6b7b0247,min-cost-to-connect-all-points,f,,,
 63b59a9f8ad4593d6b7b0248,network-delay-time,,,,
 63b59aa08ad4593d6b7b0249,swim-in-rising-water,,,,
 63b59aa08ad4593d6b7b024a,alien-dictionary,,,,
