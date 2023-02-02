@@ -3958,9 +3958,33 @@
     "$oid": "63b59a958ad4593d6b7b023f"
   },
   "name": "Walls And Gates",
-  "examples": "",
+  "description": {
+    "description_text": "You are given a m x n 2D grid initialized with these three possible values. -1 - A wall or an obstacle. 0 - A gate. INF - Infinity means an empty room. We use the value 2^31 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647. Fill each empty room with the distance to its nearest gate. If it is impossible to reach a Gate, that room should remain filled with INF",
+    "description_img_source": null
+  },
+  "examples": [
+    {
+      "example_text": "Input:\n[[2147483647,-1,0,2147483647],[2147483647,2147483647,2147483647,-1],[2147483647,-1,2147483647,-1],[0,-1,2147483647,2147483647]]\nOutput:\n[[3,-1,0,1],[2,2,1,-1],[1,-1,2,-1],[0,-1,3,4]]\n\nExplanation:\nthe 2D grid is:\nINF  -1  0  INF\nINF INF INF  -1\nINF  -1 INF  -1\n  0  -1 INF INF\nthe answer is:\n  3  -1   0   1\n  2   2   1  -1\n  1  -1   2  -1\n  0  -1   3   4",
+      "example_img_source": null
+    },
+    {
+      "example_text": "Input:\n[[0,-1],[2147483647,2147483647]]\nOutput:\n[[0,-1],[1,2]]",
+      "example_img_source": null
+    }
+  ],
   "constraint": "",
-  "code_snippets": "",
+  "code_snippets": [
+    {
+      "lang": "Python3",
+      "langSlug": "python3",
+      "code": "class Solution:\n    \"\"\"\n    @param rooms: m x n 2D grid\n    @return: nothing\n    \"\"\"\n    def walls_and_gates(self, rooms: List[List[int]]):\n        # write your code here\n"
+    },
+    {
+      "lang": "Javascript",
+      "code": "export class Solution {\n  /**\n   * @param rooms: m x n 2D grid\n   * @return: nothing\n   */\n  wallsAndGates(rooms) {\n    // write your code here\n  }\n}",
+      "langSlug": "javascript"
+    }
+  ],
   "kebabCaseName": "walls-and-gates"
 },{
   "_id": {
@@ -3999,7 +4023,7 @@
   "_id": {
     "$oid": "63b59a978ad4593d6b7b0241"
   },
-  "name": "Course Schedule Ii",
+  "name": "Course Schedule II",
   "description": {
     "description_text": "There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.\n\nFor example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.\n\nReturn the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.\n \n",
     "description_img_source": null

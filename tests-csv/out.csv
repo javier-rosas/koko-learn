@@ -11744,14 +11744,895 @@ for (let i = 0; i < params.length; i++) {
     console.log(`\u274C Test failed. Input: ${JSON.stringify(grid)} Expected output: ${expected_output} but got ${result}`);
   }
 }",,
-63b59a958ad4593d6b7b023f,walls-and-gates,,,,
-63b59a968ad4593d6b7b0240,course-schedule,,,,
-63b59a978ad4593d6b7b0241,course-schedule-ii,,,,
-63b59a988ad4593d6b7b0242,redundant-connection,,,,
+63b59a958ad4593d6b7b023f,walls-and-gates,"params = [
+    {
+        ""input"": [[2147483647, -1, 0, 2147483647], [2147483647, 2147483647, 2147483647, -1], [2147483647, -1, 2147483647, -1], [0, -1, 2147483647, 2147483647]],
+        ""output"": [[3, -1, 0, 1], [2, 2, 1, -1], [1, -1, 2, -1], [0, -1, 3, 4]]
+    },
+    {
+        ""input"": [[0, -1],[2147483647, 2147483647]],
+        ""output"": [[0, -1], [1, 2]]
+    },
+    {
+        ""input"": [[2147483647, 2147483647, 2147483647], [2147483647, -1, 0], [2147483647, 2147483647, 2147483647]],
+        ""output"": [[3, 2, 1], [4, -1, 0], [3, 2, 1]]
+    },
+    {
+        ""input"": [[0, 2147483647], [2147483647, -1]],
+        ""output"": [[0, 1], [1, -1]]
+    },
+    {
+        ""input"": [[0]],
+        ""output"": [[0]]
+    },
+    {
+        ""input"": [[2147483647, 0, 2147483647], [2147483647, 0, 2147483647], [2147483647, 2147483647, 2147483647]],
+        ""output"": [[1, 0, 1], [1, 0, 1], [2, 1, 2]]
+    },
+    {
+        ""input"": [[-1, 0, 2147483647, -1], [2147483647, 2147483647, -1, 2147483647], [2147483647, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]],
+        ""output"": [[-1, 0, 1, -1], [2, 1, -1, 2147483647], [3, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]]
+    },
+    {
+        ""input"": [[2147483647, 2147483647], [2147483647, 2147483647]],
+        ""output"": [[2147483647, 2147483647], [2147483647, 2147483647]]
+    },
+    {
+        ""input"": [[-1, 0, 2147483647, -1], [2147483647, 2147483647, -1, 2147483647], [2147483647, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]],
+        ""output"": [[-1, 0, 1, -1], [2, 1, -1, 2147483647], [3, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]]
+    },
+    {
+        ""input"": [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        ""output"": [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    },
+    {
+        ""input"": [[0, 2147483647, 2147483647], [2147483647, -1, 2147483647], [2147483647, 2147483647, 0]],
+        ""output"": [[0, 1, 2], [1, -1, 1], [2, 1, 0]]
+    },
+    {
+        ""input"": [[0, 2147483647, -1],[-1, -1, 2147483647],[2147483647, 2147483647, 0]],
+        ""output"": [[0, 1, -1], [-1, -1, 1], [2, 1, 0]]
+    }
+]
+
+obj = Solution()
+for i, test in enumerate(params):
+    input_data = test['input']
+    expected_output = test['output']
+    got_output = obj.walls_and_gates(input_data)
+
+    if expected_output != input_data:
+        print(f""\u274C Test {i} failed: input = {input_data}, expected = {expected_output}, but got {input_data}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+    {
+        ""input"": [[2147483647, -1, 0, 2147483647], [2147483647, 2147483647, 2147483647, -1], [2147483647, -1, 2147483647, -1], [0, -1, 2147483647, 2147483647]],
+        ""output"": [[3, -1, 0, 1], [2, 2, 1, -1], [1, -1, 2, -1], [0, -1, 3, 4]]
+    },
+    {
+        ""input"": [[0, -1],[2147483647, 2147483647]],
+        ""output"": [[0, -1], [1, 2]]
+    },
+    {
+        ""input"": [[2147483647, 2147483647, 2147483647], [2147483647, -1, 0], [2147483647, 2147483647, 2147483647]],
+        ""output"": [[3, 2, 1], [4, -1, 0], [3, 2, 1]]
+    },
+    {
+        ""input"": [[0, 2147483647], [2147483647, -1]],
+        ""output"": [[0, 1], [1, -1]]
+    },
+    {
+        ""input"": [[0]],
+        ""output"": [[0]]
+    },
+    {
+        ""input"": [[2147483647, 0, 2147483647], [2147483647, 0, 2147483647], [2147483647, 2147483647, 2147483647]],
+        ""output"": [[1, 0, 1], [1, 0, 1], [2, 1, 2]]
+    },
+    {
+        ""input"": [[-1, 0, 2147483647, -1], [2147483647, 2147483647, -1, 2147483647], [2147483647, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]],
+        ""output"": [[-1, 0, 1, -1], [2, 1, -1, 2147483647], [3, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]]
+    },
+    {
+        ""input"": [[2147483647, 2147483647], [2147483647, 2147483647]],
+        ""output"": [[2147483647, 2147483647], [2147483647, 2147483647]]
+    },
+    {
+        ""input"": [[-1, 0, 2147483647, -1], [2147483647, 2147483647, -1, 2147483647], [2147483647, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]],
+        ""output"": [[-1, 0, 1, -1], [2, 1, -1, 2147483647], [3, -1, 2147483647, -1], [-1, 2147483647, 2147483647, -1]]
+    },
+    {
+        ""input"": [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        ""output"": [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    },
+    {
+        ""input"": [[0, 2147483647, 2147483647], [2147483647, -1, 2147483647], [2147483647, 2147483647, 0]],
+        ""output"": [[0, 1, 2], [1, -1, 1], [2, 1, 0]]
+    },
+    {
+        ""input"": [[0, 2147483647, -1],[-1, -1, 2147483647],[2147483647, 2147483647, 0]],
+        ""output"": [[0, 1, -1], [-1, -1, 1], [2, 1, 0]]
+    }
+]
+
+params.forEach((test, i) => {
+  const input_data = test.input;
+  const expected_output = test.output;
+  const got_output = wallsAndGates(input_data);
+  
+  if (JSON.stringify(expected_output) != JSON.stringify(input_data)) {
+    console.log(`\u274C Test ${i} failed: input = ${JSON.stringify(input_data)}, expected = ${JSON.stringify(expected_output)}, but got ${JSON.stringify(got_output)}`);
+  } else {
+    console.log(`\u2705 Test ${i} succeeded`);
+  }
+});",,
+63b59a968ad4593d6b7b0240,course-schedule,"params = [
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0]],
+        'expected': True
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0], [0, 1]],
+        'expected': False
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [2, 1], [3, 2]],
+        'expected': True
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [0, 2], [2, 1]],
+        'expected': False
+    },
+    {
+        'numCourses': 1,
+        'prerequisites': [],
+        'expected': True
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1]],
+        'expected': True
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 1], [1, 2]],
+        'expected': True
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 2], [2, 1]],
+        'expected': True
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4]],
+        'expected': True
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]],
+        'expected': False
+    },
+        {
+        'numCourses': 3,
+        'prerequisites': [[2, 0], [2, 1]],
+        'expected': True
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[2, 0], [1, 0], [3, 2]],
+        'expected': True
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[2, 0], [1, 0], [2, 3]],
+        'expected': True
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[4, 2], [1, 0], [2, 0], [3, 1]],
+        'expected': True
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[4, 2], [1, 0], [2, 0], [3, 1], [1, 4]],
+        'expected': True
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1], [1, 0]],
+        'expected': False
+    },
+    {
+        'numCourses': 6,
+        'prerequisites': [[2, 0], [5, 4], [0, 1], [1, 3]],
+        'expected': True
+    },
+    {
+        'numCourses': 6,
+        'prerequisites': [[2, 0], [5, 4], [0, 1], [1, 3], [3, 2]],
+        'expected': False
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 2], [2, 3]],
+        'expected': True
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 2], [2, 3], [3, 1]],
+        'expected': False
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    numCourses = params[i]['numCourses']
+    prerequisites = params[i]['prerequisites']
+    expected = params[i]['expected']
+    gotOutput = obj.canFinish(numCourses, prerequisites)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: numCourses = {numCourses}, prerequisites = {prerequisites}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0]],
+        'expected': true
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0], [0, 1]],
+        'expected': false
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [2, 1], [3, 2]],
+        'expected': true
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [0, 2], [2, 1]],
+        'expected': false
+    },
+    {
+        'numCourses': 1,
+        'prerequisites': [],
+        'expected': true
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1]],
+        'expected': true
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 1], [1, 2]],
+        'expected': true
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 2], [2, 1]],
+        'expected': true
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4]],
+        'expected': true
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]],
+        'expected': false
+    },
+        {
+        'numCourses': 3,
+        'prerequisites': [[2, 0], [2, 1]],
+        'expected': true
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[2, 0], [1, 0], [3, 2]],
+        'expected': true
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[2, 0], [1, 0], [2, 3]],
+        'expected': true
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[4, 2], [1, 0], [2, 0], [3, 1]],
+        'expected': true
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[4, 2], [1, 0], [2, 0], [3, 1], [1, 4]],
+        'expected': true
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1], [1, 0]],
+        'expected': false
+    },
+    {
+        'numCourses': 6,
+        'prerequisites': [[2, 0], [5, 4], [0, 1], [1, 3]],
+        'expected': true
+    },
+    {
+        'numCourses': 6,
+        'prerequisites': [[2, 0], [5, 4], [0, 1], [1, 3], [3, 2]],
+        'expected': false
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 2], [2, 3]],
+        'expected': true
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 2], [2, 3], [3, 1]],
+        'expected': false
+    }
+]
+
+for (let i = 0; i < params.length; i++) {
+    const { numCourses, prerequisites, expected } = params[i];
+    const gotOutput = canFinish(numCourses, prerequisites);
+    if (expected !== gotOutput) {
+        console.log(`\u274C Test ${i} failed: numCourses = ${numCourses}, prerequisites = ${JSON.stringify(prerequisites)}, expected = ${expected}, but got ${gotOutput}`);
+    } else {
+        console.log(`\u2705 Test ${i} succeeded`);
+    }
+}",,
+63b59a978ad4593d6b7b0241,course-schedule-ii,"params = [
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0]],
+        'expected': [0, 1]
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0], [0, 1]],
+        'expected': []
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [2, 1], [3, 2]],
+        'expected': [0, 1, 2, 3]
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [0, 2], [2, 1]],
+        'expected': []
+    },
+    {
+        'numCourses': 1,
+        'prerequisites': [],
+        'expected': [0]
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1]],
+        'expected': [1, 0]
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 1], [1, 2]],
+        'expected': [2, 1, 0]
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 2], [2, 1]],
+        'expected': [1, 2, 0]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4]],
+        'expected': [4, 3, 2, 1, 0]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]],
+        'expected': []
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[2, 0], [1, 0], [3, 2]],
+        'expected': [0, 1, 2, 3]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[4, 2], [1, 0], [2, 0], [3, 1], [1, 4]],
+        'expected': [0, 2, 4, 1, 3]
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1], [1, 0]],
+        'expected': []
+    },
+    {
+        'numCourses': 6,
+        'prerequisites': [[2, 0], [5, 4], [0, 1], [1, 3], [3, 2]],
+        'expected': []
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 2], [2, 3], [3, 1]],
+        'expected': []
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0]],
+        'expected': [0, 1]
+    },
+    {
+        'numCourses': 1,
+        'prerequisites': [],
+        'expected': [0]
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [2, 0], [3, 1], [2, 3]],
+        'expected': [0, 1, 3, 2]
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[1, 2], [0, 1]],
+        'expected': [2, 1, 0]
+    },
+    {
+        'numCourses': 0,
+        'prerequisites': [],
+        'expected': []
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 1], [0, 2], [1, 2]],
+        'expected': [2, 1, 0]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4]],
+        'expected': [4, 3, 2, 1, 0]
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    numCourses = params[i]['numCourses']
+    prerequisites = params[i]['prerequisites']
+    expected = params[i]['expected']
+    gotOutput = obj.findOrder(numCourses, prerequisites)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: numCourses = {numCourses}, prerequisites = {prerequisites}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0]],
+        'expected': [0, 1]
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0], [0, 1]],
+        'expected': []
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [2, 1], [3, 2]],
+        'expected': [0, 1, 2, 3]
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [0, 2], [2, 1]],
+        'expected': []
+    },
+    {
+        'numCourses': 1,
+        'prerequisites': [],
+        'expected': [0]
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1]],
+        'expected': [1, 0]
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 1], [1, 2]],
+        'expected': [2, 1, 0]
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 2], [2, 1]],
+        'expected': [1, 2, 0]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4]],
+        'expected': [4, 3, 2, 1, 0]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]],
+        'expected': []
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[2, 0], [1, 0], [3, 2]],
+        'expected': [0, 1, 2, 3]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[4, 2], [1, 0], [2, 0], [3, 1], [1, 4]],
+        'expected': [0, 2, 4, 1, 3]
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[0, 1], [1, 0]],
+        'expected': []
+    },
+    {
+        'numCourses': 6,
+        'prerequisites': [[2, 0], [5, 4], [0, 1], [1, 3], [3, 2]],
+        'expected': []
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 2], [2, 3], [3, 1]],
+        'expected': []
+    },
+    {
+        'numCourses': 2,
+        'prerequisites': [[1, 0]],
+        'expected': [0, 1]
+    },
+    {
+        'numCourses': 1,
+        'prerequisites': [],
+        'expected': [0]
+    },
+    {
+        'numCourses': 4,
+        'prerequisites': [[1, 0], [2, 0], [3, 1], [2, 3]],
+        'expected': [0, 1, 3, 2]
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[1, 2], [0, 1]],
+        'expected': [2, 1, 0]
+    },
+    {
+        'numCourses': 0,
+        'prerequisites': [],
+        'expected': []
+    },
+    {
+        'numCourses': 3,
+        'prerequisites': [[0, 1], [0, 2], [1, 2]],
+        'expected': [2, 1, 0]
+    },
+    {
+        'numCourses': 5,
+        'prerequisites': [[0, 1], [1, 2], [2, 3], [3, 4]],
+        'expected': [4, 3, 2, 1, 0]
+    }
+]
+
+for (let i = 0; i < params.length; i++) {
+    const { numCourses, prerequisites, expected } = params[i];
+    const gotOutput = findOrder(numCourses, prerequisites);
+    if (JSON.stringify(expected) !== JSON.stringify(gotOutput)) {
+        console.log(`\u274C Test ${i} failed: numCourses = ${numCourses}, prerequisites = ${JSON.stringify(prerequisites)}, expected = ${JSON.stringify(expected)}, but got ${JSON.stringify(gotOutput)}`);
+    } else {
+        console.log(`\u2705 Test ${i} succeeded`);
+    }
+}",,
+63b59a988ad4593d6b7b0242,redundant-connection,"params = [    
+    {        
+        ""edges"": [[1,2],[1,3],[2,3]],
+        ""expected"": [2,3]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[1,4],[1,5]],
+        ""expected"": [1,4]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[1,7]],
+        ""expected"": [1,7]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,1]],
+        ""expected"": [3,1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,1]],
+        ""expected"": [4,1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[1,8]],
+        ""expected"": [1,8]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[1,9]],
+        ""expected"": [1,9]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,1],[3,4],[4,5],[5,6],[6,7],[7,3]],
+        ""expected"": [3, 1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,1]],
+        ""expected"": [10,1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,1]],
+        ""expected"": [11,1]
+    },
+]
+
+obj = Solution()
+for i in range(len(params)):
+    edges = params[i]['edges']
+    expected = params[i]['expected']
+    gotOutput = obj.findRedundantConnection(edges)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: edges = {edges}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [    
+    {        
+        ""edges"": [[1,2],[1,3],[2,3]],
+        ""expected"": [2,3]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[1,4],[1,5]],
+        ""expected"": [1,4]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[1,7]],
+        ""expected"": [1,7]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,1]],
+        ""expected"": [3,1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,1]],
+        ""expected"": [4,1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[1,8]],
+        ""expected"": [1,8]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[1,9]],
+        ""expected"": [1,9]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,1],[3,4],[4,5],[5,6],[6,7],[7,3]],
+        ""expected"": [3, 1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,1]],
+        ""expected"": [10,1]
+    },
+    {
+        ""edges"": [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,1]],
+        ""expected"": [11,1]
+    },
+]
+
+for (let i = 0; i < params.length; i++) {
+  let edges = params[i]['edges'];
+  let expected = params[i]['expected'];
+  let gotOutput = findRedundantConnection(edges);
+  if (expected.toString() !== gotOutput.toString()) {
+    console.log(`\u274C Test ${i} failed: edges = ${JSON.stringify(edges)}, expected = ${JSON.stringify(expected)}, but got ${JSON.stringify(gotOutput)}`);
+  } else {
+    console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
 63b59a998ad4593d6b7b0243,number-of-connected-components-in-an-undirected-graph,,,,
-63b59a9b8ad4593d6b7b0244,graph-valid-tree,,,,
-63b59a9c8ad4593d6b7b0245,word-ladder,,,,
-63b59a9d8ad4593d6b7b0246,reconstruct-itinerary,,,,
+63b59a9b8ad4593d6b7b0244,graph-valid-tree,"params = [
+    {'n': 5, 'edges': [[0, 1], [0, 2], [2, 3], [2, 4]], 'expected': True},
+    {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]], 'expected': False},
+    {'n': 1, 'edges': [], 'expected': True},
+    {'n': 2, 'edges': [[0, 1]], 'expected': True},
+    {'n': 3, 'edges': [[0, 1], [1, 2]], 'expected': True},
+    {'n': 3, 'edges': [[0, 1], [2, 1]], 'expected': True},
+    {'n': 4, 'edges': [[0, 1], [1, 2], [2, 3]], 'expected': True},
+    {'n': 4, 'edges': [[0, 1], [1, 2], [2, 3], [3, 0]], 'expected': False},
+    {'n': 4, 'edges': [[0, 1], [0, 2], [0, 3]], 'expected': True},
+    {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]], 'expected': False},
+    {'n': 6, 'edges': [[0, 1], [0, 2], [2, 3], [3, 4], [3, 5]], 'expected': True},
+    {'n': 6, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4], [3, 5], [5, 0]], 'expected': False},
+    {'n': 4, 'edges': [[0, 1], [0, 2], [1, 2]], 'expected': False},
+    {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0], [4, 2]], 'expected': False},
+    {'n': 3, 'edges': [[0, 1], [1, 2], [2, 0], [2, 1]], 'expected': False},
+    {'n': 2, 'edges': [[0, 1], [1, 0]], 'expected': False},
+    {'n': 4, 'edges': [[0, 1], [1, 2], [2, 3]], 'expected': True},
+    {'n': 6, 'edges': [[0, 1], [0, 2], [1, 2], [2, 3], [3, 4], [4, 5]], 'expected': False},
+    {'n': 7, 'edges': [[0, 1], [0, 2], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], 'expected': False},
+    {'n': 5, 'edges': [[0, 1], [0, 2], [0, 3], [3, 4]], 'expected': True},
+]
+
+obj = Solution()
+for i in range(len(params)):
+    edges = params[i]['edges']
+    n = params[i]['n']
+    expected = params[i]['expected']
+    gotOutput = obj.validTree(n, edges)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: edges = {edges}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","params = [
+  {'n': 5, 'edges': [[0, 1], [0, 2], [2, 3], [2, 4]], 'expected': true},
+  {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]], 'expected': false},
+  {'n': 1, 'edges': [], 'expected': true},
+  {'n': 2, 'edges': [[0, 1]], 'expected': true},
+  {'n': 3, 'edges': [[0, 1], [1, 2]], 'expected': true},
+  {'n': 3, 'edges': [[0, 1], [2, 1]], 'expected': true},
+  {'n': 4, 'edges': [[0, 1], [1, 2], [2, 3]], 'expected': true},
+  {'n': 4, 'edges': [[0, 1], [1, 2], [2, 3], [3, 0]], 'expected': false},
+  {'n': 4, 'edges': [[0, 1], [0, 2], [0, 3]], 'expected': true},
+  {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]], 'expected': false},
+  {'n': 6, 'edges': [[0, 1], [0, 2], [2, 3], [3, 4], [3, 5]], 'expected': true},
+  {'n': 6, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4], [3, 5], [5, 0]], 'expected': false},
+  {'n': 4, 'edges': [[0, 1], [0, 2], [1, 2]], 'expected': false},
+  {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0], [4, 2]], 'expected': false},
+  {'n': 3, 'edges': [[0, 1], [1, 2], [2, 0], [2, 1]], 'expected': false},
+  {'n': 2, 'edges': [[0, 1], [1, 0]], 'expected': false},
+  {'n': 4, 'edges': [[0, 1], [1, 2], [2, 3]], 'expected': true},
+  {'n': 6, 'edges': [[0, 1], [0, 2], [1, 2], [2, 3], [3, 4], [4, 5]], 'expected': false},
+  {'n': 7, 'edges': [[0, 1], [0, 2], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], 'expected': false},
+  {'n': 5, 'edges': [[0, 1], [0, 2], [0, 3], [3, 4]], 'expected': true},
+]
+
+for (var i = 0; i < params.length; i++) {
+    var edges = params[i]['edges'];
+    var n = params[i]['n'];
+    var expected = params[i]['expected'];
+    var gotOutput = validTree(n, edges);
+    if (expected != gotOutput) {
+        console.log(""\u274C Test "" + i + "" failed: edges = "" + JSON.stringify(edges) + "", expected = "" + expected + "", but got "" + gotOutput);
+    } else {
+        console.log(""\u2705 Test "" + i + "" succeeded"");
+    }
+}",,
+63b59a9c8ad4593d6b7b0245,word-ladder,"params = [
+    {'beginWord': 'hit', 'endWord': 'cog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log"",""cog""], 'expected': 5},
+    {'beginWord': 'hit', 'endWord': 'cog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log""], 'expected': 0},
+    {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log""], 'expected': 3},
+    {'beginWord': 'a', 'endWord': 'c', 'wordList': [""a"",""b"",""c""], 'expected': 2},
+    {'beginWord': 'red', 'endWord': 'tax', 'wordList': [""ted"",""tex"",""red"",""tax"",""tad"",""den"",""rex""], 'expected': 4},
+    {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [], 'expected': 0},
+    {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [""hot""], 'expected': 0},
+    {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [""dog""], 'expected': 0},
+    {'beginWord': '', 'endWord': 'dog', 'wordList': [""dog""], 'expected': 0},
+    {'beginWord': 'hot', 'endWord': 'hot', 'wordList': [""hot""], 'expected': 1},
+    {'beginWord': 'at', 'endWord': 'cog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log"",""cog""], 'expected': 0},
+    {'beginWord': 'stone', 'endWord': 'money', 'wordList': [""stand"", ""stain"", ""stony"", ""money""], 'expected': 0},
+    {'beginWord': 'stone', 'endWord': 'money', 'wordList': [""stand"", ""stain"", ""stony"", ""money"", ""store""], 'expected': 0},
+    {'beginWord': 'move', 'endWord': 'money', 'wordList': [""love"", ""lost"", ""most"", ""mist"", ""cost"", ""cast"", ""mast"", ""mint"", ""mile"", ""male"", ""mile"", ""mole"", ""mode"", ""muse"", ""meat"", ""meal"", ""meet"", ""mead"", ""made"", ""mend"", ""many"", ""mane"", ""mage"", ""page"", ""pale"", ""pike"", ""pile"", ""pole"", ""pone"", ""pint"", ""puce"", ""pace"", ""pain"", ""pane"", ""pair"", ""hare"", ""hive"", ""hole"", ""hone"", ""hate"", ""hate"", ""hale"", ""have"", ""wake"", ""weak"", ""wine"", ""wile"", ""will"", ""weal"", ""wear"", ""weir"", ""wasp"", ""was"", ""ware"", ""warn"", ""war"", ""wand"", ""want"", ""ward"", ""warm"", ""wary"", ""waste"", ""fast"", ""fist"", ""fish"", ""fans"", ""fane"", ""fare"", ""farm"", ""fart"", ""feat"", ""fend"", ""fens"", ""font"", ""cent"", ""cast"", ""cats"", ""cart"", ""car"", ""cape"", ""cake"", ""cafe"", ""cage"", ""case"", ""cash"", ""care"", ""carp"", ""cars"", ""card"", ""ward"", ""warm"", ""warn"", ""war"", ""wand"", ""want"", ""ward"", ""warm"", ""wary"", ""waste""], 'expected': 0},
+    {'beginWord': 'cog', 'endWord': 'dog', 'wordList': [""dog"",""cog"",""bog"",""fog"",""log""], 'expected': 2},
+    {'beginWord': 'dog', 'endWord': 'cog', 'wordList': [""dog"",""cog"",""bog"",""fog"",""log""], 'expected': 2},
+    {'beginWord': 'at', 'endWord': 'cog', 'wordList': [], 'expected': 0},
+    {'beginWord': 'at', 'endWord': 'cog', 'wordList': [""cog""], 'expected': 0},
+    {'beginWord': 'at', 'endWord': 'cat', 'wordList': [""cat""], 'expected': 0},
+    {'beginWord': '', 'endWord': 'cog', 'wordList': [], 'expected': 0},
+    {'beginWord': 'dog', 'endWord': 'dog', 'wordList': [""dog""], 'expected': 1}
+]
+
+obj = Solution()
+for i in range(len(params)):
+    beginWord = params[i]['beginWord']
+    endWord = params[i]['endWord']
+    wordList = params[i]['wordList']
+    expected = params[i]['expected']
+    gotOutput = obj.ladderLength(beginWord, endWord, wordList)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: beginWord = {beginWord}, endWord = {endWord}, wordList = {wordList}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+  {'beginWord': 'hit', 'endWord': 'cog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log"",""cog""], 'expected': 5},
+  {'beginWord': 'hit', 'endWord': 'cog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log""], 'expected': 0},
+  {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log""], 'expected': 3},
+  {'beginWord': 'a', 'endWord': 'c', 'wordList': [""a"",""b"",""c""], 'expected': 2},
+  {'beginWord': 'red', 'endWord': 'tax', 'wordList': [""ted"",""tex"",""red"",""tax"",""tad"",""den"",""rex""], 'expected': 4},
+  {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [], 'expected': 0},
+  {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [""hot""], 'expected': 0},
+  {'beginWord': 'hot', 'endWord': 'dog', 'wordList': [""dog""], 'expected': 0},
+  {'beginWord': '', 'endWord': 'dog', 'wordList': [""dog""], 'expected': 0},
+  {'beginWord': 'hot', 'endWord': 'hot', 'wordList': [""hot""], 'expected': 1},
+  {'beginWord': 'at', 'endWord': 'cog', 'wordList': [""hot"",""dot"",""dog"",""lot"",""log"",""cog""], 'expected': 0},
+  {'beginWord': 'stone', 'endWord': 'money', 'wordList': [""stand"", ""stain"", ""stony"", ""money""], 'expected': 0},
+  {'beginWord': 'stone', 'endWord': 'money', 'wordList': [""stand"", ""stain"", ""stony"", ""money"", ""store""], 'expected': 0},
+  {'beginWord': 'move', 'endWord': 'money', 'wordList': [""love"", ""lost"", ""most"", ""mist"", ""cost"", ""cast"", ""mast"", ""mint"", ""mile"", ""male"", ""mile"", ""mole"", ""mode"", ""muse"", ""meat"", ""meal"", ""meet"", ""mead"", ""made"", ""mend"", ""many"", ""mane"", ""mage"", ""page"", ""pale"", ""pike"", ""pile"", ""pole"", ""pone"", ""pint"", ""puce"", ""pace"", ""pain"", ""pane"", ""pair"", ""hare"", ""hive"", ""hole"", ""hone"", ""hate"", ""hate"", ""hale"", ""have"", ""wake"", ""weak"", ""wine"", ""wile"", ""will"", ""weal"", ""wear"", ""weir"", ""wasp"", ""was"", ""ware"", ""warn"", ""war"", ""wand"", ""want"", ""ward"", ""warm"", ""wary"", ""waste"", ""fast"", ""fist"", ""fish"", ""fans"", ""fane"", ""fare"", ""farm"", ""fart"", ""feat"", ""fend"", ""fens"", ""font"", ""cent"", ""cast"", ""cats"", ""cart"", ""car"", ""cape"", ""cake"", ""cafe"", ""cage"", ""case"", ""cash"", ""care"", ""carp"", ""cars"", ""card"", ""ward"", ""warm"", ""warn"", ""war"", ""wand"", ""want"", ""ward"", ""warm"", ""wary"", ""waste""], 'expected': 0},
+  {'beginWord': 'cog', 'endWord': 'dog', 'wordList': [""dog"",""cog"",""bog"",""fog"",""log""], 'expected': 2},
+  {'beginWord': 'dog', 'endWord': 'cog', 'wordList': [""dog"",""cog"",""bog"",""fog"",""log""], 'expected': 2},
+  {'beginWord': 'at', 'endWord': 'cog', 'wordList': [], 'expected': 0},
+  {'beginWord': 'at', 'endWord': 'cog', 'wordList': [""cog""], 'expected': 0},
+  {'beginWord': 'at', 'endWord': 'cat', 'wordList': [""cat""], 'expected': 0},
+  {'beginWord': '', 'endWord': 'cog', 'wordList': [], 'expected': 0},
+  {'beginWord': 'dog', 'endWord': 'dog', 'wordList': [""dog""], 'expected': 1}
+]
+
+for (let i = 0; i < params.length; i++) {
+  let beginWord = params[i]['beginWord'];
+  let endWord = params[i]['endWord'];
+  let wordList = params[i]['wordList'];
+  let expected = params[i]['expected'];
+  let gotOutput = ladderLength(beginWord, endWord, wordList);
+  if (expected !== gotOutput) {
+    console.log(`\u274C Test ${i} failed: beginWord = ${beginWord}, endWord = ${endWord}, wordList = ${JSON.stringify(wordList)}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+    console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b59a9d8ad4593d6b7b0246,reconstruct-itinerary,"params = [    
+  {'tickets': [[""MUC"",""LHR""],[""JFK"",""MUC""],[""SFO"",""SJC""],[""LHR"",""SFO""]], 'expected': [""JFK"",""MUC"",""LHR"",""SFO"",""SJC""]},
+  {'tickets': [[""JFK"",""SFO""],[""JFK"",""ATL""],[""SFO"",""ATL""],[""ATL"",""JFK""],[""ATL"",""SFO""]], 'expected': [""JFK"",""ATL"",""JFK"",""SFO"",""ATL"",""SFO""]},
+  {'tickets': [[""JFK"",""LGA""]], 'expected': [""JFK"", ""LGA""]},
+  {'tickets': [[""JFK"",""AAA""], [""AAA"",""BBB""], [""BBB"",""CCC""], [""CCC"",""DDD""], [""DDD"", ""EEE""], [""EEE"", ""FFF""]], 'expected': [""JFK"",""AAA"",""BBB"",""CCC"",""DDD"",""EEE"",""FFF""]},
+  {'tickets': [[""JFK"",""AAA""], [""AAA"",""JFK""], [""JFK"",""BBB""], [""BBB"",""JFK""]], 'expected': ['JFK', 'AAA', 'JFK', 'BBB', 'JFK']},
+  {'tickets': [[""AAA"",""BBB""], [""BBB"",""CCC""], [""CCC"",""DDD""], [""DDD"", ""EEE""], [""EEE"", ""FFF""], [""FFF"",""GGG""]], 'expected': ['JFK']},
+  {'tickets': [], 'expected': [""JFK""]},
+  {'tickets': [[""JFK"", ""JFK""]], 'expected': [""JFK"", ""JFK""]},
+  {'tickets': [[""JFK"", ""AAA""], [""AAA"", ""JFK""], [""JFK"", ""BBB""], [""BBB"", ""AAA""], [""AAA"", ""BBB""]], 'expected': ['JFK', 'AAA', 'BBB', 'AAA', 'JFK', 'BBB']},
+  {'tickets': [[""JFK"", ""AAA""], [""AAA"", ""BBB""], [""BBB"", ""CCC""], [""CCC"", ""DDD""], [""DDD"", ""EEE""], [""EEE"", ""BBB""], [""BBB"", ""DDD""], [""DDD"", ""CCC""], [""CCC"", ""BBB""], [""BBB"", ""AAA""]], 'expected': ['JFK', 'AAA', 'BBB', 'CCC', 'BBB', 'DDD', 'CCC', 'DDD', 'EEE', 'BBB', 'AAA']},
+  {'tickets': [[""JFK"",""LAX""],[""LAX"",""SFO""],[""SFO"",""HKG""],[""HKG"",""JFK""],[""JFK"",""HKO""],[""HKO"",""LAX""]], 'expected': ['JFK', 'HKO', 'LAX', 'SFO', 'HKG', 'JFK', 'LAX']},
+  {'tickets': [[""JFK"",""SFO""],[""SFO"",""LAX""],[""LAX"",""HKG""],[""HKG"",""JFK""],[""JFK"",""HKO""],[""HKO"",""SFO""]], 'expected': ['JFK', 'HKO', 'SFO', 'LAX', 'HKG', 'JFK', 'SFO']},
+  {'tickets': [[""JFK"",""LAX""],[""LAX"",""HKG""],[""HKG"",""JFK""],[""JFK"",""SFO""],[""SFO"",""LAX""],[""LAX"",""HKG""]], 'expected': ['JFK', 'LAX', 'HKG', 'JFK', 'SFO', 'LAX', 'HKG']},
+  {'tickets': [[""LAX"",""JFK""],[""JFK"",""HKG""],[""HKG"",""SFO""],[""SFO"",""LAX""]], 'expected': ['JFK', 'HKG', 'SFO', 'LAX', 'JFK']},
+  {'tickets': [[""JFK"",""HKG""],[""HKG"",""SFO""],[""SFO"",""LAX""],[""LAX"",""JFK""]], 'expected': [""JFK"",""HKG"",""SFO"",""LAX"",""JFK""]},
+  {'tickets': [[""SFO"",""JFK""],[""JFK"",""LAX""],[""LAX"",""HKG""],[""HKG"",""SFO""]], 'expected': ['JFK', 'LAX', 'HKG', 'SFO', 'JFK']},
+  {'tickets': [[""HKG"",""JFK""],[""JFK"",""LAX""],[""LAX"",""SFO""],[""SFO"",""HKG""]], 'expected': ['JFK', 'LAX', 'SFO', 'HKG', 'JFK']}
+]
+
+obj = Solution()
+for i in range(len(params)):
+    tickets = params[i]['tickets']
+    expected = params[i]['expected']
+    gotOutput = obj.findItinerary(tickets)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: tickets = {tickets}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [    
+  {'tickets': [[""MUC"",""LHR""],[""JFK"",""MUC""],[""SFO"",""SJC""],[""LHR"",""SFO""]], 'expected': [""JFK"",""MUC"",""LHR"",""SFO"",""SJC""]},
+  {'tickets': [[""JFK"",""SFO""],[""JFK"",""ATL""],[""SFO"",""ATL""],[""ATL"",""JFK""],[""ATL"",""SFO""]], 'expected': [""JFK"",""ATL"",""JFK"",""SFO"",""ATL"",""SFO""]},
+  {'tickets': [[""JFK"",""LGA""]], 'expected': [""JFK"", ""LGA""]},
+  {'tickets': [[""JFK"",""AAA""], [""AAA"",""BBB""], [""BBB"",""CCC""], [""CCC"",""DDD""], [""DDD"", ""EEE""], [""EEE"", ""FFF""]], 'expected': [""JFK"",""AAA"",""BBB"",""CCC"",""DDD"",""EEE"",""FFF""]},
+  {'tickets': [[""JFK"",""AAA""], [""AAA"",""JFK""], [""JFK"",""BBB""], [""BBB"",""JFK""]], 'expected': ['JFK', 'AAA', 'JFK', 'BBB', 'JFK']},
+  {'tickets': [[""AAA"",""BBB""], [""BBB"",""CCC""], [""CCC"",""DDD""], [""DDD"", ""EEE""], [""EEE"", ""FFF""], [""FFF"",""GGG""]], 'expected': ['JFK']},
+  {'tickets': [], 'expected': [""JFK""]},
+  {'tickets': [[""JFK"", ""JFK""]], 'expected': [""JFK"", ""JFK""]},
+  {'tickets': [[""JFK"", ""AAA""], [""AAA"", ""JFK""], [""JFK"", ""BBB""], [""BBB"", ""AAA""], [""AAA"", ""BBB""]], 'expected': ['JFK', 'AAA', 'BBB', 'AAA', 'JFK', 'BBB']},
+  {'tickets': [[""JFK"", ""AAA""], [""AAA"", ""BBB""], [""BBB"", ""CCC""], [""CCC"", ""DDD""], [""DDD"", ""EEE""], [""EEE"", ""BBB""], [""BBB"", ""DDD""], [""DDD"", ""CCC""], [""CCC"", ""BBB""], [""BBB"", ""AAA""]], 'expected': ['JFK', 'AAA', 'BBB', 'CCC', 'BBB', 'DDD', 'CCC', 'DDD', 'EEE', 'BBB', 'AAA']},
+  {'tickets': [[""JFK"",""LAX""],[""LAX"",""SFO""],[""SFO"",""HKG""],[""HKG"",""JFK""],[""JFK"",""HKO""],[""HKO"",""LAX""]], 'expected': ['JFK', 'HKO', 'LAX', 'SFO', 'HKG', 'JFK', 'LAX']},
+  {'tickets': [[""JFK"",""SFO""],[""SFO"",""LAX""],[""LAX"",""HKG""],[""HKG"",""JFK""],[""JFK"",""HKO""],[""HKO"",""SFO""]], 'expected': ['JFK', 'HKO', 'SFO', 'LAX', 'HKG', 'JFK', 'SFO']},
+  {'tickets': [[""JFK"",""LAX""],[""LAX"",""HKG""],[""HKG"",""JFK""],[""JFK"",""SFO""],[""SFO"",""LAX""],[""LAX"",""HKG""]], 'expected': ['JFK', 'LAX', 'HKG', 'JFK', 'SFO', 'LAX', 'HKG']},
+  {'tickets': [[""LAX"",""JFK""],[""JFK"",""HKG""],[""HKG"",""SFO""],[""SFO"",""LAX""]], 'expected': ['JFK', 'HKG', 'SFO', 'LAX', 'JFK']},
+  {'tickets': [[""JFK"",""HKG""],[""HKG"",""SFO""],[""SFO"",""LAX""],[""LAX"",""JFK""]], 'expected': [""JFK"",""HKG"",""SFO"",""LAX"",""JFK""]},
+  {'tickets': [[""SFO"",""JFK""],[""JFK"",""LAX""],[""LAX"",""HKG""],[""HKG"",""SFO""]], 'expected': ['JFK', 'LAX', 'HKG', 'SFO', 'JFK']},
+  {'tickets': [[""HKG"",""JFK""],[""JFK"",""LAX""],[""LAX"",""SFO""],[""SFO"",""HKG""]], 'expected': ['JFK', 'LAX', 'SFO', 'HKG', 'JFK']}
+]
+
+for (let i = 0; i < params.length; i++) {
+    let tickets = params[i]['tickets'];
+    let expected = params[i]['expected'];
+    let gotOutput = findItinerary(tickets);
+    if (JSON.stringify(expected) !== JSON.stringify(gotOutput)) {
+        console.log(`\u274C Test ${i} failed: tickets = ${JSON.stringify(tickets)}, expected = ${JSON.stringify(expected)}, but got ${JSON.stringify(gotOutput)}`);
+    } else {
+        console.log(`\u2705 Test ${i} succeeded`);
+    }
+}",,
 63b59a9e8ad4593d6b7b0247,min-cost-to-connect-all-points,,,,
 63b59a9f8ad4593d6b7b0248,network-delay-time,,,,
 63b59aa08ad4593d6b7b0249,swim-in-rising-water,,,,

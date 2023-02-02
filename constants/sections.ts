@@ -153,7 +153,6 @@ export const sections = [
       "course-schedule", 
       "course-schedule-ii", 
       "redundant-connection", 
-      "number-of-connected-components-in-an-undirected-graph", 
       "graph-valid-tree", 
       "word-ladder"
     ]
