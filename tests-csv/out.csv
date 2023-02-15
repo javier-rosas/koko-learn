@@ -12801,7 +12801,166 @@ for (let i = 0; i < params.length; i++) {
     console.log(`\u2705 Test ${i} succeeded`);
   }
 }",,
-63b59aa08ad4593d6b7b024a,alien-dictionary,,,,
+63b59aa08ad4593d6b7b024a,alien-dictionary,"params = [
+    {
+        'words': [""wrt"",""wrf"",""er"",""ett"",""rftt""],
+        'expected': 'wertf'
+    },
+    {
+        'words': [""z"",""x""],
+        'expected': 'zx'
+    },
+    {
+        'words': [""abc"", ""ab""],
+        'expected': ''
+    },
+    {
+        'words': [""zy"", ""zx""],
+        'expected': 'yxz'
+    },
+    {
+        'words': [""za"", ""zb"", ""ca"", ""cb""],
+        'expected': 'abzc'
+    },
+    {
+        'words': [""aa"", ""ab"", ""ac"", ""ba"", ""bb"", ""bc"", ""ca"", ""cb"", ""cc""],
+        'expected': 'abc'
+    },
+    {
+        'words': [""a"", ""a""],
+        'expected': 'a'
+    },
+    {
+        'words': [""a""],
+        'expected': 'a'
+    },
+    {
+        'words': [""hello"", ""world""],
+        'expected': 'drolehw'
+    },
+    {
+        'words': [""aaa"", ""aab"", ""baa"", ""bab""],
+        'expected': 'ab'
+    },
+    {
+        'words': [""za"", ""zb"", ""ca"", ""cb""],
+        'expected': 'abzc'
+    },
+    {
+        'words': [""xz"", ""xy"", ""yz""],
+        'expected': 'zxy'
+    },
+    {
+        'words': [""abc"", ""abd"", ""acd"", ""aee""],
+        'expected': 'bceda'
+    },
+    {
+        'words': [""a"", ""aa""],
+        'expected': 'a'
+    },
+    {
+        'words': [""aaa"", ""aa""],
+        'expected': ''
+    },
+    {
+        'words': [""a"", ""b"", ""c"", ""d""],
+        'expected': 'abcd'
+    },
+    {
+        'words': [""ab"", ""ba""],
+        'expected': 'ab'
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    words = params[i]['words']
+    expected = params[i]['expected']
+    gotOutput = obj.alienOrder(words)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: words = {words}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+        {
+            'words': [""wrt"",""wrf"",""er"",""ett"",""rftt""],
+            'expected': 'wertf'
+        },
+        {
+            'words': [""z"",""x""],
+            'expected': 'zx'
+        },
+        {
+            'words': [""abc"", ""ab""],
+            'expected': ''
+        },
+        {
+            'words': [""zy"", ""zx""],
+            'expected': 'yxz'
+        },
+        {
+            'words': [""za"", ""zb"", ""ca"", ""cb""],
+            'expected': 'abzc'
+        },
+        {
+            'words': [""aa"", ""ab"", ""ac"", ""ba"", ""bb"", ""bc"", ""ca"", ""cb"", ""cc""],
+            'expected': 'abc'
+        },
+        {
+            'words': [""a"", ""a""],
+            'expected': 'a'
+        },
+        {
+            'words': [""a""],
+            'expected': 'a'
+        },
+        {
+            'words': [""hello"", ""world""],
+            'expected': 'drolehw'
+        },
+        {
+            'words': [""aaa"", ""aab"", ""baa"", ""bab""],
+            'expected': 'ab'
+        },
+        {
+            'words': [""za"", ""zb"", ""ca"", ""cb""],
+            'expected': 'abzc'
+        },
+        {
+            'words': [""xz"", ""xy"", ""yz""],
+            'expected': 'zxy'
+        },
+        {
+            'words': [""abc"", ""abd"", ""acd"", ""aee""],
+            'expected': 'bceda'
+        },
+        {
+            'words': [""a"", ""aa""],
+            'expected': 'a'
+        },
+        {
+            'words': [""aaa"", ""aa""],
+            'expected': ''
+        },
+        {
+            'words': [""a"", ""b"", ""c"", ""d""],
+            'expected': 'abcd'
+        },
+        {
+            'words': [""ab"", ""ba""],
+            'expected': 'ab'
+        }
+]
+
+for (let i = 0; i < params.length; i++) {
+    const words = params[i]['words'];
+    const expected = params[i]['expected'];
+    const gotOutput = alienOrder(words);
+    if (expected !== gotOutput) {
+        console.log(`\u274C Test ${i} failed: words = ${JSON.stringify(words)}, expected = ${expected}, but got ${gotOutput}`);
+    } else {
+        console.log(`\u2705 Test ${i} succeeded`);
+    }
+}",,
 63b59aa18ad4593d6b7b024b,cheapest-flights-within-k-stops,,,,
 63b59aa28ad4593d6b7b024c,valid-parenthesis-string,,,,
 63b59aa38ad4593d6b7b024d,insert-interval,,,,
