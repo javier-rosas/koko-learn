@@ -12961,7 +12961,198 @@ for (let i = 0; i < params.length; i++) {
         console.log(`\u2705 Test ${i} succeeded`);
     }
 }",,
-63b59aa18ad4593d6b7b024b,cheapest-flights-within-k-stops,,,,
+63b59aa18ad4593d6b7b024b,cheapest-flights-within-k-stops,"params = [
+  {
+    ""n"": 4,
+    ""flights"": [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]],
+    ""src"": 0,
+    ""dst"": 3,
+    ""k"": 1,
+    ""expected"": 700
+  },
+  {
+    ""n"": 3,
+    ""flights"": [[0,1,100],[1,2,100],[0,2,500]],
+    ""src"": 0,
+    ""dst"": 2,
+    ""k"": 1,
+    ""expected"": 200
+  },
+  {
+    ""n"": 3,
+    ""flights"": [[0,1,100],[1,2,100],[0,2,500]],
+    ""src"": 0,
+    ""dst"": 2,
+    ""k"": 0,
+    ""expected"": 500
+  },
+  {
+    ""n"": 1,
+    ""flights"": [],
+    ""src"": 0,
+    ""dst"": 0,
+    ""k"": 0,
+    ""expected"": 0
+  },
+  {
+    ""n"": 3,
+    ""flights"": [[0,1,5],[0,2,10],[1,2,1]],
+    ""src"": 0,
+    ""dst"": 2,
+    ""k"": 1,
+    ""expected"": 6
+  },
+  {
+    ""n"": 3,
+    ""flights"": [[0,1,2],[1,2,1],[2,0,10]],
+    ""src"": 1,
+    ""dst"": 2,
+    ""k"": 1,
+    ""expected"": 1
+  },
+  {
+    ""n"": 5,
+    ""flights"": [[0,1,5],[1,2,5],[2,3,5],[3,4,5],[4,0,5]],
+    ""src"": 0,
+    ""dst"": 3,
+    ""k"": 3,
+    ""expected"": 15
+  },
+  {
+    ""n"": 3,
+    ""flights"": [[0,1,100],[1,2,100],[0,2,100]],
+    ""src"": 1,
+    ""dst"": 2,
+    ""k"": 2,
+    ""expected"": 100
+  },
+  {
+    ""n"": 5,
+    ""flights"": [[0,1,10],[1,2,5]],
+    ""src"": 0,
+    ""dst"": 1,
+    ""k"": 1,
+    ""expected"": 10
+  },
+  {
+    ""n"": 5,
+    ""flights"": [[0,1,5],[1,2,5],[2,3,5],[3,4,5],[4,0,5]],
+    ""src"": 0,
+    ""dst"": 3,
+    ""k"": 1,
+    ""expected"": -1
+  }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    n = params[i]['n']
+    flights = params[i]['flights']
+    src = params[i]['src']
+    dst = params[i]['dst']
+    k = params[i]['k']
+    expected = params[i]['expected']
+    gotOutput = obj.findCheapestPrice(n, flights, src, dst, k)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: n = {n}, flights = {flights}, src = {src}, dst = {dst}, k = {k}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+        {
+          ""n"": 4,
+          ""flights"": [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]],
+          ""src"": 0,
+          ""dst"": 3,
+          ""k"": 1,
+          ""expected"": 700
+        },
+        {
+          ""n"": 3,
+          ""flights"": [[0,1,100],[1,2,100],[0,2,500]],
+          ""src"": 0,
+          ""dst"": 2,
+          ""k"": 1,
+          ""expected"": 200
+        },
+        {
+          ""n"": 3,
+          ""flights"": [[0,1,100],[1,2,100],[0,2,500]],
+          ""src"": 0,
+          ""dst"": 2,
+          ""k"": 0,
+          ""expected"": 500
+        },
+        {
+          ""n"": 1,
+          ""flights"": [],
+          ""src"": 0,
+          ""dst"": 0,
+          ""k"": 0,
+          ""expected"": 0
+        },
+        {
+          ""n"": 3,
+          ""flights"": [[0,1,5],[0,2,10],[1,2,1]],
+          ""src"": 0,
+          ""dst"": 2,
+          ""k"": 1,
+          ""expected"": 6
+        },
+        {
+          ""n"": 3,
+          ""flights"": [[0,1,2],[1,2,1],[2,0,10]],
+          ""src"": 1,
+          ""dst"": 2,
+          ""k"": 1,
+          ""expected"": 1
+        },
+        {
+          ""n"": 5,
+          ""flights"": [[0,1,5],[1,2,5],[2,3,5],[3,4,5],[4,0,5]],
+          ""src"": 0,
+          ""dst"": 3,
+          ""k"": 3,
+          ""expected"": 15
+        },
+        {
+          ""n"": 3,
+          ""flights"": [[0,1,100],[1,2,100],[0,2,100]],
+          ""src"": 1,
+          ""dst"": 2,
+          ""k"": 2,
+          ""expected"": 100
+        },
+        {
+          ""n"": 5,
+          ""flights"": [[0,1,10],[1,2,5]],
+          ""src"": 0,
+          ""dst"": 1,
+          ""k"": 1,
+          ""expected"": 10
+        },
+        {
+          ""n"": 5,
+          ""flights"": [[0,1,5],[1,2,5],[2,3,5],[3,4,5],[4,0,5]],
+          ""src"": 0,
+          ""dst"": 3,
+          ""k"": 1,
+          ""expected"": -1
+        }
+      ]
+
+for (let i = 0; i < params.length; i++) {
+  const n = params[i]['n'];
+  const flights = params[i]['flights'];
+  const src = params[i]['src'];
+  const dst = params[i]['dst'];
+  const k = params[i]['k'];
+  const expected = params[i]['expected'];
+  const gotOutput = findCheapestPrice(n, flights, src, dst, k);
+  if (expected !== gotOutput) {
+    console.log(`\u274C Test ${i} failed: n = ${n}, flights = ${JSON.stringify(flights)}, src = ${src}, dst = ${dst}, k = ${k}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+    console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
 63b59aa28ad4593d6b7b024c,valid-parenthesis-string,,,,
 63b59aa38ad4593d6b7b024d,insert-interval,,,,
 63b59aa48ad4593d6b7b024e,merge-intervals,,,,
