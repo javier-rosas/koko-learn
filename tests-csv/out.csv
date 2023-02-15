@@ -5839,7 +5839,110 @@ for (let param of params) {
     this.left = (left===undefined ? null : left)
     this.right = (right===undefined ? null : right)
 }"
-63b595388ad4593d6b7b01fb,climbing-stairs,,,,
+63b595388ad4593d6b7b01fb,climbing-stairs,"params = [
+    {
+        'n': 1,
+        'expected': 1
+    },
+    {
+        'n': 2,
+        'expected': 2
+    },
+    {
+        'n': 3,
+        'expected': 3
+    },
+    {
+        'n': 4,
+        'expected': 5
+    },
+    {
+        'n': 5,
+        'expected': 8
+    },
+    {
+        'n': 10,
+        'expected': 89
+    },
+    {
+        'n': 20,
+        'expected': 10946
+    },
+    {
+        'n': 30,
+        'expected': 1346269
+    },
+    {
+        'n': 40,
+        'expected': 165580141
+    },
+    {
+        'n': 45,
+        'expected': 1836311903
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    n = params[i]['n']
+    expected = params[i]['expected']
+    gotOutput = obj.climbStairs(n)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: n = {n}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+        {
+            'n': 1,
+            'expected': 1
+        },
+        {
+            'n': 2,
+            'expected': 2
+        },
+        {
+            'n': 3,
+            'expected': 3
+        },
+        {
+            'n': 4,
+            'expected': 5
+        },
+        {
+            'n': 5,
+            'expected': 8
+        },
+        {
+            'n': 10,
+            'expected': 89
+        },
+        {
+            'n': 20,
+            'expected': 10946
+        },
+        {
+            'n': 30,
+            'expected': 1346269
+        },
+        {
+            'n': 40,
+            'expected': 165580141
+        },
+        {
+            'n': 45,
+            'expected': 1836311903
+        }
+]
+
+for (let i = 0; i < params.length; i++) {
+        const n = params[i]['n'];
+        const expected = params[i]['expected'];
+        const gotOutput = climbStairs(n);
+        if (expected !== gotOutput) {
+                console.log(`\u274C Test ${i} failed: n = ${n}, expected = ${expected}, but got ${gotOutput}`);
+        } else {
+                console.log(`\u2705 Test ${i} succeeded`);
+        }
+}",,
 63b595398ad4593d6b7b01fc,min-cost-climbing-stairs,,,,
 63b5953a8ad4593d6b7b01fd,house-robber,,,,
 63b5953b8ad4593d6b7b01fe,house-robber-ii,,,,
