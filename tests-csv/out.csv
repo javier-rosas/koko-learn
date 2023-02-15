@@ -12633,9 +12633,174 @@ for (let i = 0; i < params.length; i++) {
         console.log(`\u2705 Test ${i} succeeded`);
     }
 }",,
-63b59a9e8ad4593d6b7b0247,min-cost-to-connect-all-points,f,,,
-63b59a9f8ad4593d6b7b0248,network-delay-time,,,,
-63b59aa08ad4593d6b7b0249,swim-in-rising-water,,,,
+63b59a9e8ad4593d6b7b0247,min-cost-to-connect-all-points,"params = [
+    {'points': [[0,0],[2,2],[3,10],[5,2],[7,0]], 'expected': 20},
+    {'points': [[3,12],[-2,5],[-4,1]], 'expected': 18},
+    {'points': [[0,0],[1,1]], 'expected': 2},
+    {'points': [[1,1],[1,2],[3,4],[-1,0]], 'expected': 8},
+    {'points': [[-1,-2],[3,4],[6,1],[-1,-6]], 'expected': 20},
+    {'points': [[-1,-1],[1,1],[1,-1],[-1,1]], 'expected': 6},
+    {'points': [[-1,0],[0,0],[1,0]], 'expected': 2},
+    {'points': [[0,0],[1,1],[1,0]], 'expected': 2},
+    {'points': [[0,0],[0,1],[1,1],[1,0]], 'expected': 3},
+    {'points': [[0,0],[1,1]], 'expected': 2},
+    {'points': [[-1000000,-1000000],[1000000,1000000]], 'expected': 4000000},
+    {'points': [[-1000000,-1000000],[1000000,-1000000],[1000000,1000000],[-1000000,1000000]], 'expected': 6000000},
+    {'points': [[1,1]], 'expected': 0},
+    {'points': [[-1000000,0],[1000000,0]], 'expected': 2000000},
+    {'points': [[0,0],[0,1000],[1000,0],[1000,1000]], 'expected': 3000},
+    {'points': [[-2,-2],[-1,-1],[0,0],[1,1],[2,2]], 'expected': 8},
+    {'points': [[-1,0],[0,0],[1,0]], 'expected': 2},
+]
+
+obj = Solution()
+for i in range(len(params)):
+    points = params[i]['points']
+    expected = params[i]['expected']
+    gotOutput = obj.minCostConnectPoints(points)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: points = {points}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+        {'points': [[0,0],[2,2],[3,10],[5,2],[7,0]], 'expected': 20},
+        {'points': [[3,12],[-2,5],[-4,1]], 'expected': 18},
+        {'points': [[0,0],[1,1]], 'expected': 2},
+        {'points': [[1,1],[1,2],[3,4],[-1,0]], 'expected': 8},
+        {'points': [[-1,-2],[3,4],[6,1],[-1,-6]], 'expected': 20},
+        {'points': [[-1,-1],[1,1],[1,-1],[-1,1]], 'expected': 6},
+        {'points': [[-1,0],[0,0],[1,0]], 'expected': 2},
+        {'points': [[0,0],[1,1],[1,0]], 'expected': 2},
+        {'points': [[0,0],[0,1],[1,1],[1,0]], 'expected': 3},
+        {'points': [[0,0],[1,1]], 'expected': 2},
+        {'points': [[-1000000,-1000000],[1000000,1000000]], 'expected': 4000000},
+        {'points': [[-1000000,-1000000],[1000000,-1000000],[1000000,1000000],[-1000000,1000000]], 'expected': 6000000},
+        {'points': [[1,1]], 'expected': 0},
+        {'points': [[-1000000,0],[1000000,0]], 'expected': 2000000},
+        {'points': [[0,0],[0,1000],[1000,0],[1000,1000]], 'expected': 3000},
+        {'points': [[-2,-2],[-1,-1],[0,0],[1,1],[2,2]], 'expected': 8},
+        {'points': [[-1,0],[0,0],[1,0]], 'expected': 2},
+]
+
+for (let i = 0; i < params.length; i++) {
+        const points = params[i]['points'];
+        const expected = params[i]['expected'];
+        const gotOutput = minCostConnectPoints(points);
+        if (expected !== gotOutput) {
+        console.log(`\u274C Test ${i} failed: points = ${JSON.stringify(points)}, expected = ${expected}, but got ${gotOutput}`);
+        } else {
+        console.log(`\u2705 Test ${i} succeeded`);
+        }
+}    ",,
+63b59a9f8ad4593d6b7b0248,network-delay-time,"params = [
+    {'times': [[2,1,1],[2,3,1],[3,4,1]], 'n': 4, 'k': 2, 'expected': 2},
+    {'times': [[1,2,1]], 'n': 2, 'k': 1, 'expected': 1},
+    {'times': [[1,2,1]], 'n': 2, 'k': 2, 'expected': -1},
+    {'times': [[1,2,3],[2,3,3],[3,4,2],[4,5,1]], 'n': 5, 'k': 1, 'expected': 9},
+    {'times': [[1,2,1],[1,3,1],[2,4,1],[3,4,1]], 'n': 4, 'k': 1, 'expected': 2},
+    {'times': [[1,2,1],[2,1,1]], 'n': 2, 'k': 2, 'expected': 1},
+    {'times': [[1,2,0]], 'n': 2, 'k': 1, 'expected': 0},
+    {'times': [[1,2,3],[1,3,1],[3,2,1]], 'n': 3, 'k': 2, 'expected': -1},
+    {'times': [[1,2,1],[2,3,7],[2,5,5],[5,3,1],[5,4,1],[4,3,1]], 'n': 5, 'k': 1, 'expected': 7},
+    {'times': [[1,2,3]], 'n': 2, 'k': 1, 'expected': 3},
+    {'times': [[1,2,1],[2,3,2]], 'n': 3, 'k': 1, 'expected': 3},
+    {'times': [[1,2,1],[1,3,2],[2,4,2],[3,4,4]], 'n': 4, 'k': 1, 'expected': 3},
+    {'times': [[1,2,1],[2,3,1],[3,4,1],[4,5,1]], 'n': 5, 'k': 1, 'expected': 4},
+    {'times': [[1,2,1],[2,1,1],[1,3,1],[3,1,1]], 'n': 3, 'k': 1, 'expected': 1},
+    {'times': [[1,2,1],[2,3,2]], 'n': 3, 'k': 3, 'expected': -1},
+    {'times': [[1,2,1],[2,3,1],[1,3,2]], 'n': 3, 'k': 1, 'expected': 2},
+    {'times': [[1,2,1],[2,3,1],[1,3,1]], 'n': 3, 'k': 1, 'expected': 1},
+    {'times': [[1,2,1],[2,3,1],[3,1,1]], 'n': 3, 'k': 3, 'expected': 2},
+    {'times': [[1,2,5],[2,3,5],[3,4,5],[4,5,5],[5,1,5]], 'n': 5, 'k': 1, 'expected': 20},
+]
+
+obj = Solution()
+for i in range(len(params)):
+    times = params[i]['times']
+    n = params[i]['n']
+    k = params[i]['k']
+    expected = params[i]['expected']
+    gotOutput = obj.networkDelayTime(times, n, k)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: times = {times}, n = {n}, k = {k}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+        {'times': [[2,1,1],[2,3,1],[3,4,1]], 'n': 4, 'k': 2, 'expected': 2},
+        {'times': [[1,2,1]], 'n': 2, 'k': 1, 'expected': 1},
+        {'times': [[1,2,1]], 'n': 2, 'k': 2, 'expected': -1},
+        {'times': [[1,2,3],[2,3,3],[3,4,2],[4,5,1]], 'n': 5, 'k': 1, 'expected': 9},
+        {'times': [[1,2,1],[1,3,1],[2,4,1],[3,4,1]], 'n': 4, 'k': 1, 'expected': 2},
+        {'times': [[1,2,1],[2,1,1]], 'n': 2, 'k': 2, 'expected': 1},
+        {'times': [[1,2,0]], 'n': 2, 'k': 1, 'expected': 0},
+        {'times': [[1,2,3],[1,3,1],[3,2,1]], 'n': 3, 'k': 2, 'expected': -1},
+        {'times': [[1,2,1],[2,3,7],[2,5,5],[5,3,1],[5,4,1],[4,3,1]], 'n': 5, 'k': 1, 'expected': 7},
+        {'times': [[1,2,3]], 'n': 2, 'k': 1, 'expected': 3},
+        {'times': [[1,2,1],[2,3,2]], 'n': 3, 'k': 1, 'expected': 3},
+        {'times': [[1,2,1],[1,3,2],[2,4,2],[3,4,4]], 'n': 4, 'k': 1, 'expected': 3},
+        {'times': [[1,2,1],[2,3,1],[3,4,1],[4,5,1]], 'n': 5, 'k': 1, 'expected': 4},
+        {'times': [[1,2,1],[2,1,1],[1,3,1],[3,1,1]], 'n': 3, 'k': 1, 'expected': 1},
+        {'times': [[1,2,1],[2,3,2]], 'n': 3, 'k': 3, 'expected': -1},
+        {'times': [[1,2,1],[2,3,1],[1,3,2]], 'n': 3, 'k': 1, 'expected': 2},
+        {'times': [[1,2,1],[2,3,1],[1,3,1]], 'n': 3, 'k': 1, 'expected': 1},
+        {'times': [[1,2,1],[2,3,1],[3,1,1]], 'n': 3, 'k': 3, 'expected': 2},
+        {'times': [[1,2,5],[2,3,5],[3,4,5],[4,5,5],[5,1,5]], 'n': 5, 'k': 1, 'expected': 20},
+]
+
+for (let i = 0; i < params.length; i++) {
+  const times = params[i]['times'];
+  const n = params[i]['n'];
+  const k = params[i]['k'];
+  const expected = params[i]['expected'];
+  const gotOutput = networkDelayTime(times, n, k);
+  if (expected !== gotOutput) {
+    console.log(`\u274C Test ${i} failed: times = ${JSON.stringify(times)}, n = ${n}, k = ${k}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+    console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b59aa08ad4593d6b7b0249,swim-in-rising-water,"params = [
+    {'grid': [[0,2],[1,3]], 'expected': 3},
+    {'grid': [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]], 'expected': 16},
+    {'grid': [[0,1],[2,3]], 'expected': 3},
+    {'grid': [[0,1,2],[5,4,3],[6,7,8]], 'expected': 8},
+    {'grid': [[0]], 'expected': 0},
+    {'grid': [[0,5,10],[5,10,15],[10,15,20]], 'expected': 20},
+    {'grid': [[1,0],[0,1]], 'expected': 1},
+    {'grid': [[3,2,1],[2,1,0],[1,0,2]], 'expected': 3},
+    {'grid': [[0,0,0],[0,0,0],[0,0,0]], 'expected': 0},
+    {'grid': [[1,2,3],[8,9,4],[7,6,5]], 'expected': 5}
+]
+
+obj = Solution()
+for i in range(len(params)):
+    grid = params[i]['grid']
+    expected = params[i]['expected']
+    gotOutput = obj.swimInWater(grid)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: grid = {grid}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","let params = [
+        {'grid': [[0,2],[1,3]], 'expected': 3},
+        {'grid': [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]], 'expected': 16},
+        {'grid': [[0,1],[2,3]], 'expected': 3},
+        {'grid': [[0,1,2],[5,4,3],[6,7,8]], 'expected': 8},
+        {'grid': [[0]], 'expected': 0},
+        {'grid': [[0,5,10],[5,10,15],[10,15,20]], 'expected': 20},
+        {'grid': [[1,0],[0,1]], 'expected': 1},
+        {'grid': [[3,2,1],[2,1,0],[1,0,2]], 'expected': 3},
+        {'grid': [[0,0,0],[0,0,0],[0,0,0]], 'expected': 0},
+        {'grid': [[1,2,3],[8,9,4],[7,6,5]], 'expected': 5}
+]
+
+for (let i = 0; i < params.length; i++) {
+  const grid = params[i]['grid'];
+  const expected = params[i]['expected'];
+  const gotOutput = swimInWater(grid);
+  if (expected !== gotOutput) {
+    console.log(`\u274C Test ${i} failed: grid = ${grid}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+    console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
 63b59aa08ad4593d6b7b024a,alien-dictionary,,,,
 63b59aa18ad4593d6b7b024b,cheapest-flights-within-k-stops,,,,
 63b59aa28ad4593d6b7b024c,valid-parenthesis-string,,,,
