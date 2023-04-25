@@ -16,7 +16,7 @@ export default function Section({ section }: SectionName) {
       <div className="flex w-full items-center justify-between space-x-6 p-6 bg-indigo-400 hover:bg-indigo-600 rounded-lg ">
         <div className="flex-1 truncate">
           <div className="flex items-center space-x-3">
-            <h3 className="truncate text-sm text-black">
+            <h3 className="truncate text-sm text-slate-900">
               {section?.name}
             </h3>
           </div>
