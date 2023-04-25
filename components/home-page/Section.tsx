@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type SectionName = {
   section: {
@@ -9,19 +10,27 @@ type SectionName = {
   };
 };
 
-function Section({ section }: SectionName) {
+export default function Section({ section }: SectionName) {
   return (
-    <Link
-      href={`section/${section.kebabCaseName}`}
-      className="border-solid border-4 border-black 
-                rounded-md flex justify-center 
-                items-center bg-gray-300 
-                font-bold text-lg hover:bg-yellow-500 
-                ring-2 ring-blue-700"
-    >
-      <div className="flex justify-center text-center">{section.name}</div>
+    <Link className="" href={`section/${section.kebabCaseName}`}>
+      <div className="flex w-full items-center justify-between space-x-6 p-6 bg-indigo-400 hover:bg-indigo-600 rounded-lg ">
+        <div className="flex-1 truncate">
+          <div className="flex items-center space-x-3">
+            <h3 className="truncate text-sm text-black">
+              {section?.name}
+            </h3>
+          </div>
+        </div>
+        <Image
+          className="h-10 w-10 flex-shrink-0 bg-indigo-600"
+          src={`/neetcode-sections/${section.kebabCaseName}.png`}
+          alt=""
+          width={500} height={500}
+        />
+      </div>
+      <div>
+        <div className="-mt-px flex divide-x divide-gray-200"></div>
+      </div>
     </Link>
   );
 }
-
-export default Section;

@@ -1,14 +1,14 @@
 import React from "react";
 import { sections } from "../../constants/sections";
 import { GetStaticPropsContext } from "next";
-import Navbar from "../../components/navbar";
+// import Navbar from "../../components/navbar";
 import Link from "next/link";
 
 function SectionPage(props: any) {
   const { problems } = props;
   return (
     <>
-      <Navbar />
+    {/* <Navbar/> */}
       <div className="flex flex-row font-mono m-4 justify-center">
         <div>
           {problems &&
@@ -24,6 +24,7 @@ function SectionPage(props: any) {
             ))}
         </div>
       </div>
+      
     </>
   );
 }

@@ -2,7 +2,7 @@
 export const sections = [
   {
     name: "Arrays & Hashing",
-    kebabCaseName: "arrrays-&-hashing",
+    kebabCaseName: "arrays-&-hashing",
     problems: [
       "contains-duplicate", 
       "valid-anagram", 
