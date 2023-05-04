@@ -5943,14 +5943,774 @@ for (let i = 0; i < params.length; i++) {
                 console.log(`\u2705 Test ${i} succeeded`);
         }
 }",,
-63b595398ad4593d6b7b01fc,min-cost-climbing-stairs,,,,
-63b5953a8ad4593d6b7b01fd,house-robber,,,,
-63b5953b8ad4593d6b7b01fe,house-robber-ii,,,,
-63b5953c8ad4593d6b7b01ff,longest-palindromic-substring,,,,
-63b5953c8ad4593d6b7b0200,palindromic-substrings,,,,
-63b5953d8ad4593d6b7b0201,decode-ways,,,,
-63b5953e8ad4593d6b7b0202,coin-change,,,,
-63b5953f8ad4593d6b7b0203,maximum-product-subarray,,,,
+63b595398ad4593d6b7b01fc,min-cost-climbing-stairs,"params = [
+    {
+        'cost': [10, 15, 20],
+        'expected': 15
+    },
+    {
+        'cost': [1, 100, 1, 1, 1, 100, 1, 1, 100, 1],
+        'expected': 6
+    },
+    {
+        'cost': [0, 0, 0, 0],
+        'expected': 0
+    },
+    {
+        'cost': [1, 1],
+        'expected': 1
+    },
+    {
+        'cost': [5, 10],
+        'expected': 5
+    },
+    {
+        'cost': [999, 999, 999],
+        'expected': 999
+    },
+    {
+        'cost': [1, 2, 3, 4, 5],
+        'expected': 6
+    },
+    {
+        'cost': [0, 1, 2, 2, 1, 0],
+        'expected': 3
+    },
+    {
+        'cost': [5, 5, 10, 5, 5],
+        'expected': 10
+    },
+    {
+        'cost': [100, 50, 10, 5, 1],
+        'expected': 55
+    },
+    {
+        'cost': [3, 3, 4, 2, 2, 3, 3],
+        'expected': 8
+    },
+    {
+        'cost': [0, 1, 1, 0, 1, 1],
+        'expected': 2
+    }
+]
+    
+obj = Solution()
+for i in range(len(params)):
+    cost = params[i]['cost']
+    expected = params[i]['expected']
+    gotOutput = obj.minCostClimbingStairs(cost)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: cost = {cost}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'cost': [10, 15, 20],
+      'expected': 15
+  },
+  {
+      'cost': [1, 100, 1, 1, 1, 100, 1, 1, 100, 1],
+      'expected': 6
+  },
+  {
+      'cost': [0, 0, 0, 0],
+      'expected': 0
+  },
+  {
+      'cost': [1, 1],
+      'expected': 1
+  },
+  {
+      'cost': [5, 10],
+      'expected': 5
+  },
+  {
+      'cost': [999, 999, 999],
+      'expected': 999
+  },
+  {
+      'cost': [1, 2, 3, 4, 5],
+      'expected': 6
+  },
+  {
+      'cost': [0, 1, 2, 2, 1, 0],
+      'expected': 3
+  },
+  {
+      'cost': [5, 5, 10, 5, 5],
+      'expected': 10
+  },
+  {
+      'cost': [100, 50, 10, 5, 1],
+      'expected': 55
+  },
+  {
+      'cost': [3, 3, 4, 2, 2, 3, 3],
+      'expected': 8
+  },
+  {
+      'cost': [0, 1, 1, 0, 1, 1],
+      'expected': 2
+  }
+]
+
+
+for (let i = 0; i < params.length; i++) {
+  const cost = params[i].cost;
+  const expected = params[i].expected;
+  const gotOutput = minCostClimbingStairs(cost);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: cost = ${cost}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5953a8ad4593d6b7b01fd,house-robber,"params = [
+  {
+      ""nums"": [1, 2, 3, 1],
+      ""expected"": 4
+  },
+  {
+      ""nums"": [2, 7, 9, 3, 1],
+      ""expected"": 12
+  },
+  {
+      ""nums"": [0, 0, 0, 0, 0],
+      ""expected"": 0
+  },
+  {
+      ""nums"": [1],
+      ""expected"": 1
+  },
+  {
+      ""nums"": [1, 2],
+      ""expected"": 2
+  },
+  {
+      ""nums"": [400, 400, 400],
+      ""expected"": 800
+  },
+  {
+      ""nums"": [5, 2, 5, 2, 5],
+      ""expected"": 15
+  },
+  {
+      ""nums"": [2, 4, 6, 8, 10],
+      ""expected"": 18
+  },
+  {
+      ""nums"": [1, 3, 5, 7, 9],
+      ""expected"": 15
+  },
+  {
+      ""nums"": [2, 3, 2, 3, 2],
+      ""expected"": 6
+  },
+  {
+      ""nums"": [9, 1, 2, 3, 8],
+      ""expected"": 19
+  },
+  {
+      ""nums"": [2, 2, 2, 2, 2, 2, 2],
+      ""expected"": 8
+  }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    expected = params[i]['expected']
+    gotOutput = obj.rob(nums)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      nums: [1, 2, 3, 1],
+      expected: 4
+  },
+  {
+      nums: [2, 7, 9, 3, 1],
+      expected: 12
+  },
+  {
+      nums: [0, 0, 0, 0, 0],
+      expected: 0
+  },
+  {
+      nums: [1],
+      expected: 1
+  },
+  {
+      nums: [1, 2],
+      expected: 2
+  },
+  {
+      nums: [400, 400, 400],
+      expected: 800
+  },
+  {
+      nums: [5, 2, 5, 2, 5],
+      expected: 15
+  },
+  {
+      nums: [2, 4, 6, 8, 10],
+      expected: 18
+  },
+  {
+      nums: [1, 3, 5, 7, 9],
+      expected: 15
+  },
+  {
+      nums: [2, 3, 2, 3, 2],
+      expected: 6
+  },
+  {
+      nums: [9, 1, 2, 3, 8],
+      expected: 19
+  },
+  {
+      nums: [2, 2, 2, 2, 2, 2, 2],
+      expected: 8
+  }
+];
+
+
+for (let i = 0; i < params.length; i++) {
+  const nums = params[i].nums;
+  const expected = params[i].expected;
+  const gotOutput = rob(nums);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: nums = ${nums}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5953b8ad4593d6b7b01fe,house-robber-ii,"params = [
+    {
+        'nums': [2, 3, 2],
+        'expected': 3
+    },
+    {
+        'nums': [1, 2, 3, 1],
+        'expected': 4
+    },
+    {
+        'nums': [1, 2, 3],
+        'expected': 3
+    },
+    {
+        'nums': [1, 1, 1, 1],
+        'expected': 2
+    },
+    {
+        'nums': [2, 2, 2, 2],
+        'expected': 4
+    },
+    {
+        'nums': [1, 3, 1, 3],
+        'expected': 6
+    },
+    {
+        'nums': [5, 1, 1, 5],
+        'expected': 6
+    },
+    {
+        'nums': [1, 1, 1, 1, 1],
+        'expected': 2
+    },
+    {
+        'nums': [2, 3, 2, 3, 2],
+        'expected': 6
+    },
+    {
+        'nums': [4, 1, 2, 7, 5, 3, 1],
+        'expected': 14
+    },
+    {
+        'nums': [1, 2, 1, 1, 1000, 1, 1, 2, 1],
+        'expected': 1004
+    },
+    {
+        'nums': [1000, 1, 1, 1, 1000],
+        'expected': 1001
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    expected = params[i]['expected']
+    gotOutput = obj.rob(nums)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'nums': [2, 3, 2],
+      'expected': 3
+  },
+  {
+      'nums': [1, 2, 3, 1],
+      'expected': 4
+  },
+  {
+      'nums': [1, 2, 3],
+      'expected': 3
+  },
+  {
+      'nums': [1, 1, 1, 1],
+      'expected': 2
+  },
+  {
+      'nums': [2, 2, 2, 2],
+      'expected': 4
+  },
+  {
+      'nums': [1, 3, 1, 3],
+      'expected': 6
+  },
+  {
+      'nums': [5, 1, 1, 5],
+      'expected': 6
+  },
+  {
+      'nums': [1, 1, 1, 1, 1],
+      'expected': 2
+  },
+  {
+      'nums': [2, 3, 2, 3, 2],
+      'expected': 6
+  },
+  {
+      'nums': [4, 1, 2, 7, 5, 3, 1],
+      'expected': 14
+  },
+  {
+      'nums': [1, 2, 1, 1, 1000, 1, 1, 2, 1],
+      'expected': 1004
+  },
+  {
+      'nums': [1000, 1, 1, 1, 1000],
+      'expected': 1001
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  const nums = params[i].nums;
+  const expected = params[i].expected;
+  const gotOutput = rob(nums);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: nums = ${nums}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5953c8ad4593d6b7b01ff,longest-palindromic-substring,"params = [
+    {
+        's': ""babad"",
+        'expected': ""bab""  
+    },
+    {
+        's': ""cbbd"",
+        'expected': ""bb""
+    },
+    {
+        's': ""a"",
+        'expected': ""a""
+    },
+    {
+        's': ""ac"",
+        'expected': ""a"" 
+    },
+    {
+        's': ""bb"",
+        'expected': ""bb""
+    },
+    {
+        's': ""abcda"",
+        'expected': ""a""  
+    },
+    {
+        's': ""aaaa"",
+        'expected': ""aaaa""
+    },
+    {
+        's': ""abcdefg"",
+        'expected': ""a""  
+    },
+    {
+        's': ""abccba"",
+        'expected': ""abccba""
+    },
+    {
+        's': ""babadada"",
+        'expected': ""adada""
+    },
+    {
+        's': ""racecar"",
+        'expected': ""racecar""
+    },
+    {
+        's': ""123454321"",
+        'expected': ""123454321""
+    }
+]
+
+
+obj = Solution()
+for i in range(len(params)):
+    s = params[i]['s']
+    expected = params[i]['expected']
+    gotOutput = obj.longestPalindrome(s)
+    if expected != gotOutput and (i != 0 or gotOutput != ""aba"") and (i != 3 or gotOutput != ""c"") and (i != 5 or gotOutput not in ""abcda"") and (i != 7 or gotOutput not in ""abcdefg""):
+        print(f""\u274C Test {i} failed: s = {s}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      's': ""babad"",
+      'expected': ""bab""  
+  },
+  {
+      's': ""cbbd"",
+      'expected': ""bb""
+  },
+  {
+      's': ""a"",
+      'expected': ""a""
+  },
+  {
+      's': ""ac"",
+      'expected': ""a"" 
+  },
+  {
+      's': ""bb"",
+      'expected': ""bb""
+  },
+  {
+      's': ""abcda"",
+      'expected': ""a""  
+  },
+  {
+      's': ""aaaa"",
+      'expected': ""aaaa""
+  },
+  {
+      's': ""abcdefg"",
+      'expected': ""a""  
+  },
+  {
+      's': ""abccba"",
+      'expected': ""abccba""
+  },
+  {
+      's': ""babadada"",
+      'expected': ""adada""
+  },
+  {
+      's': ""racecar"",
+      'expected': ""racecar""
+  },
+  {
+      's': ""123454321"",
+      'expected': ""123454321""
+  }
+]
+
+
+for (let i = 0; i < params.length; i++) {
+  const s = params[i].s;
+  const expected = params[i].expected;
+  const gotOutput = longestPalindrome(s);
+  if (expected !== gotOutput && (i !== 0 || gotOutput !== ""aba"") && (i !== 3 || gotOutput !== ""c"") && (i !== 5 || ""abcda"".indexOf(gotOutput) === -1) && (i !== 7 || ""abcdefg"".indexOf(gotOutput) === -1)) {
+      console.log(`\u274C Test ${i} failed: s = ${s}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5953c8ad4593d6b7b0200,palindromic-substrings,"params = [
+    {
+        's': ""abc"",
+        'expected': 3
+    },
+    {
+        's': ""aaa"",
+        'expected': 6
+    },
+    {
+        's': ""a"",
+        'expected': 1
+    },
+    {
+        's': ""aa"",
+        'expected': 3
+    },
+    {
+        's': ""ab"",
+        'expected': 2
+    },
+    {
+        's': ""racecar"",
+        'expected': 10
+    },
+    {
+        's': ""121"",
+        'expected': 4
+    },
+    {
+        's': ""abccba"",
+        'expected': 9
+    },
+    {
+        's': ""abcdef"",
+        'expected': 6
+    },
+    {
+        's': ""abaab"",
+        'expected': 8
+    },
+    {
+        's': ""aaabaa"",
+        'expected': 12
+    },
+    {
+        's': ""aaaaaa"",
+        'expected': 21
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    s = params[i]['s']
+    expected = params[i]['expected']
+    gotOutput = obj.countSubstrings(s)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: s = {s}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      's': ""abc"",
+      'expected': 3
+  },
+  {
+      's': ""aaa"",
+      'expected': 6
+  },
+  {
+      's': ""a"",
+      'expected': 1
+  },
+  {
+      's': ""aa"",
+      'expected': 3
+  },
+  {
+      's': ""ab"",
+      'expected': 2
+  },
+  {
+      's': ""racecar"",
+      'expected': 10
+  },
+  {
+      's': ""121"",
+      'expected': 4
+  },
+  {
+      's': ""abccba"",
+      'expected': 9
+  },
+  {
+      's': ""abcdef"",
+      'expected': 6
+  },
+  {
+      's': ""abaab"",
+      'expected': 8
+  },
+  {
+      's': ""aaabaa"",
+      'expected': 12
+  },
+  {
+      's': ""aaaaaa"",
+      'expected': 21
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  const s = params[i].s;
+  const expected = params[i].expected;
+  const gotOutput = countSubstrings(s);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: s = ${s}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5953d8ad4593d6b7b0201,decode-ways,"params = [
+    {""s"": ""12"", ""expected"": 2},
+    {""s"": ""226"", ""expected"": 3},
+    {""s"": ""06"", ""expected"": 0},
+    {""s"": ""1"", ""expected"": 1},
+    {""s"": ""27"", ""expected"": 1},
+    {""s"": ""11106"", ""expected"": 2},
+    {""s"": ""10011"", ""expected"": 0},
+    {""s"": ""101"", ""expected"": 1},
+    {""s"": ""110"", ""expected"": 1},
+    {""s"": ""12345"", ""expected"": 3},
+    {""s"": ""12121"", ""expected"": 8},
+    {""s"": ""2610"", ""expected"": 2},
+    {""s"": ""1111"", ""expected"": 5},
+    {""s"": ""999"", ""expected"": 1},
+    {""s"": ""230"", ""expected"": 0}
+]
+
+obj = Solution()
+for i in range(len(params)):
+    s = params[i]['s']
+    expected = params[i]['expected']
+    gotOutput = obj.numDecodings(s)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: s = {s}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {""s"": ""12"", ""expected"": 2},
+  {""s"": ""226"", ""expected"": 3},
+  {""s"": ""06"", ""expected"": 0},
+  {""s"": ""1"", ""expected"": 1},
+  {""s"": ""27"", ""expected"": 1},
+  {""s"": ""11106"", ""expected"": 2},
+  {""s"": ""10011"", ""expected"": 0},
+  {""s"": ""101"", ""expected"": 1},
+  {""s"": ""110"", ""expected"": 1},
+  {""s"": ""12345"", ""expected"": 3},
+  {""s"": ""12121"", ""expected"": 8},
+  {""s"": ""2610"", ""expected"": 2},
+  {""s"": ""1111"", ""expected"": 5},
+  {""s"": ""999"", ""expected"": 1},
+  {""s"": ""230"", ""expected"": 0}
+]
+
+for (let i = 0; i < params.length; i++) {
+  const s = params[i].s;
+  const expected = params[i].expected;
+  const gotOutput = numDecodings(s);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: s = ${s}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5953e8ad4593d6b7b0202,coin-change,"params = [
+    {""coins"": [1, 2, 5], ""amount"": 11, ""expected"": 3},
+    {""coins"": [2], ""amount"": 3, ""expected"": -1},
+    {""coins"": [1], ""amount"": 0, ""expected"": 0},
+    {""coins"": [1, 4, 5], ""amount"": 8, ""expected"": 2},
+    {""coins"": [3, 5, 7], ""amount"": 26, ""expected"": 4},
+    {""coins"": [186, 419, 83, 408], ""amount"": 6249, ""expected"": 20},
+    {""coins"": [1, 4, 5], ""amount"": 7, ""expected"": 3},
+    {""coins"": [83, 186, 408, 419], ""amount"": 6249, ""expected"": 20},
+    {""coins"": [5, 9, 15], ""amount"": 28, ""expected"": 4},
+    {""coins"": [2, 5, 10, 20, 50], ""amount"": 83, ""expected"": 7},
+    {""coins"": [3, 5], ""amount"": 9, ""expected"": 3},
+    {""coins"": [1, 2, 3], ""amount"": 6, ""expected"": 2},
+    {""coins"": [1, 2, 5], ""amount"": 100, ""expected"": 20},
+    {""coins"": [2, 3, 5], ""amount"": 7, ""expected"": 2},
+    {""coins"": [5, 7, 9], ""amount"": 29, ""expected"": 5}
+]
+
+obj = Solution()
+for i in range(len(params)):
+    coins = params[i]['coins']
+    amount = params[i]['amount']
+    expected = params[i]['expected']
+    gotOutput = obj.coinChange(coins, amount)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: coins = {coins}, amount = {amount}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {""coins"": [1, 2, 5], ""amount"": 11, ""expected"": 3},
+  {""coins"": [2], ""amount"": 3, ""expected"": -1},
+  {""coins"": [1], ""amount"": 0, ""expected"": 0},
+  {""coins"": [1, 4, 5], ""amount"": 8, ""expected"": 2},
+  {""coins"": [3, 5, 7], ""amount"": 26, ""expected"": 4},
+  {""coins"": [186, 419, 83, 408], ""amount"": 6249, ""expected"": 20},
+  {""coins"": [1, 4, 5], ""amount"": 7, ""expected"": 3},
+  {""coins"": [83, 186, 408, 419], ""amount"": 6249, ""expected"": 20},
+  {""coins"": [5, 9, 15], ""amount"": 28, ""expected"": 4},
+  {""coins"": [2, 5, 10, 20, 50], ""amount"": 83, ""expected"": 7},
+  {""coins"": [3, 5], ""amount"": 9, ""expected"": 3},
+  {""coins"": [1, 2, 3], ""amount"": 6, ""expected"": 2},
+  {""coins"": [1, 2, 5], ""amount"": 100, ""expected"": 20},
+  {""coins"": [2, 3, 5], ""amount"": 7, ""expected"": 2},
+  {""coins"": [5, 7, 9], ""amount"": 29, ""expected"": 5}
+]
+
+for (let i = 0; i < params.length; i++) {
+  const coins = params[i].coins;
+  const amount = params[i].amount;
+  const expected = params[i].expected;
+  const gotOutput = coinChange(coins, amount);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: coins = ${coins}, amount = ${amount}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5953f8ad4593d6b7b0203,maximum-product-subarray,"params = [
+    {""nums"": [2, 3, -2, 4], ""expected"": 6},
+    {""nums"": [-2, 0, -1], ""expected"": 0},
+    {""nums"": [0, 1, 2, 3, 4], ""expected"": 24},
+    {""nums"": [-2, -3, 4, -1, -2, 1, 5, -3], ""expected"": 360},
+    {""nums"": [0, 0, 0], ""expected"": 0},
+    {""nums"": [1, 0, 2, 3, 4], ""expected"": 24},
+    {""nums"": [5, 2, -1, 3, 0, 1], ""expected"": 10},
+    {""nums"": [-1, -2, -3, -4, -5], ""expected"": 120},
+    {""nums"": [2, -5, -2, -4, 3], ""expected"": 24},
+    {""nums"": [1, 1, 1, 1, 1], ""expected"": 1},
+    {""nums"": [-1, -1, 1, 1, 1], ""expected"": 1},
+    {""nums"": [3, -1, 4], ""expected"": 4},
+    {""nums"": [10, -10, 1, 1, 1], ""expected"": 10},
+    {""nums"": [-2, 2, 3, -1, 4], ""expected"": 48},
+    {""nums"": [1, -2, 0, 2, 3, -3], ""expected"": 6},
+]
+
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    expected = params[i]['expected']
+    gotOutput = obj.maxProduct(nums)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {""nums"": [2, 3, -2, 4], ""expected"": 6},
+  {""nums"": [-2, 0, -1], ""expected"": 0},
+  {""nums"": [0, 1, 2, 3, 4], ""expected"": 24},
+  {""nums"": [-2, -3, 4, -1, -2, 1, 5, -3], ""expected"": 360},
+  {""nums"": [0, 0, 0], ""expected"": 0},
+  {""nums"": [1, 0, 2, 3, 4], ""expected"": 24},
+  {""nums"": [5, 2, -1, 3, 0, 1], ""expected"": 10},
+  {""nums"": [-1, -2, -3, -4, -5], ""expected"": 120},
+  {""nums"": [2, -5, -2, -4, 3], ""expected"": 24},
+  {""nums"": [1, 1, 1, 1, 1], ""expected"": 1},
+  {""nums"": [-1, -1, 1, 1, 1], ""expected"": 1},
+  {""nums"": [3, -1, 4], ""expected"": 4},
+  {""nums"": [10, -10, 1, 1, 1], ""expected"": 10},
+  {""nums"": [-2, 2, 3, -1, 4], ""expected"": 48},
+  {""nums"": [1, -2, 0, 2, 3, -3], ""expected"": 6},
+]
+
+for (let i = 0; i < params.length; i++) {
+  let nums = params[i]['nums'];
+  let expected = params[i]['expected'];
+  let gotOutput = maxProduct(nums);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: nums = ${nums}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
 63b595408ad4593d6b7b0204,word-break,,,,
 63b595418ad4593d6b7b0205,longest-increasing-subsequence,,,,
 63b595418ad4593d6b7b0206,partition-equal-subset-sum,,,,
