@@ -104,9 +104,8 @@ export default function Problems({
                     className="max-h-96 scroll-py-3 overflow-y-auto p-3"
                   >
                     {filteredItems.map((item) => (
-                      <Link href={`problem/${item}`}>
+                      <Link key={item} href={`problem/${item}`}>
                         <Combobox.Option
-                          key={item}
                           value={item}
                           className={({ active }: any) =>
                             classNames(
