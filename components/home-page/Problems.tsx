@@ -104,7 +104,7 @@ export default function Problems({
                     static
                     className="max-h-96 scroll-py-3 overflow-y-auto p-3"
                   >
-                    {filteredItems.map((item) => (
+                    {filteredItems.map((item, i) => (
                       <Link key={item} href={`problem/${item}`}>
                         <Combobox.Option
                           value={item}
@@ -123,7 +123,7 @@ export default function Problems({
                                   active ? "text-gray-900" : "text-gray-700"
                                 )}
                               >
-                                {kebabToTitleCase(item)}
+                                {`${i + 1}. ${kebabToTitleCase(item)}`}
                               </p>
                             </div>
                           )}
