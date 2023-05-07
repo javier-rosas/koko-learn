@@ -33,6 +33,14 @@ export const showErrorToast = (msg: string, timer: number) => {
   });
 };
 
+// turns kebab case string to title case
+export const kebabToTitleCase = (str: string) => {
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 // kebab case converter
 export const kebabCase = (str: string) =>
   str

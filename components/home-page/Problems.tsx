@@ -15,6 +15,7 @@ import {
   Bars4Icon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { kebabToTitleCase } from '../../utils/general'
 
 const items = [
   {
@@ -54,6 +55,8 @@ export default function Problems({
           return item.toLowerCase().includes(query.toLowerCase());
         });
 
+  const filteredProblemsTitleCase = filteredItems.map((item) => kebabToTitleCase(item))
+
   return (
     <Transition.Root
       show={open}
@@ -85,7 +88,7 @@ export default function Problems({
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all mt-20">
-              <Combobox >
+              <Combobox>
                 <div className="relative">
                   <MagnifyingGlassIcon
                     className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
@@ -103,7 +106,7 @@ export default function Problems({
                     static
                     className="max-h-96 scroll-py-3 overflow-y-auto p-3"
                   >
-                    {filteredItems.map((item) => (
+                    {filteredProblemsTitleCase.map((item) => (
                       <Link key={item} href={`problem/${item}`}>
                         <Combobox.Option
                           value={item}
@@ -115,24 +118,19 @@ export default function Problems({
                           }
                         >
                           {({ active }) => (
-                            
-                         
-                              <div className="ml-4 flex-auto">
-                                <p
-                                  className={classNames(
-                                    "text-sm font-medium",
-                                    active ? "text-gray-900" : "text-gray-700"
-                                  )}
-                                >
-                                  {item}
-                                </p>
-                              </div>
-                      
-                        
+                            <div className="ml-4 flex-auto">
+                              <p
+                                className={classNames(
+                                  "text-sm font-medium",
+                                  active ? "text-gray-900" : "text-gray-700"
+                                )}
+                              >
+                                {item}
+                              </p>
+                            </div>
                           )}
                         </Combobox.Option>
-                        </Link>
-                     
+                      </Link>
                     ))}
                   </Combobox.Options>
                 )}

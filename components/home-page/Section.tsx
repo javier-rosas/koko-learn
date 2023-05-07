@@ -14,8 +14,11 @@ export default function Section({ section }: SectionName) {
   const [showProblems, setShowProblems] = useState(false);
 
   return (
-    <div className="hover:cursor-pointer font-mono" onClick={() => setShowProblems(true)}>
-      <div className="flex w-full items-center justify-between space-x-6 p-6 bg-white border border-gray-200 hover:bg-indigo-600 hover:text-white rounded-lg ">
+    <div
+      className="hover:cursor-pointer"
+      onClick={() => setShowProblems(true)}
+    >
+      <div className="flex w-full items-center justify-between space-x-6 p-6 bg-white border border-gray-200 hover:border-indigo-500 transition-colors duration-300 rounded-lg ">
         <div className="flex-1 truncate">
           <div className="flex items-center space-x-3">
             <h3 className="truncate text-sm">{section?.name}</h3>
@@ -33,7 +36,10 @@ export default function Section({ section }: SectionName) {
         <div className="-mt-px flex divide-x divide-gray-200"></div>
       </div>
       {showProblems && section?.problems && (
-        <Problems problems={section?.problems} setShowProblems={setShowProblems} />
+        <Problems
+          problems={section?.problems}
+          setShowProblems={setShowProblems}
+        />
       )}
     </div>
   );
