@@ -55,8 +55,6 @@ export default function Problems({
           return item.toLowerCase().includes(query.toLowerCase());
         });
 
-  const filteredProblemsTitleCase = filteredItems.map((item) => kebabToTitleCase(item))
-
   return (
     <Transition.Root
       show={open}
@@ -106,7 +104,7 @@ export default function Problems({
                     static
                     className="max-h-96 scroll-py-3 overflow-y-auto p-3"
                   >
-                    {filteredProblemsTitleCase.map((item) => (
+                    {filteredItems.map((item) => (
                       <Link key={item} href={`problem/${item}`}>
                         <Combobox.Option
                           value={item}
@@ -125,7 +123,7 @@ export default function Problems({
                                   active ? "text-gray-900" : "text-gray-700"
                                 )}
                               >
-                                {item}
+                                {kebabToTitleCase(item)}
                               </p>
                             </div>
                           )}

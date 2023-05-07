@@ -3,6 +3,7 @@ import LanguagesDropdown from "./LanguagesDropdown";
 import ThemeDropdown from "./ThemeDropdown";
 import Link from "next/link";
 import { defineTheme } from "../../lib/defineTheme";
+import ProfileNavbar from "../shared/ProfileNavbar";
 
 function Navbar(props: any) {
   // props inherited from [questionName].tsx page
@@ -25,6 +26,8 @@ function Navbar(props: any) {
   }, [setTheme]);
 
   return (
+    <>
+    <ProfileNavbar/>
     <div className="flex flex-col">
       <div className="flex flex-col sm:flex sm:flex-row">
         <div className="px-2 py-2">
@@ -33,16 +36,9 @@ function Navbar(props: any) {
         <div className="px-2 py-2">
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
         </div>
-        <Link
-          href="/"
-          className="sm:ml-auto sm:mr-4 sm:self-end self-start text-center h-10 m-2 px-2 py-2 
-                                  border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] 
-                                  hover:shadow transition duration-200 bg-white flex-shrink-0"
-        >
-          Search Problems
-        </Link>
       </div>
     </div>
+    </>
   );
 }
 
