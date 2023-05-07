@@ -2,12 +2,18 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Navbar from '../problem-page/Navbar'
+import Link from 'next/link'
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function ProfileNavbar() {
+export default function ProfileNavbar(props: any) {
+
+  // props inherited from [questionName].tsx page
+  const { theme, setTheme, language, setLanguage } = props;
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -41,16 +47,17 @@ export default function ProfileNavbar() {
                 
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                  <a
-                    href="#"
-                    className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
-                  >
-                    Dashboard
-                  </a>
+                
+                  <Link href="/" className='inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900'>
+                  Home
+                  </Link>
+                  <Navbar theme={theme} setTheme={setTheme}/>
                   
+                   
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                
                 <button
                   type="button"
                   className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -121,13 +128,18 @@ export default function ProfileNavbar() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 pb-4 pt-2">
               {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
-              <Disclosure.Button
+              {/* <Disclosure.Button
                 as="a"
-                href="#"
+                href="/"
                 className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
-              >
-                Dashboard
-              </Disclosure.Button>
+              > */}
+                <Link href="/" className='block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700'>
+                  Home
+                </Link>
+                
+              {/* </Disclosure.Button> */}
+
+              <Navbar theme={theme} setTheme={setTheme}/>
               
             </div>
           </Disclosure.Panel>

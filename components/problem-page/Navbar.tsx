@@ -27,17 +27,19 @@ function Navbar(props: any) {
 
   return (
     <>
-    <ProfileNavbar/>
-    <div className="flex flex-col">
-      <div className="flex flex-col sm:flex sm:flex-row">
-        <div className="px-2 py-2">
-          <LanguagesDropdown />
-        </div>
-        <div className="px-2 py-2">
-          <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
+      <div className="flex flex-col">
+        <div className="flex flex-col sm:flex sm:flex-row">
+          <div className="px-2 py-2">
+            <LanguagesDropdown />
+          </div>
+          <div className="px-2 py-2">
+            <ThemeDropdown
+              handleThemeChange={handleThemeChange}
+              theme={theme}
+            />
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }

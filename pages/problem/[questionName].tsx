@@ -20,6 +20,7 @@ import { Panel, PanelGroup } from "react-resizable-panels";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import ResizeHandle from "../../components/problem-page/ResizeHandle";
 import "react-toastify/dist/ReactToastify.css";
+import ProfileNavbar from "../../components/shared/ProfileNavbar";
 
 const Repl = (props: any) => {
   // getStaticProps
@@ -115,7 +116,7 @@ const Repl = (props: any) => {
         strategy="beforeInteractive"
         src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js"
       />
-      <Navbar theme={theme} setTheme={setTheme} />
+      <ProfileNavbar theme={theme} setTheme={setTheme} />
       {!!mobile ? (
         <div className="flex flex-col sm:flex sm:flex-row sm:justify-between mb-16">
           <Question question={question} />
