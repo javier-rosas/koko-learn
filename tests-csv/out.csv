@@ -6711,21 +6711,2486 @@ for (let i = 0; i < params.length; i++) {
       console.log(`\u2705 Test ${i} succeeded`);
   }
 }",,
-63b595408ad4593d6b7b0204,word-break,,,,
-63b595418ad4593d6b7b0205,longest-increasing-subsequence,,,,
-63b595418ad4593d6b7b0206,partition-equal-subset-sum,,,,
-63b595428ad4593d6b7b0207,unique-paths,,,,
-63b595438ad4593d6b7b0208,longest-common-subsequence,,,,
-63b595448ad4593d6b7b0209,best-time-to-buy-and-sell-stock-with-cooldown,,,,
-63b595458ad4593d6b7b020a,coin-change-ii,,,,
-63b595468ad4593d6b7b020b,target-sum,,,,
-63b595478ad4593d6b7b020c,interleaving-string,,,,
-63b595488ad4593d6b7b020d,longest-increasing-path-in-a-matrix,,,,
-63b595498ad4593d6b7b020e,distinct-subsequences,,,,
-63b5954a8ad4593d6b7b020f,edit-distance,,,,
-63b5954b8ad4593d6b7b0210,burst-balloons,,,,
-63b5954b8ad4593d6b7b0211,regular-expression-matching,,,,
-63b5954d8ad4593d6b7b0212,maximum-subarray,,,,
+63b595408ad4593d6b7b0204,word-break,"params = [
+    {
+        's': 'leetcode',
+        'wordDict': ['leet', 'code'],
+        'expected': True
+    },
+    {
+        's': 'applepenapple',
+        'wordDict': ['apple', 'pen'],
+        'expected': True
+    },
+    {
+        's': 'catsandog',
+        'wordDict': ['cats', 'dog', 'sand', 'and', 'cat'],
+        'expected': False
+    },
+    {
+        's': 'helloworld',
+        'wordDict': ['hello', 'world'],
+        'expected': True
+    },
+    {
+        's': 'foobar',
+        'wordDict': ['foo', 'bar'],
+        'expected': True
+    },
+    {
+        's': 'foobazbar',
+        'wordDict': ['foo', 'bar'],
+        'expected': False
+    },
+    {
+        's': 'openai',
+        'wordDict': ['open', 'ai'],
+        'expected': True
+    },
+    {
+        's': 'openai',
+        'wordDict': ['pen', 'ai'],
+        'expected': False
+    },
+    {
+        's': 'pineapple',
+        'wordDict': ['apple', 'pine'],
+        'expected': True
+    },
+    {
+        's': 'pineapplepen',
+        'wordDict': ['apple', 'pine', 'pen'],
+        'expected': True
+    },
+    {
+        's': 'pineapplepenapple',
+        'wordDict': ['apple', 'pine', 'pen'],
+        'expected': True
+    },
+    {
+        's': 'pineapplepencil',
+        'wordDict': ['apple', 'pine', 'pen'],
+        'expected': False
+    },
+    {
+        's': 'super',
+        'wordDict': ['su', 'per'],
+        'expected': True
+    },
+    {
+        's': 'superman',
+        'wordDict': ['su', 'per', 'man'],
+        'expected': True
+    },
+    {
+        's': 'superwoman',
+        'wordDict': ['su', 'per', 'man'],
+        'expected': False
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    s = params[i]['s']
+    wordDict = params[i]['wordDict']
+    expected = params[i]['expected']
+    gotOutput = obj.wordBreak(s, wordDict)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: s = {s}, wordDict = {wordDict}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      's': 'leetcode',
+      'wordDict': ['leet', 'code'],
+      'expected': true
+  },
+  {
+      's': 'applepenapple',
+      'wordDict': ['apple', 'pen'],
+      'expected': true
+  },
+  {
+      's': 'catsandog',
+      'wordDict': ['cats', 'dog', 'sand', 'and', 'cat'],
+      'expected': false
+  },
+  {
+      's': 'helloworld',
+      'wordDict': ['hello', 'world'],
+      'expected': true
+  },
+  {
+      's': 'foobar',
+      'wordDict': ['foo', 'bar'],
+      'expected': true
+  },
+  {
+      's': 'foobazbar',
+      'wordDict': ['foo', 'bar'],
+      'expected': false
+  },
+  {
+      's': 'openai',
+      'wordDict': ['open', 'ai'],
+      'expected': true
+  },
+  {
+      's': 'openai',
+      'wordDict': ['pen', 'ai'],
+      'expected': false
+  },
+  {
+      's': 'pineapple',
+      'wordDict': ['apple', 'pine'],
+      'expected': true
+  },
+  {
+      's': 'pineapplepen',
+      'wordDict': ['apple', 'pine', 'pen'],
+      'expected': true
+  },
+  {
+      's': 'pineapplepenapple',
+      'wordDict': ['apple', 'pine', 'pen'],
+      'expected': true
+  },
+  {
+      's': 'pineapplepencil',
+      'wordDict': ['apple', 'pine', 'pen'],
+      'expected': false
+  },
+  {
+      's': 'super',
+      'wordDict': ['su', 'per'],
+      'expected': true
+  },
+  {
+      's': 'superman',
+      'wordDict': ['su', 'per', 'man'],
+      'expected': true
+  },
+  {
+      's': 'superwoman',
+      'wordDict': ['su', 'per', 'man'],
+      'expected': false
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let s = params[i]['s'];
+  let wordDict = params[i]['wordDict'];
+  let expected = params[i]['expected'];
+  let gotOutput = wordBreak(s, wordDict);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: s = ${s}, wordDict = ${wordDict}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595418ad4593d6b7b0205,longest-increasing-subsequence,"params = [
+    {
+        'nums': [10,9,2,5,3,7,101,18],
+        'expected': 4
+    },
+    {
+        'nums': [0,1,0,3,2,3],
+        'expected': 4
+    },
+    {
+        'nums': [7,7,7,7,7,7,7],
+        'expected': 1
+    },
+    {
+        'nums': [1,2,3,4,5,6,7,8,9,10],
+        'expected': 10
+    },
+    {
+        'nums': [10,9,8,7,6,5,4,3,2,1],
+        'expected': 1
+    },
+    {
+        'nums': [-5,0,5,10,15,20],
+        'expected': 6
+    },
+    {
+        'nums': [0,-1,2,-3,4,-5,6,-7,8],
+        'expected': 5
+    },
+    {
+        'nums': [1,2,1,2,1,2,1,2,1,2],
+        'expected': 2
+    },
+    {
+        'nums': [10,22,9,33,21,50,41,60,80],
+        'expected': 6
+    },
+    {
+        'nums': [3,4,5,1,2],
+        'expected': 3
+    },
+    {
+        'nums': [10,9,2,5,3,4],
+        'expected': 3
+    },
+    {
+        'nums': [1,3,6,7,9,4,10,5,6],
+        'expected': 6
+    },
+    {
+        'nums': [0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15],
+        'expected': 6
+    },
+    {
+        'nums': [1,3,2,3,1,4],
+        'expected': 4
+    },
+    {
+        'nums': [2,2,2,2,2],
+        'expected': 1
+    }
+]
+    
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    expected = params[i]['expected']
+    gotOutput = obj.lengthOfLIS(nums)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'nums': [10,9,2,5,3,7,101,18],
+      'expected': 4
+  },
+  {
+      'nums': [0,1,0,3,2,3],
+      'expected': 4
+  },
+  {
+      'nums': [7,7,7,7,7,7,7],
+      'expected': 1
+  },
+  {
+      'nums': [1,2,3,4,5,6,7,8,9,10],
+      'expected': 10
+  },
+  {
+      'nums': [10,9,8,7,6,5,4,3,2,1],
+      'expected': 1
+  },
+  {
+      'nums': [-5,0,5,10,15,20],
+      'expected': 6
+  },
+  {
+      'nums': [0,-1,2,-3,4,-5,6,-7,8],
+      'expected': 5
+  },
+  {
+      'nums': [1,2,1,2,1,2,1,2,1,2],
+      'expected': 2
+  },
+  {
+      'nums': [10,22,9,33,21,50,41,60,80],
+      'expected': 6
+  },
+  {
+      'nums': [3,4,5,1,2],
+      'expected': 3
+  },
+  {
+      'nums': [10,9,2,5,3,4],
+      'expected': 3
+  },
+  {
+      'nums': [1,3,6,7,9,4,10,5,6],
+      'expected': 6
+  },
+  {
+      'nums': [0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15],
+      'expected': 6
+  },
+  {
+      'nums': [1,3,2,3,1,4],
+      'expected': 4
+  },
+  {
+      'nums': [2,2,2,2,2],
+      'expected': 1
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let nums = params[i]['nums'];
+  let expected = params[i]['expected'];
+  let gotOutput = lengthOfLIS(nums);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: nums = ${nums}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595418ad4593d6b7b0206,partition-equal-subset-sum,"params = [
+    {
+        'nums': [1,5,11,5],
+        'expected': True
+    },
+    {
+        'nums': [1,2,3,5],
+        'expected': False
+    },
+    {
+        'nums': [1,1,1,1],
+        'expected': True
+    },
+    {
+        'nums': [1,1,1,2],
+        'expected': False
+    },
+    {
+        'nums': [1,1,1,2,2],
+        'expected': False
+    },
+    {
+        'nums': [100,200,300,400],
+        'expected': True
+    },
+    {
+        'nums': [100,100,100,100],
+        'expected': True
+    },
+    {
+        'nums': [1,1,1,1,1,1,1,1,1,1],
+        'expected': True
+    },
+    {
+        'nums': [1,1,1,1,1,1,1,1,1,10],
+        'expected': False
+    },
+    {
+        'nums': [1,1,1,1,1,1,1,1,1,18],
+        'expected': False
+    },
+    {
+        'nums': [3,1,4,2,2,1,5,5],
+        'expected': False
+    },
+    {
+        'nums': [2,2,2,2,2,2,2,2,2,2],
+        'expected': True
+    },
+    {
+        'nums': [3,3,3,4,5],
+        'expected': True
+    },
+    {
+        'nums': [2,3,5,10,20,40],
+        'expected': True
+    },
+    {
+        'nums': [1,2,4,8,16,32],
+        'expected': False
+    }
+]
+    
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    expected = params[i]['expected']
+    gotOutput = obj.canPartition(nums)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'nums': [1,5,11,5],
+      'expected': true
+  },
+  {
+      'nums': [1,2,3,5],
+      'expected': false
+  },
+  {
+      'nums': [1,1,1,1],
+      'expected': true
+  },
+  {
+      'nums': [1,1,1,2],
+      'expected': false
+  },
+  {
+      'nums': [1,1,1,2,2],
+      'expected': false
+  },
+  {
+      'nums': [100,200,300,400],
+      'expected': true
+  },
+  {
+      'nums': [100,100,100,100],
+      'expected': true
+  },
+  {
+      'nums': [1,1,1,1,1,1,1,1,1,1],
+      'expected': true
+  },
+  {
+      'nums': [1,1,1,1,1,1,1,1,1,10],
+      'expected': false
+  },
+  {
+      'nums': [1,1,1,1,1,1,1,1,1,18],
+      'expected': false
+  },
+  {
+      'nums': [3,1,4,2,2,1,5,5],
+      'expected': false
+  },
+  {
+      'nums': [2,2,2,2,2,2,2,2,2,2],
+      'expected': true
+  },
+  {
+      'nums': [3,3,3,4,5],
+      'expected': true
+  },
+  {
+      'nums': [2,3,5,10,20,40],
+      'expected': true
+  },
+  {
+      'nums': [1,2,4,8,16,32],
+      'expected': false
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let nums = params[i]['nums'];
+  let expected = params[i]['expected'];
+  let gotOutput = canPartition(nums);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: nums = ${nums}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595428ad4593d6b7b0207,unique-paths,"params = [
+    {
+        'm': 3,
+        'n': 7,
+        'expected': 28
+    },
+    {
+        'm': 3,
+        'n': 2,
+        'expected': 3
+    },
+    {
+        'm': 7,
+        'n': 3,
+        'expected': 28
+    },
+    {
+        'm': 2,
+        'n': 2,
+        'expected': 2
+    },
+    {
+        'm': 1,
+        'n': 1,
+        'expected': 1
+    },
+    {
+        'm': 5,
+        'n': 5,
+        'expected': 70
+    },
+    {
+        'm': 10,
+        'n': 10,
+        'expected': 48620
+    },
+    {
+        'm': 20,
+        'n': 20,
+        'expected': 35345263800
+    },
+    {
+        'm': 1,
+        'n': 10,
+        'expected': 1
+    },
+    {
+        'm': 10,
+        'n': 1,
+        'expected': 1
+    },
+    {
+        'm': 5,
+        'n': 1,
+        'expected': 1
+    },
+    {
+        'm': 1,
+        'n': 5,
+        'expected': 1
+    },
+    {
+        'm': 6,
+        'n': 3,
+        'expected': 21
+    },
+    {
+        'm': 3,
+        'n': 6,
+        'expected': 21
+    },
+    {
+        'm': 23,
+        'n': 12,
+        'expected': 193536720
+    }
+]
+    
+obj = Solution()
+for i in range(len(params)):
+    m = params[i]['m']
+    n = params[i]['n']
+    expected = params[i]['expected']
+    gotOutput = obj.uniquePaths(m, n)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: m = {m}, n = {n}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'm': 3,
+      'n': 7,
+      'expected': 28
+  },
+  {
+      'm': 3,
+      'n': 2,
+      'expected': 3
+  },
+  {
+      'm': 7,
+      'n': 3,
+      'expected': 28
+  },
+  {
+      'm': 2,
+      'n': 2,
+      'expected': 2
+  },
+  {
+      'm': 1,
+      'n': 1,
+      'expected': 1
+  },
+  {
+      'm': 5,
+      'n': 5,
+      'expected': 70
+  },
+  {
+      'm': 10,
+      'n': 10,
+      'expected': 48620
+  },
+  {
+      'm': 20,
+      'n': 20,
+      'expected': 35345263800
+  },
+  {
+      'm': 1,
+      'n': 10,
+      'expected': 1
+  },
+  {
+      'm': 10,
+      'n': 1,
+      'expected': 1
+  },
+  {
+      'm': 5,
+      'n': 1,
+      'expected': 1
+  },
+  {
+      'm': 1,
+      'n': 5,
+      'expected': 1
+  },
+  {
+      'm': 6,
+      'n': 3,
+      'expected': 21
+  },
+  {
+      'm': 3,
+      'n': 6,
+      'expected': 21
+  },
+  {
+      'm': 23,
+      'n': 12,
+      'expected': 193536720
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let m = params[i]['m'];
+  let n = params[i]['n'];
+  let expected = params[i]['expected'];
+  let gotOutput = uniquePaths(m, n);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: m = ${m}, n = ${n}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595438ad4593d6b7b0208,longest-common-subsequence,"params = [
+    {
+        'text1': 'abcde',
+        'text2': 'ace',
+        'expected': 3
+    },
+    {
+        'text1': 'abc',
+        'text2': 'abc',
+        'expected': 3
+    },
+    {
+        'text1': 'abc',
+        'text2': 'def',
+        'expected': 0
+    },
+    {
+        'text1': 'bluesky',
+        'text2': 'blueday',
+        'expected': 5
+    },
+    {
+        'text1': 'abcdefg',
+        'text2': 'hijklmnop',
+        'expected': 0
+    },
+    {
+        'text1': 'maverick',
+        'text2': 'viper',
+        'expected': 3
+    },
+    {
+        'text1': 'racecar',
+        'text2': 'radar',
+        'expected': 4
+    },
+    {
+        'text1': 'earthquake',
+        'text2': 'heart',
+        'expected': 4
+    },
+    {
+        'text1': 'python',
+        'text2': 'typhoon',
+        'expected': 4
+    },
+    {
+        'text1': 'sunday',
+        'text2': 'monday',
+        'expected': 4
+    },
+    {
+        'text1': 'rainbow',
+        'text2': 'raincoat',
+        'expected': 5
+    },
+    {
+        'text1': 'hamburger',
+        'text2': 'hamlet',
+        'expected': 4
+    },
+    {
+        'text1': 'antidisestablishmentarianism',
+        'text2': 'disestablish',
+        'expected': 12
+    },
+    {
+        'text1': 'supercalifragilisticexpialidocious',
+        'text2': 'practicalexercise',
+        'expected': 11
+    },
+    {
+        'text1': 'mississippi',
+        'text2': 'sippingtea',
+        'expected': 5
+    }
+]
+    
+obj = Solution()
+for i in range(len(params)):
+    text1 = params[i]['text1']
+    text2 = params[i]['text2']
+    expected = params[i]['expected']
+    gotOutput = obj.longestCommonSubsequence(text1, text2)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: text1 = {text1}, text2 = {text2}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'text1': 'abcde',
+      'text2': 'ace',
+      'expected': 3
+  },
+  {
+      'text1': 'abc',
+      'text2': 'abc',
+      'expected': 3
+  },
+  {
+      'text1': 'abc',
+      'text2': 'def',
+      'expected': 0
+  },
+  {
+      'text1': 'bluesky',
+      'text2': 'blueday',
+      'expected': 5
+  },
+  {
+      'text1': 'abcdefg',
+      'text2': 'hijklmnop',
+      'expected': 0
+  },
+  {
+      'text1': 'maverick',
+      'text2': 'viper',
+      'expected': 3
+  },
+  {
+      'text1': 'racecar',
+      'text2': 'radar',
+      'expected': 4
+  },
+  {
+      'text1': 'earthquake',
+      'text2': 'heart',
+      'expected': 4
+  },
+  {
+      'text1': 'python',
+      'text2': 'typhoon',
+      'expected': 4
+  },
+  {
+      'text1': 'sunday',
+      'text2': 'monday',
+      'expected': 4
+  },
+  {
+      'text1': 'rainbow',
+      'text2': 'raincoat',
+      'expected': 5
+  },
+  {
+      'text1': 'hamburger',
+      'text2': 'hamlet',
+      'expected': 4
+  },
+  {
+      'text1': 'antidisestablishmentarianism',
+      'text2': 'disestablish',
+      'expected': 12
+  },
+  {
+      'text1': 'supercalifragilisticexpialidocious',
+      'text2': 'practicalexercise',
+      'expected': 11
+  },
+  {
+      'text1': 'mississippi',
+      'text2': 'sippingtea',
+      'expected': 5
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let text1 = params[i]['text1'];
+  let text2 = params[i]['text2'];
+  let expected = params[i]['expected'];
+  let gotOutput = longestCommonSubsequence(text1, text2);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: text1 = ${text1}, text2 = ${text2}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595448ad4593d6b7b0209,best-time-to-buy-and-sell-stock-with-cooldown,"params = [
+    {
+        'prices': [1,2,3,0,2],
+        'expected': 3
+    },
+    {
+        'prices': [1],
+        'expected': 0
+    },
+    {
+        'prices': [1,2,3,4,5],
+        'expected': 4
+    },
+    {
+        'prices': [7,6,4,3,1],
+        'expected': 0
+    },
+    {
+        'prices': [1,2],
+        'expected': 1
+    },
+    {
+        'prices': [2,1],
+        'expected': 0
+    },
+    {
+        'prices': [1,2,3,0,2,5],
+        'expected': 6
+    },
+    {
+        'prices': [1,2,3,0,2,5,0,3],
+        'expected': 6
+    },
+    {
+        'prices': [2,1,4],
+        'expected': 3
+    },
+    {
+        'prices': [1,0,3,0,2],
+        'expected': 3
+    },
+    {
+        'prices': [3,3,5,0,0,3,1,4],
+        'expected': 6
+    },
+    {
+        'prices': [1,2,4,2,5,7,2,4,9,0],
+        'expected': 11
+    },
+    {
+        'prices': [6,1,3,2,4,7],
+        'expected': 6
+    },
+    {
+        'prices': [1,2,3,0,2,7,13,20,0,3],
+        'expected': 21
+    },
+    {
+        'prices': [9,7,5,3,1,0],
+        'expected': 0
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    prices = params[i]['prices']
+    expected = params[i]['expected']
+    gotOutput = obj.maxProfit(prices)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: prices = {prices}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'prices': [1,2,3,0,2],
+      'expected': 3
+  },
+  {
+      'prices': [1],
+      'expected': 0
+  },
+  {
+      'prices': [1,2,3,4,5],
+      'expected': 4
+  },
+  {
+      'prices': [7,6,4,3,1],
+      'expected': 0
+  },
+  {
+      'prices': [1,2],
+      'expected': 1
+  },
+  {
+      'prices': [2,1],
+      'expected': 0
+  },
+  {
+      'prices': [1,2,3,0,2,5],
+      'expected': 6
+  },
+  {
+      'prices': [1,2,3,0,2,5,0,3],
+      'expected': 6
+  },
+  {
+      'prices': [2,1,4],
+      'expected': 3
+  },
+  {
+      'prices': [1,0,3,0,2],
+      'expected': 3
+  },
+  {
+      'prices': [3,3,5,0,0,3,1,4],
+      'expected': 6
+  },
+  {
+      'prices': [1,2,4,2,5,7,2,4,9,0],
+      'expected': 11
+  },
+  {
+      'prices': [6,1,3,2,4,7],
+      'expected': 6
+  },
+  {
+      'prices': [1,2,3,0,2,7,13,20,0,3],
+      'expected': 21
+  },
+  {
+      'prices': [9,7,5,3,1,0],
+      'expected': 0
+  }
+]
+
+for (let i = 0; i < params.length; i++){
+  let prices = params[i]['prices'];
+  let expected = params[i]['expected'];
+  let gotOutput = maxProfit(prices);
+  if(expected !== gotOutput){
+      console.log(`\u274C Test ${i} failed: prices = ${prices}, expected = ${expected}, but got ${gotOutput}`);
+  }else{
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595458ad4593d6b7b020a,coin-change-ii,"params = [
+    {
+        'amount': 5,
+        'coins': [1, 2, 5],
+        'expected': 4
+    },
+    {
+        'amount': 3,
+        'coins': [2],
+        'expected': 0
+    },
+    {
+        'amount': 10,
+        'coins': [10],
+        'expected': 1
+    },
+    {
+        'amount': 0,
+        'coins': [1],
+        'expected': 1
+    },
+    {
+        'amount': 100,
+        'coins': [1, 2, 5],
+        'expected': 541
+    },
+    {
+        'amount': 5000,
+        'coins': [3,7,405,436],
+        'expected': 7153
+    },
+    {
+        'amount': 5000,
+        'coins': [3,7,405,436,8,20,13],
+        'expected': 4627958073
+    },
+    {
+        'amount': 150,
+        'coins': [100,50,200],
+        'expected': 2
+    },
+    {
+        'amount': 3000,
+        'coins': [5,10,20,50,100,200,500],
+        'expected': 22481738
+    },
+    {
+        'amount': 50,
+        'coins': [1, 2, 5],
+        'expected': 146
+    },
+    {
+        'amount': 100,
+        'coins': [1, 99],
+        'expected': 2
+    },
+    {
+        'amount': 100,
+        'coins': [99],
+        'expected': 0
+    },
+    {
+        'amount': 100,
+        'coins': [100],
+        'expected': 1
+    },
+    {
+        'amount': 5000,
+        'coins': [1],
+        'expected': 1
+    },
+    {
+        'amount': 5000,
+        'coins': [5000],
+        'expected': 1
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    amount = params[i]['amount']
+    coins = params[i]['coins']
+    expected = params[i]['expected']
+    gotOutput = obj.change(amount, coins)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: amount = {amount}, coins = {coins}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'amount': 5,
+      'coins': [1, 2, 5],
+      'expected': 4
+  },
+  {
+      'amount': 3,
+      'coins': [2],
+      'expected': 0
+  },
+  {
+      'amount': 10,
+      'coins': [10],
+      'expected': 1
+  },
+  {
+      'amount': 0,
+      'coins': [1],
+      'expected': 1
+  },
+  {
+      'amount': 100,
+      'coins': [1, 2, 5],
+      'expected': 541
+  },
+  {
+      'amount': 5000,
+      'coins': [3,7,405,436],
+      'expected': 7153
+  },
+  {
+      'amount': 5000,
+      'coins': [3,7,405,436,8,20,13],
+      'expected': 4627958073
+  },
+  {
+      'amount': 150,
+      'coins': [100,50,200],
+      'expected': 2
+  },
+  {
+      'amount': 3000,
+      'coins': [5,10,20,50,100,200,500],
+      'expected': 22481738
+  },
+  {
+      'amount': 50,
+      'coins': [1, 2, 5],
+      'expected': 146
+  },
+  {
+      'amount': 100,
+      'coins': [1, 99],
+      'expected': 2
+  },
+  {
+      'amount': 100,
+      'coins': [99],
+      'expected': 0
+  },
+  {
+      'amount': 100,
+      'coins': [100],
+      'expected': 1
+  },
+  {
+      'amount': 5000,
+      'coins': [1],
+      'expected': 1
+  },
+  {
+      'amount': 5000,
+      'coins': [5000],
+      'expected': 1
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let amount = params[i]['amount'];
+  let coins = params[i]['coins'];
+  let expected = params[i]['expected'];
+  let gotOutput = change(amount, coins);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: amount = ${amount}, coins = ${coins}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595468ad4593d6b7b020b,target-sum,"params = [
+    {
+        'nums': [1,1,1,1,1],
+        'target': 3,
+        'expected': 5
+    },
+    {
+        'nums': [1],
+        'target': 1,
+        'expected': 1
+    },
+    {
+        'nums': [1, 1, 1],
+        'target': 1,
+        'expected': 3
+    },
+    {
+        'nums': [2, 3, 5, 10, 7],
+        'target': 7,
+        'expected': 3
+    },
+    {
+        'nums': [2, 3, 5, 6],
+        'target': 1,
+        'expected': 0
+    },
+    {
+        'nums': [1, 2, 3],
+        'target': 0,
+        'expected': 2
+    },
+    {
+        'nums': [1000, 1000, 1000, 1000, 1000],
+        'target': 1000,
+        'expected': 10
+    },
+    {
+        'nums': [1, 2, 1],
+        'target': 0,
+        'expected': 2
+    },
+    {
+        'nums': [0, 0, 0, 0, 0],
+        'target': 0,
+        'expected': 32
+    },
+    {
+        'nums': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        'target': 5,
+        'expected': 0
+    },
+    {
+        'nums': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        'target': 0,
+        'expected': 252
+    },
+    {
+        'nums': [2, 3, 4, 5],
+        'target': 1,
+        'expected': 0
+    },
+    {
+        'nums': [2, 2, 2, 2, 2, 2],
+        'target': 2,
+        'expected': 0
+    },
+    {
+        'nums': [1, 0],
+        'target': 1,
+        'expected': 2
+    },
+    {
+        'nums': [1, 2, 3, 4, 5],
+        'target': 3,
+        'expected': 3
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    target = params[i]['target']
+    expected = params[i]['expected']
+    gotOutput = obj.findTargetSumWays(nums, target)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, target = {target}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'nums': [1,1,1,1,1],
+      'target': 3,
+      'expected': 5
+  },
+  {
+      'nums': [1],
+      'target': 1,
+      'expected': 1
+  },
+  {
+      'nums': [1, 1, 1],
+      'target': 1,
+      'expected': 3
+  },
+  {
+      'nums': [2, 3, 5, 10, 7],
+      'target': 7,
+      'expected': 3
+  },
+  {
+      'nums': [2, 3, 5, 6],
+      'target': 1,
+      'expected': 0
+  },
+  {
+      'nums': [1, 2, 3],
+      'target': 0,
+      'expected': 2
+  },
+  {
+      'nums': [1000, 1000, 1000, 1000, 1000],
+      'target': 1000,
+      'expected': 10
+  },
+  {
+      'nums': [1, 2, 1],
+      'target': 0,
+      'expected': 2
+  },
+  {
+      'nums': [0, 0, 0, 0, 0],
+      'target': 0,
+      'expected': 32
+  },
+  {
+      'nums': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      'target': 5,
+      'expected': 0
+  },
+  {
+      'nums': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      'target': 0,
+      'expected': 252
+  },
+  {
+      'nums': [2, 3, 4, 5],
+      'target': 1,
+      'expected': 0
+  },
+  {
+      'nums': [2, 2, 2, 2, 2, 2],
+      'target': 2,
+      'expected': 0
+  },
+  {
+      'nums': [1, 0],
+      'target': 1,
+      'expected': 2
+  },
+  {
+      'nums': [1, 2, 3, 4, 5],
+      'target': 3,
+      'expected': 3
+  }
+]
+
+for(let i = 0; i < params.length; i++) {
+  let nums = params[i]['nums'];
+  let target = params[i]['target'];
+  let expected = params[i]['expected'];
+  let gotOutput = findTargetSumWays(nums, target);
+  if(expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: nums = ${nums}, target = ${target}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595478ad4593d6b7b020c,interleaving-string,"params = [
+    {
+        's1': ""aabcc"",
+        's2': ""dbbca"",
+        's3': ""aadbbcbcac"",
+        'expected': True
+    },
+    {
+        's1': ""aabcc"",
+        's2': ""dbbca"",
+        's3': ""aadbbbaccc"",
+        'expected': False
+    },
+    {
+        's1': """",
+        's2': """",
+        's3': """",
+        'expected': True
+    },
+    {
+        's1': ""abc"",
+        's2': ""def"",
+        's3': ""abcdef"",
+        'expected': True
+    },
+    {
+        's1': ""abc"",
+        's2': ""def"",
+        's3': ""abcde"",
+        'expected': False
+    },
+    {
+        's1': ""a"",
+        's2': ""b"",
+        's3': ""ab"",
+        'expected': True
+    },
+    {
+        's1': ""ab"",
+        's2': ""cd"",
+        's3': ""abcd"",
+        'expected': True
+    },
+    {
+        's1': ""abc"",
+        's2': ""def"",
+        's3': ""abdecf"",
+        'expected': True
+    },
+    {
+        's1': ""xyz"",
+        's2': ""abc"",
+        's3': ""xyabcz"",
+        'expected': True
+    },
+    {
+        's1': ""aaa"",
+        's2': ""bbb"",
+        's3': ""aaabbb"",
+        'expected': True
+    },
+    {
+        's1': ""abc"",
+        's2': """",
+        's3': ""abc"",
+        'expected': True
+    },
+    {
+        's1': """",
+        's2': ""abc"",
+        's3': ""abc"",
+        'expected': True
+    },
+    {
+        's1': ""abc"",
+        's2': ""abc"",
+        's3': ""aabbcc"",
+        'expected': True
+    },
+    {
+        's1': ""abc"",
+        's2': ""def"",
+        's3': ""abcdef"",
+        'expected': True
+    },
+    {
+        's1': ""abc"",
+        's2': ""abc"",
+        's3': ""abccba"",
+        'expected': False
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    s1 = params[i]['s1']
+    s2 = params[i]['s2']
+    s3 = params[i]['s3']
+    expected = params[i]['expected']
+    gotOutput = obj.isInterleave(s1, s2, s3)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: s1 = {s1}, s2 = {s2}, s3 = {s3}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      's1': ""aabcc"",
+      's2': ""dbbca"",
+      's3': ""aadbbcbcac"",
+      'expected': true
+  },
+  {
+      's1': ""aabcc"",
+      's2': ""dbbca"",
+      's3': ""aadbbbaccc"",
+      'expected': false
+  },
+  {
+      's1': """",
+      's2': """",
+      's3': """",
+      'expected': true
+  },
+  {
+      's1': ""abc"",
+      's2': ""def"",
+      's3': ""abcdef"",
+      'expected': true
+  },
+  {
+      's1': ""abc"",
+      's2': ""def"",
+      's3': ""abcde"",
+      'expected': false
+  },
+  {
+      's1': ""a"",
+      's2': ""b"",
+      's3': ""ab"",
+      'expected': true
+  },
+  {
+      's1': ""ab"",
+      's2': ""cd"",
+      's3': ""abcd"",
+      'expected': true
+  },
+  {
+      's1': ""abc"",
+      's2': ""def"",
+      's3': ""abdecf"",
+      'expected': true
+  },
+  {
+      's1': ""xyz"",
+      's2': ""abc"",
+      's3': ""xyabcz"",
+      'expected': true
+  },
+  {
+      's1': ""aaa"",
+      's2': ""bbb"",
+      's3': ""aaabbb"",
+      'expected': true
+  },
+  {
+      's1': ""abc"",
+      's2': """",
+      's3': ""abc"",
+      'expected': true
+  },
+  {
+      's1': """",
+      's2': ""abc"",
+      's3': ""abc"",
+      'expected': true
+  },
+  {
+      's1': ""abc"",
+      's2': ""abc"",
+      's3': ""aabbcc"",
+      'expected': true
+  },
+  {
+      's1': ""abc"",
+      's2': ""def"",
+      's3': ""abcdef"",
+      'expected': true
+  },
+  {
+      's1': ""abc"",
+      's2': ""abc"",
+      's3': ""abccba"",
+      'expected': false
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let s1 = params[i]['s1'];
+  let s2 = params[i]['s2'];
+  let s3 = params[i]['s3'];
+  let expected = params[i]['expected'];
+  let gotOutput = isInterleave(s1, s2, s3);
+  if (expected != gotOutput) {
+      console.log(`\u274C Test ${i} failed: s1 = ${s1}, s2 = ${s2}, s3 = ${s3}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595488ad4593d6b7b020d,longest-increasing-path-in-a-matrix,"params = [
+    {
+        'matrix': [[9,9,4],[6,6,8],[2,1,1]],
+        'expected': 4
+    },
+    {
+        'matrix': [[3,4,5],[3,2,6],[2,2,1]],
+        'expected': 4
+    },
+    {
+        'matrix': [[1]],
+        'expected': 1
+    },
+    {
+        'matrix': [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]],
+        'expected': 7
+    },
+    {
+        'matrix': [[16,15,14,13],[12,11,10,9],[8,7,6,5],[4,3,2,1]],
+        'expected': 7
+    },
+    {
+        'matrix': [[1,2,3],[6,5,4],[7,8,9]],
+        'expected': 9
+    },
+    {
+        'matrix': [[1,1,1],[1,1,1],[1,1,1]],
+        'expected': 1
+    },
+    {
+        'matrix': [[10]],
+        'expected': 1
+    },
+    {
+        'matrix': [[1,3],[7,5]],
+        'expected': 4
+    },
+    {
+        'matrix': [[1,2],[3,4]],
+        'expected': 3
+    },
+    {
+        'matrix': [[1,0],[0,1]],
+        'expected': 2
+    },
+    {
+        'matrix': [[1,2,3,4,5]],
+        'expected': 5
+    },
+    {
+        'matrix': [[1],[2],[3],[4],[5]],
+        'expected': 5
+    },
+    {
+        'matrix': [[1,2,3,4,5],[2,3,4,5,6],[3,4,5,6,7]],
+        'expected': 7
+    },
+    {
+        'matrix': [[1,2,3],[8,9,4],[7,6,5]],
+        'expected': 9
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    matrix = params[i]['matrix']
+    expected = params[i]['expected']
+    gotOutput = obj.longestIncreasingPath(matrix)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: matrix = {matrix}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'matrix': [[9,9,4],[6,6,8],[2,1,1]],
+      'expected': 4
+  },
+  {
+      'matrix': [[3,4,5],[3,2,6],[2,2,1]],
+      'expected': 4
+  },
+  {
+      'matrix': [[1]],
+      'expected': 1
+  },
+  {
+      'matrix': [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]],
+      'expected': 7
+  },
+  {
+      'matrix': [[16,15,14,13],[12,11,10,9],[8,7,6,5],[4,3,2,1]],
+      'expected': 7
+  },
+  {
+      'matrix': [[1,2,3],[6,5,4],[7,8,9]],
+      'expected': 9
+  },
+  {
+      'matrix': [[1,1,1],[1,1,1],[1,1,1]],
+      'expected': 1
+  },
+  {
+      'matrix': [[10]],
+      'expected': 1
+  },
+  {
+      'matrix': [[1,3],[7,5]],
+      'expected': 4
+  },
+  {
+      'matrix': [[1,2],[3,4]],
+      'expected': 3
+  },
+  {
+      'matrix': [[1,0],[0,1]],
+      'expected': 2
+  },
+  {
+      'matrix': [[1,2,3,4,5]],
+      'expected': 5
+  },
+  {
+      'matrix': [[1],[2],[3],[4],[5]],
+      'expected': 5
+  },
+  {
+      'matrix': [[1,2,3,4,5],[2,3,4,5,6],[3,4,5,6,7]],
+      'expected': 7
+  },
+  {
+      'matrix': [[1,2,3],[8,9,4],[7,6,5]],
+      'expected': 9
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let matrix = params[i]['matrix'];
+  let expected = params[i]['expected'];
+  let gotOutput = longestIncreasingPath(matrix);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: matrix = ${JSON.stringify(matrix)}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b595498ad4593d6b7b020e,distinct-subsequences,"params = [
+    {
+        's': 'rabbbit',
+        't': 'rabbit',
+        'expected': 3
+    },
+    {
+        's': 'babgbag',
+        't': 'bag',
+        'expected': 5
+    },
+    {
+        's': 'aaaaa',
+        't': 'a',
+        'expected': 5
+    },
+    {
+        's': 'abcd',
+        't': 'abcd',
+        'expected': 1
+    },
+    {
+        's': 'abcd',
+        't': 'abc',
+        'expected': 1
+    },
+    {
+        's': 'abcdabcd',
+        't': 'abcd',
+        'expected': 5
+    },
+    {
+        's': 'abababab',
+        't': 'abab',
+        'expected': 15
+    },
+    {
+        's': 'abababab',
+        't': 'aaaa',
+        'expected': 1
+    },
+    {
+        's': 'abababab',
+        't': 'bbbb',
+        'expected': 1
+    },
+    {
+        's': 'abcabcabc',
+        't': 'abc',
+        'expected': 10
+    },
+    {
+        's': 'abcabcabc',
+        't': 'aaa',
+        'expected': 1
+    },
+    {
+        's': 'abcabcabc',
+        't': 'bbb',
+        'expected': 1
+    },
+    {
+        's': 'abcabcabc',
+        't': 'ccc',
+        'expected': 1
+    },
+    {
+        's': 'abcabcabc',
+        't': 'cba',
+        'expected': 1
+    },
+    {
+        's': 'abcabcabc',
+        't': 'bac',
+        'expected': 4
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    s = params[i]['s']
+    t = params[i]['t']
+    expected = params[i]['expected']
+    gotOutput = obj.numDistinct(s, t)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: s = {s}, t = {t}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      's': 'rabbbit',
+      't': 'rabbit',
+      'expected': 3
+  },
+  {
+      's': 'babgbag',
+      't': 'bag',
+      'expected': 5
+  },
+  {
+      's': 'aaaaa',
+      't': 'a',
+      'expected': 5
+  },
+  {
+      's': 'abcd',
+      't': 'abcd',
+      'expected': 1
+  },
+  {
+      's': 'abcd',
+      't': 'abc',
+      'expected': 1
+  },
+  {
+      's': 'abcdabcd',
+      't': 'abcd',
+      'expected': 5
+  },
+  {
+      's': 'abababab',
+      't': 'abab',
+      'expected': 15
+  },
+  {
+      's': 'abababab',
+      't': 'aaaa',
+      'expected': 1
+  },
+  {
+      's': 'abababab',
+      't': 'bbbb',
+      'expected': 1
+  },
+  {
+      's': 'abcabcabc',
+      't': 'abc',
+      'expected': 10
+  },
+  {
+      's': 'abcabcabc',
+      't': 'aaa',
+      'expected': 1
+  },
+  {
+      's': 'abcabcabc',
+      't': 'bbb',
+      'expected': 1
+  },
+  {
+      's': 'abcabcabc',
+      't': 'ccc',
+      'expected': 1
+  },
+  {
+      's': 'abcabcabc',
+      't': 'cba',
+      'expected': 1
+  },
+  {
+      's': 'abcabcabc',
+      't': 'bac',
+      'expected': 4
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let s = params[i].s;
+  let t = params[i].t;
+  let expected = params[i].expected;
+  let gotOutput = numDistinct(s, t);
+  if(expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: s = ${s}, t = ${t}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5954a8ad4593d6b7b020f,edit-distance,"params = [
+    {
+        'word1': 'horse',
+        'word2': 'ros',
+        'expected': 3
+    },
+    {
+        'word1': 'intention',
+        'word2': 'execution',
+        'expected': 5
+    },
+    {
+        'word1': '',
+        'word2': 'test',
+        'expected': 4
+    },
+    {
+        'word1': 'test',
+        'word2': '',
+        'expected': 4
+    },
+    {
+        'word1': 'test',
+        'word2': 'test',
+        'expected': 0
+    },
+    {
+        'word1': 'edit',
+        'word2': 'distance',
+        'expected': 6
+    },
+    {
+        'word1': 'kitten',
+        'word2': 'sitting',
+        'expected': 3
+    },
+    {
+        'word1': 'sunday',
+        'word2': 'saturday',
+        'expected': 3
+    },
+    {
+        'word1': 'abcdef',
+        'word2': 'azced',
+        'expected': 3
+    },
+    {
+        'word1': 'machine',
+        'word2': 'mac',
+        'expected': 4
+    },
+    {
+        'word1': 'industry',
+        'word2': 'interest',
+        'expected': 6
+    },
+    {
+        'word1': 'paper',
+        'word2': 'writer',
+        'expected': 4
+    },
+    {
+        'word1': 'dwayne',
+        'word2': 'duane',
+        'expected': 2
+    },
+    {
+        'word1': 'marina',
+        'word2': 'marine',
+        'expected': 1
+    },
+    {
+        'word1': 'spelling',
+        'word2': 'selling',
+        'expected': 1
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    word1 = params[i]['word1']
+    word2 = params[i]['word2']
+    expected = params[i]['expected']
+    gotOutput = obj.minDistance(word1, word2)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: word1 = {word1}, word2 = {word2}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'word1': 'horse',
+      'word2': 'ros',
+      'expected': 3
+  },
+  {
+      'word1': 'intention',
+      'word2': 'execution',
+      'expected': 5
+  },
+  {
+      'word1': '',
+      'word2': 'test',
+      'expected': 4
+  },
+  {
+      'word1': 'test',
+      'word2': '',
+      'expected': 4
+  },
+  {
+      'word1': 'test',
+      'word2': 'test',
+      'expected': 0
+  },
+  {
+      'word1': 'edit',
+      'word2': 'distance',
+      'expected': 6
+  },
+  {
+      'word1': 'kitten',
+      'word2': 'sitting',
+      'expected': 3
+  },
+  {
+      'word1': 'sunday',
+      'word2': 'saturday',
+      'expected': 3
+  },
+  {
+      'word1': 'abcdef',
+      'word2': 'azced',
+      'expected': 3
+  },
+  {
+      'word1': 'machine',
+      'word2': 'mac',
+      'expected': 4
+  },
+  {
+      'word1': 'industry',
+      'word2': 'interest',
+      'expected': 6
+  },
+  {
+      'word1': 'paper',
+      'word2': 'writer',
+      'expected': 4
+  },
+  {
+      'word1': 'dwayne',
+      'word2': 'duane',
+      'expected': 2
+  },
+  {
+      'word1': 'marina',
+      'word2': 'marine',
+      'expected': 1
+  },
+  {
+      'word1': 'spelling',
+      'word2': 'selling',
+      'expected': 1
+  }
+]
+
+for (let i = 0; i < params.length; i++) {
+  let word1 = params[i]['word1'];
+  let word2 = params[i]['word2'];
+  let expected = params[i]['expected'];
+  let gotOutput = minDistance(word1, word2);
+  if (expected !== gotOutput) {
+      console.log(`\u274C Test ${i} failed: word1 = ${word1}, word2 = ${word2}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5954b8ad4593d6b7b0210,burst-balloons,"params = [
+    {
+        'nums': [3,1,5,8],
+        'expected': 167
+    },
+    {
+        'nums': [1,5],
+        'expected': 10
+    },
+    {
+        'nums': [2,3,4],
+        'expected': 36
+    },
+    {
+        'nums': [4,3,2,1],
+        'expected': 40
+    },
+    {
+        'nums': [1,2,3,4,5],
+        'expected': 110
+    },
+    {
+        'nums': [9,76,64,21],
+        'expected': 116718
+    },
+    {
+        'nums': [1,1,1],
+        'expected': 3
+    },
+    {
+        'nums': [5,5,5,5,5],
+        'expected': 405
+    },
+    {
+        'nums': [3,1,5,8,1,1],
+        'expected': 183
+    },
+    {
+        'nums': [1,1,1,1,1,1,1,1,1,1],
+        'expected': 10
+    },
+    {
+        'nums': [1,1,1,1,1,1,1,1,1,2],
+        'expected': 20
+    },
+    {
+        'nums': [1,1,1,1,1,1,1,1,2,1],
+        'expected': 20
+    },
+    {
+        'nums': [2,2,2,2,2,2,2,2,2,2],
+        'expected': 70
+    },
+    {
+        'nums': [1,15,1],
+        'expected': 45
+    },
+    {
+        'nums': [35,16,83,87],
+        'expected': 302347
+    }
+]
+    
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    expected = params[i]['expected']
+    gotOutput = obj.maxCoins(nums)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+  {
+      'nums': [3,1,5,8],
+      'expected': 167
+  },
+  {
+      'nums': [1,5],
+      'expected': 10
+  },
+  {
+      'nums': [2,3,4],
+      'expected': 36
+  },
+  {
+      'nums': [4,3,2,1],
+      'expected': 40
+  },
+  {
+      'nums': [1,2,3,4,5],
+      'expected': 110
+  },
+  {
+      'nums': [9,76,64,21],
+      'expected': 116718
+  },
+  {
+      'nums': [1,1,1],
+      'expected': 3
+  },
+  {
+      'nums': [5,5,5,5,5],
+      'expected': 405
+  },
+  {
+      'nums': [3,1,5,8,1,1],
+      'expected': 183
+  },
+  {
+      'nums': [1,1,1,1,1,1,1,1,1,1],
+      'expected': 10
+  },
+  {
+      'nums': [1,1,1,1,1,1,1,1,1,2],
+      'expected': 20
+  },
+  {
+      'nums': [1,1,1,1,1,1,1,1,2,1],
+      'expected': 20
+  },
+  {
+      'nums': [2,2,2,2,2,2,2,2,2,2],
+      'expected': 70
+  },
+  {
+      'nums': [1,15,1],
+      'expected': 45
+  },
+  {
+      'nums': [35,16,83,87],
+      'expected': 302347
+  }
+]
+
+for(let i = 0; i < params.length; i++){
+  let nums = params[i]['nums'];
+  let expected = params[i]['expected'];
+  let gotOutput = maxCoins(nums);
+  if(expected !== gotOutput){
+      console.log(`\u274C Test ${i} failed: nums = ${nums}, expected = ${expected}, but got ${gotOutput}`);
+  } else {
+      console.log(`\u2705 Test ${i} succeeded`);
+  }
+}",,
+63b5954b8ad4593d6b7b0211,regular-expression-matching,"params = [
+    {
+        's': ""aa"",
+        'p': ""a"",
+        'expected': False
+    },
+    {
+        's': ""aa"",
+        'p': ""a*"",
+        'expected': True
+    },
+    {
+        's': ""ab"",
+        'p': "".*"",
+        'expected': True
+    },
+    {
+        's': ""aab"",
+        'p': ""c*a*b"",
+        'expected': True
+    },
+    {
+        's': ""mississippi"",
+        'p': ""mis*is*p*."",
+        'expected': False
+    },
+    {
+        's': """",
+        'p': """",
+        'expected': True
+    },
+    {
+        's': ""a"",
+        'p': ""a"",
+        'expected': True
+    },
+    {
+        's': ""abc"",
+        'p': ""a.c"",
+        'expected': True
+    },
+    {
+        's': ""abcd"",
+        'p': ""a.*d"",
+        'expected': True
+    },
+    {
+        's': ""aaa"",
+        'p': ""a*a"",
+        'expected': True
+    },
+    {
+        's': ""abc"",
+        'p': ""a.*c"",
+        'expected': True
+    },
+    {
+        's': ""aa"",
+        'p': "".."",
+        'expected': True
+    },
+    {
+        's': ""aa"",
+        'p': "".*"",
+        'expected': True
+    },
+    {
+        's': ""ab"",
+        'p': "".*"",
+        'expected': True
+    },
+    {
+        's': ""aaa"",
+        'p': ""a*a"",
+        'expected': True
+    }
+]
+    
+obj = Solution()
+for i in range(len(params)):
+    s = params[i]['s']
+    p = params[i]['p']
+    expected = params[i]['expected']
+    gotOutput = obj.isMatch(s, p)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: s = {s}, p = {p}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+    {
+        's': ""aa"",
+        'p': ""a"",
+        'expected': false
+    },
+    {
+        's': ""aa"",
+        'p': ""a*"",
+        'expected': true
+    },
+    {
+        's': ""ab"",
+        'p': "".*"",
+        'expected': true
+    },
+    {
+        's': ""aab"",
+        'p': ""c*a*b"",
+        'expected': true
+    },
+    {
+        's': ""mississippi"",
+        'p': ""mis*is*p*."",
+        'expected': false
+    },
+    {
+        's': """",
+        'p': """",
+        'expected': true
+    },
+    {
+        's': ""a"",
+        'p': ""a"",
+        'expected': true
+    },
+    {
+        's': ""abc"",
+        'p': ""a.c"",
+        'expected': true
+    },
+    {
+        's': ""abcd"",
+        'p': ""a.*d"",
+        'expected': true
+    },
+    {
+        's': ""aaa"",
+        'p': ""a*a"",
+        'expected': true
+    },
+    {
+        's': ""abc"",
+        'p': ""a.*c"",
+        'expected': true
+    },
+    {
+        's': ""aa"",
+        'p': "".."",
+        'expected': true
+    },
+    {
+        's': ""aa"",
+        'p': "".*"",
+        'expected': true
+    },
+    {
+        's': ""ab"",
+        'p': "".*"",
+        'expected': true
+    },
+    {
+        's': ""aaa"",
+        'p': ""a*a"",
+        'expected': true
+    }
+]
+
+for(let i = 0; i < params.length; i++) {
+    let s = params[i]['s'];
+    let p = params[i]['p'];
+    let expected = params[i]['expected'];
+    let gotOutput = isMatch(s, p);
+    if(expected !== gotOutput) {
+        console.log(`\u274C Test ${i} failed: s = ${s}, p = ${p}, expected = ${expected}, but got ${gotOutput}`);
+    } else {
+        console.log(`\u2705 Test ${i} succeeded`);
+    }
+}",,
+63b5954d8ad4593d6b7b0212,maximum-subarray,"params = [
+    {
+        'nums': [-2,1,-3,4,-1,2,1,-5,4],
+        'expected': 6
+    },
+    {
+        'nums': [1],
+        'expected': 1
+    },
+    {
+        'nums': [5,4,-1,7,8],
+        'expected': 23
+    },
+    {
+        'nums': [-1,-2,-3,-4,-5],
+        'expected': -1
+    },
+    {
+        'nums': [0,0,0,0,0],
+        'expected': 0
+    },
+    {
+        'nums': [2,-3,4,-1,2,1,5,-3],
+        'expected': 11
+    },
+    {
+        'nums': [-2, -3, 4, -1, -2, 1, 5, -3],
+        'expected': 7
+    },
+    {
+        'nums': [1,2,3,4,5],
+        'expected': 15
+    },
+    {
+        'nums': [-1,0,-2],
+        'expected': 0
+    },
+    {
+        'nums': [3, -2, 5, -1],
+        'expected': 6
+    },
+    {
+        'nums': [3, -1, -1, -1, -1, -1, 2],
+        'expected': 3
+    },
+    {
+        'nums': [10, -3, -2, 7, -10, 15, -5],
+        'expected': 17
+    },
+    {
+        'nums': [-2, 1, -3, 5, 0, 3, 2, -5, 4],
+        'expected': 10
+    },
+    {
+        'nums': [-2, -5, 6, -2, -3, 1, 5, -6],
+        'expected': 7
+    },
+    {
+        'nums': [1, -2, 3, 10, -4, 7, 2, -5],
+        'expected': 18
+    }
+]
+
+obj = Solution()
+for i in range(len(params)):
+    nums = params[i]['nums']
+    expected = params[i]['expected']
+    gotOutput = obj.maxSubArray(nums)
+    if expected != gotOutput:
+        print(f""\u274C Test {i} failed: nums = {nums}, expected = {expected}, but got {gotOutput}"")
+    else:
+        print(f""\u2705 Test {i} succeeded"")","const params = [
+    {
+        'nums': [-2,1,-3,4,-1,2,1,-5,4],
+        'expected': 6
+    },
+    {
+        'nums': [1],
+        'expected': 1
+    },
+    {
+        'nums': [5,4,-1,7,8],
+        'expected': 23
+    },
+    {
+        'nums': [-1,-2,-3,-4,-5],
+        'expected': -1
+    },
+    {
+        'nums': [0,0,0,0,0],
+        'expected': 0
+    },
+    {
+        'nums': [2,-3,4,-1,2,1,5,-3],
+        'expected': 11
+    },
+    {
+        'nums': [-2, -3, 4, -1, -2, 1, 5, -3],
+        'expected': 7
+    },
+    {
+        'nums': [1,2,3,4,5],
+        'expected': 15
+    },
+    {
+        'nums': [-1,0,-2],
+        'expected': 0
+    },
+    {
+        'nums': [3, -2, 5, -1],
+        'expected': 6
+    },
+    {
+        'nums': [3, -1, -1, -1, -1, -1, 2],
+        'expected': 3
+    },
+    {
+        'nums': [10, -3, -2, 7, -10, 15, -5],
+        'expected': 17
+    },
+    {
+        'nums': [-2, 1, -3, 5, 0, 3, 2, -5, 4],
+        'expected': 10
+    },
+    {
+        'nums': [-2, -5, 6, -2, -3, 1, 5, -6],
+        'expected': 7
+    },
+    {
+        'nums': [1, -2, 3, 10, -4, 7, 2, -5],
+        'expected': 18
+    }
+]
+
+for (let i = 0; i < params.length; i++) {
+    let nums = params[i].nums;
+    let expected = params[i].expected;
+    let gotOutput = maxSubArray(nums);
+    if(expected !== gotOutput) {
+        console.log(`\u274C Test ${i} failed: nums = ${nums}, expected = ${expected}, but got ${gotOutput}`);
+    } else {
+        console.log(`\u2705 Test ${i} succeeded`);
+    }
+}",,
 63b5954e8ad4593d6b7b0213,jump-game,,,,
 63b5954f8ad4593d6b7b0214,jump-game-ii,,,,
 63b595508ad4593d6b7b0215,gas-station,,,,
